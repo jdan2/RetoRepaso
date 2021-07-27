@@ -1,17 +1,16 @@
 package co.com.sofka.mongo;
 
-import co.com.sofka.model.estacionamiento.Estacionamiento;
-import co.com.sofka.model.estacionamiento.gateways.EstacionamientoRepository;
+import co.com.sofka.model.estacionamiento.Tiquete;
+import co.com.sofka.model.estacionamiento.gateways.TiqueteRepository;
 import co.com.sofka.mongo.helper.AdapterOperations;
 import org.reactivecommons.utils.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class MongoRepositoryAdapter extends AdapterOperations<Estacionamiento,Estacionamiento,String, MongoDBRepository>
- implements EstacionamientoRepository
+public class MongoRepositoryAdapter extends AdapterOperations<Tiquete, Tiquete,String, MongoDBRepository>
+ implements TiqueteRepository
 {
 
     public MongoRepositoryAdapter(MongoDBRepository repository, ObjectMapper mapper) {
@@ -20,16 +19,17 @@ public class MongoRepositoryAdapter extends AdapterOperations<Estacionamiento,Es
          *  super(repository, mapper, d -> mapper.mapBuilder(d,ObjectModel.ObjectModelBuilder.class).build());
          *  Or using mapper.map with the class of the object model
          */
-        super(repository, mapper, d -> mapper.map(d, Estacionamiento.class));
+        super(repository, mapper, d -> mapper.map(d, Tiquete.class));
+    }
+
+
+    @Override
+    public Tiquete crearTiquete(Tiquete tiquete) {
+        return this.repository.save(tiquete);
     }
 
     @Override
-    public Estacionamiento crearEstacionamiento(Estacionamiento estacionamiento) {
-        return this.repository.save(estacionamiento);
-    }
-
-    @Override
-    public List<Estacionamiento> listarEstacionamiento() {
+    public List<Tiquete> listarTiquete() {
         return this.repository.findAll();
     }
 }

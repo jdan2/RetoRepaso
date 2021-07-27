@@ -1,7 +1,7 @@
 package co.com.sofka.config;
 
-import co.com.sofka.model.estacionamiento.gateways.EstacionamientoRepository;
-import co.com.sofka.usecase.estacionamiento.EstacionamientoUseCase;
+import co.com.sofka.model.estacionamiento.gateways.TiqueteRepository;
+import co.com.sofka.usecase.tiquete.TiqueteUseCase;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.FilterType;
         },
         useDefaultFilters = false)
 public class UseCasesConfig {
-        public EstacionamientoUseCase crear(EstacionamientoRepository estacionamientoRepository){
-                return new EstacionamientoUseCase(estacionamientoRepository);
+        public TiqueteUseCase crear(TiqueteRepository tiqueteRepository){
+                return new TiqueteUseCase(tiqueteRepository);
         }
 }

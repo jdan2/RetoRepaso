@@ -1,0 +1,4 @@
+//Add(Create)
+export const ADD_TICKET = 'ADD_EMPLOYE';
+export const ADD_TICKET_SUCCESS = 'ADD_EMPLOYE_SUCCESS';
+export const ADD_TICKET_FAILURE = 'ADD_EMPLOYE_FAILURE';

@@ -5,6 +5,7 @@ import NewTicket from '../pages/NewTicket';
 import Home from  '../pages/Home';
 
 
+
 //Redux
 import {Provider} from "react-redux";
 import store from "../../domain/store";
@@ -14,6 +15,10 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import Tickets from '../pages/Tickets';
 import NewFactura from '../pages/NewFactura';
 import Facturas from '../pages/Facturas';
+import Header from '../layout/Header';
+import Footer from '../layout/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 
@@ -21,6 +26,7 @@ import Facturas from '../pages/Facturas';
 const App = () => {
   return (
     <Router>
+    <Header/>
       <Provider store={store}>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -30,6 +36,7 @@ const App = () => {
           <Route exact path="/listfacturas" component={Facturas} />       
         </Switch>
       </Provider>
+      <Footer/>
     </Router>
   );
 }

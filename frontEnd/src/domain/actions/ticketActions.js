@@ -110,3 +110,16 @@ const deleteTicketFailure = () => ({
     payload:true
 })
 
+export const ticketEditAction =async (id,horaIngreso, placa, celda,tipoVehiculo) => {
+    return async (dispatch) =>{
+    dispatch(editTicket())
+    const ticket = {horaIngreso:horaIngreso, placa:placa, celda:celda, tipoVehiculo: tipoVehiculo}
+    await clientAxios.put('/tiquetes/'+id,ticket);
+    }
+}
+
+const editTicket = ()=>({
+    type:EDIT_TICKET,
+    payload:true
+});
+

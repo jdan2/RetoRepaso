@@ -110,6 +110,17 @@ const deleteTicketFailure = () => ({
     payload:true
 })
 
+export function onlyTicketAction(ticket){
+    return (dispatch) =>{
+        dispatch(onlyTicket(ticket))
+    }
+}
+
+const onlyTicket = ticket =>({
+    type:ONLY_TICKET,
+    payload:ticket
+})
+
 export const ticketEditAction =async (id,horaIngreso, placa, celda,tipoVehiculo) => {
     return async (dispatch) =>{
     dispatch(editTicket())

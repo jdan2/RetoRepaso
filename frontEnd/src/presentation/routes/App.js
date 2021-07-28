@@ -107,6 +107,18 @@ class App extends Component {
                 authenticated={this.state.authenticated}
                 component={Tickets}
               />
+              <PrivateRoute
+                exact
+                path="/newfactura"
+                authenticated={this.state.authenticated}
+                component={NewFactura}
+              />
+              <PrivateRoute
+                exact
+                path="/lisfacturas"
+                authenticated={this.state.authenticated}
+                component={Facturas}
+              />
               <PublicRoute
                 exact
                 authenticated={this.state.authenticated}

@@ -17,6 +17,9 @@ const Header = () => {
                     <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/listtickets"}>Listado Tickets</Link>
                     &nbsp;
                     <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/newticket"}>Generar Tickets</Link>
+                    <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/listfacturas"}>Listado facturas</Link>
+                    &nbsp;
+                    <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/newfactura"}>Generar Factura</Link>
 
                     
                         <span className="navbar-text mr-3 btn text-primary">Iniciaste Sesion - {auth().currentUser.email}</span>

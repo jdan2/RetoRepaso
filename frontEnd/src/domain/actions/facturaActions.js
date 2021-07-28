@@ -18,7 +18,7 @@ import {
 } from '../types/factura.js';
 
 
-import clientAxios from './../../infrastructure/services/api/axios';
+import clientAxios from './../../infrastructure/services/api/axiosSpring';
 
 //Crear Acciones de factura
 export function addNewFacturaAction(factura){

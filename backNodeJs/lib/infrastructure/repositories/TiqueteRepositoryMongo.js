@@ -22,14 +22,14 @@ module.exports = class extends TiqueteRepository {
   async getAll(){
     const mongooseTiquetes = await MongooseTiquete.find();
     return mongooseTiquetes.map((mongooseTiquete)=>{
-      return new TiqueteDto(mongooseTiquete.id, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, 
+      return new TiqueteDto(mongooseTiquete.tipoVehiculo, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, 
         mongooseTiquete.placa, mongooseTiquete.horaIngreso)
     })
   }
 
   async modify(tiqueteEntity) {
     const { tiqueteId, celdaId, tipoVehiculo, placa, horaIngreso} = tiqueteEntity;
-    const mongooseTiquete = await MongooseTiquete.findByIdAndUpdate(tiqueteId, { celdaId: celdaId, tipoVehiculo: tipoVehiculo, placa: placa, horaIngreso: horaIngreso }, {new: true}, (err, doc)=>{
+    const mongooseTiquete = await MongooseTiquete.findOneAndUpdate({tiqueteId: tiqueteId}, { celdaId: celdaId, tipoVehiculo: tipoVehiculo, placa: placa, horaIngreso: horaIngreso }, {new: true}, (err, doc)=>{
       if(err) console.log(err);
   });
     return new TiqueteDto(mongooseTiquete.id, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, mongooseTiquete.horaIngreso); 

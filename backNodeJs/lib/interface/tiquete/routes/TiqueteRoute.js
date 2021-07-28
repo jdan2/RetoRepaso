@@ -11,12 +11,10 @@ router.post('/', async(req, res)=>{
 });
 
 router.get('/', async(req, res)=>{
-
     req.app.serviceLocator = require('../../../infrastructure/config/service-locator');
-    if(req.body.tiqueteId != undefined ){
-        console.log("Busqueda por id")
-        console.log(req.body.tiqueteId)
-        res.send("1")
+    if(req.query.id != undefined ){
+        const tiquete = await TiqueteController.consultarTiquete(req);
+        res.send(tiquete);
     }else{
         const tiquetes = await TiqueteController.listarTiquetes(req);
         res.send(tiquetes);

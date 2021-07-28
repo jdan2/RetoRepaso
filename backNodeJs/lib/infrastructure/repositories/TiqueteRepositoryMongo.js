@@ -31,8 +31,13 @@ module.exports = class extends TiqueteRepository {
     const { tiqueteId, celdaId, tipoVehiculo, placa, horaIngreso} = tiqueteEntity;
     const mongooseTiquete = await MongooseTiquete.findOneAndUpdate({tiqueteId: tiqueteId}, { celdaId: celdaId, tipoVehiculo: tipoVehiculo, placa: placa, horaIngreso: horaIngreso }, {new: true}, (err, doc)=>{
       if(err) console.log(err);
-  });
+    });
     return new TiqueteDto(mongooseTiquete.id, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, mongooseTiquete.horaIngreso); 
+  }
+
+  async get(tiqueteId){
+    const mongooseTiquete = await MongooseTiquete.findOne({tiqueteId: tiqueteId})
+    return new TiqueteDto(mongooseTiquete.tipoVehiculo, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, mongooseTiquete.horaIngreso); 
   }
 
 };

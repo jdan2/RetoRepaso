@@ -23,4 +23,10 @@ router.get('/', async(req, res)=>{
     }
 });
 
+router.put('/', async(req, res)=>{
+    req.app.serviceLocator = require('../../../infrastructure/config/service-locator');
+    const tiquete = await TiqueteController.editarTiquete(req);
+    res.send(tiquete);
+});
+
 module.exports = router;

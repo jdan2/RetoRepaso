@@ -16,5 +16,6 @@ app.use(cookieParser());
 
 app.use(`${apiRoot}/creartiquete`, tiqueteRoute);
 app.use(`${apiRoot}/listartiquetes`, tiqueteRoute);
+app.use(`${apiRoot}/editartiquete`, tiqueteRoute);
 
 module.exports = app;

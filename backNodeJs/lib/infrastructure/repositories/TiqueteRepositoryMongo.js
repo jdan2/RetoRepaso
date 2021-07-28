@@ -27,4 +27,12 @@ module.exports = class extends TiqueteRepository {
     })
   }
 
+  async modify(tiqueteEntity) {
+    const { tiqueteId, celdaId, tipoVehiculo, placa, horaIngreso} = tiqueteEntity;
+    const mongooseTiquete = await MongooseTiquete.findByIdAndUpdate(tiqueteId, { celdaId: celdaId, tipoVehiculo: tipoVehiculo, placa: placa, horaIngreso: horaIngreso }, {new: true}, (err, doc)=>{
+      if(err) console.log(err);
+  });
+    return new TiqueteDto(mongooseTiquete.id, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, mongooseTiquete.horaIngreso); 
+  }
+
 };

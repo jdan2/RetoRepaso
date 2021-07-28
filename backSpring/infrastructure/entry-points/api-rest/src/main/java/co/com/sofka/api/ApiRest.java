@@ -6,6 +6,7 @@ import co.com.sofka.api.mapper.TiqueteMapper;
 import co.com.sofka.model.factura.Factura;
 import co.com.sofka.model.tiquete.Tiquete;
 import co.com.sofka.usecase.factura.ActualizarFacturaUseCase;
+import co.com.sofka.usecase.factura.BorrarFacturaUseCase;
 import co.com.sofka.usecase.factura.FacturaUseCase;
 import co.com.sofka.usecase.factura.ListarFacturaUsecase;
 import co.com.sofka.usecase.tiquete.TiqueteUseCase;
@@ -25,6 +26,7 @@ public class ApiRest {
    private final FacturaMapper facturaMapper;
 
    private final ActualizarFacturaUseCase actualizarFacturaUseCase;
+   private final BorrarFacturaUseCase borrarFacturaUseCase;
   // private final ListarFacturaUsecase listarFacturaUsecase;
 
 
@@ -56,5 +58,10 @@ public class ApiRest {
     public FacturaDTO actualizarFactura(@RequestBody FacturaDTO facturaDTO) {
         Factura factura = facturaMapper.dtoToFactura(facturaDTO);
         return facturaMapper.facturaToDto(actualizarFacturaUseCase.updateCount(factura));
+    }
+
+    @DeleteMapping(path = "/eliminarfactura/{id}")
+    public void eliminarFactura(@PathVariable("id") String id) {
+        borrarFacturaUseCase.deleteFactura(id);
     }
 }

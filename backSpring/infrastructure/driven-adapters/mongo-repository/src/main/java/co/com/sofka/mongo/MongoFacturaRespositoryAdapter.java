@@ -71,7 +71,7 @@ public class MongoFacturaRespositoryAdapter extends AdapterOperations<FacturaEnt
 
     @Override
     public void deletefactura(String idFactura) {
-
+        this.repository.deleteById(idFactura);
     }
 
 }

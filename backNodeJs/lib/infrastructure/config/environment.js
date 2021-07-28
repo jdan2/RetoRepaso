@@ -11,8 +11,8 @@ module.exports = (() => {
   const environment = {
     database: {
       dialect: process.env.DATABASE_DIALECT || constants.SUPPORTED_DATABASE.MONGO,
-      url: process.env.DATABASE_URI || 'mongodb+srv://admin2:QtC5e4bxxw!tJJL@cluster0.pqco8.mongodb.net/parqueadero2Database?retryWrites=true&w=majority',
-      //url: process.env.DATABASE_URI || 'mongodb+srv://admin2:QtC5e4bxxw!tJJL@cluster0.pqco8.mongodb.net/db_parqueadero?retryWrites=true&w=majority',
+      //url: process.env.DATABASE_URI || 'mongodb+srv://admin2:QtC5e4bxxw!tJJL@cluster0.pqco8.mongodb.net/parqueadero2Database?retryWrites=true&w=majority',
+      url: process.env.DATABASE_URI || 'mongodb+srv://admin2:QtC5e4bxxw!tJJL@cluster0.pqco8.mongodb.net/db_parqueadero?retryWrites=true&w=majority',
     }
   };
 

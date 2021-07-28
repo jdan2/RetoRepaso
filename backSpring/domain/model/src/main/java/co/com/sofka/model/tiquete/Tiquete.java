@@ -14,6 +14,8 @@ public class Tiquete {
     private Placa placa;
     private HoraIngreso horaIngreso;
 
+    public Tiquete() {
+    }
 
     public Tiquete(TiqueteId tiqueteId,TipoVehiculo tipoVehiculo, CeldaId celdaId, Placa placa, HoraIngreso horaIngreso) {
         this.tipoVehiculo = tipoVehiculo;
@@ -23,6 +25,5 @@ public class Tiquete {
         this.tiqueteId = tiqueteId;
     }
 
-    public Tiquete() {
-    }
+
 }

@@ -22,7 +22,7 @@ module.exports = class extends TiqueteRepository {
   async getAll(){
     const mongooseTiquetes = await MongooseTiquete.find();
     return mongooseTiquetes.map((mongooseTiquete)=>{
-      return new TiqueteDto(mongooseTiquete.tipoVehiculo, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, 
+      return new TiqueteDto(mongooseTiquete.tiqueteId, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, 
         mongooseTiquete.placa, mongooseTiquete.horaIngreso)
     })
   }
@@ -32,17 +32,17 @@ module.exports = class extends TiqueteRepository {
     const mongooseTiquete = await MongooseTiquete.findOneAndUpdate({tiqueteId: tiqueteId}, { celdaId: celdaId, tipoVehiculo: tipoVehiculo, placa: placa, horaIngreso: horaIngreso }, {new: true}, (err, doc)=>{
       if(err) console.log(err);
     });
-    return new TiqueteDto(mongooseTiquete.id, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, mongooseTiquete.horaIngreso); 
+    return new TiqueteDto(mongooseTiquete.tiqueteId, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, mongooseTiquete.horaIngreso); 
   }
 
   async get(tiqueteId){
     const mongooseTiquete = await MongooseTiquete.findOne({tiqueteId: tiqueteId})
-    return new TiqueteDto(mongooseTiquete.tipoVehiculo, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, mongooseTiquete.horaIngreso); 
+    return new TiqueteDto(mongooseTiquete.tiqueteId, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, mongooseTiquete.horaIngreso); 
   }
 
   async remove(tiqueteId){
     const mongooseTiquete = await MongooseTiquete.deleteOne({tiqueteId: tiqueteId});
-    return new TiqueteDto(mongooseTiquete.tipoVehiculo, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, mongooseTiquete.horaIngreso); 
+    return new TiqueteDto(mongooseTiquete.tiqueteId, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, mongooseTiquete.horaIngreso); 
   }
 
 };

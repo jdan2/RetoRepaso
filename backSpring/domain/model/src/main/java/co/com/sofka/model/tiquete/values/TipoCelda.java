@@ -1,4 +1,4 @@
-package co.com.sofka.model.estacionamiento.values;
+package co.com.sofka.model.tiquete.values;
 
 import java.util.Objects;
 

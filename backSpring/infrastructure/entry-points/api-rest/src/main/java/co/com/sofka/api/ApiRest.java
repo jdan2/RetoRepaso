@@ -1,5 +1,7 @@
 package co.com.sofka.api;
-import co.com.sofka.model.estacionamiento.Tiquete;
+import co.com.sofka.api.dto.TiqueteDTO;
+import co.com.sofka.api.mapper.TiqueteMapper;
+import co.com.sofka.model.tiquete.Tiquete;
 import co.com.sofka.usecase.tiquete.TiqueteUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
@@ -19,7 +21,7 @@ public class ApiRest {
         return "Hello World";
     }
 
-    @PostMapping(path = "/crear")
+    @PostMapping(path = "/creartiquete")
     public TiqueteDTO crearTiquete(@RequestBody TiqueteDTO tiqueteDTO) {
         Tiquete tiquete = tiqueteMapper.dtoToTiquete(tiqueteDTO);
         return tiqueteMapper.tiqueteToDto(tiqueteUseCase.crearTiquete(tiquete));

@@ -1,6 +1,6 @@
 package co.com.sofka.mongo.entities;
 
-import co.com.sofka.model.estacionamiento.values.*;
+import co.com.sofka.model.tiquete.values.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

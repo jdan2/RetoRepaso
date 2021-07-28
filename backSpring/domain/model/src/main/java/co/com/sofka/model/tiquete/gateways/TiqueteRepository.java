@@ -1,6 +1,6 @@
-package co.com.sofka.model.estacionamiento.gateways;
+package co.com.sofka.model.tiquete.gateways;
 
-import co.com.sofka.model.estacionamiento.Tiquete;
+import co.com.sofka.model.tiquete.Tiquete;
 
 import java.util.List;
 

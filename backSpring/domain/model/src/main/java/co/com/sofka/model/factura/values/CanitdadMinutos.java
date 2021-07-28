@@ -1,20 +1,20 @@
-package co.com.sofka.model.estacionamiento.values;
+package co.com.sofka.model.factura.values;
 
 import java.util.Objects;
 
-public class HoraIngreso {
+public class CanitdadMinutos {
 
-    private final String value;
+    private final Integer value;
 
-    public  HoraIngreso(String value) {
+    public CanitdadMinutos(Integer value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value == ""){
-            throw new IllegalArgumentException("La hora asignada no puede estar vacio");
+        if(this.value.equals(null)){
+            throw new IllegalArgumentException("Valor no puede estar vacio");
         }
 
     }
 
-    public String getValue() {
+    public Integer getValue() {
         return value;
     }
 
@@ -22,7 +22,7 @@ public class HoraIngreso {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        HoraIngreso that = (HoraIngreso) o;
+        CanitdadMinutos that = (CanitdadMinutos) o;
         return Objects.equals(value, that.value);
     }
 

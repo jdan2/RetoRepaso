@@ -1,15 +1,15 @@
-package co.com.sofka.model.estacionamiento.values;
+package co.com.sofka.model.tiquete.values;
 
 import java.util.Objects;
 
-public class Placa
-{
+public class CeldaAsignada {
+
     private final String value;
 
-    public  Placa(String value) {
+    public  CeldaAsignada(String value) {
         this.value = Objects.requireNonNull(value);
         if(this.value == ""){
-            throw new IllegalArgumentException("La placa asignada no puede estar vacio");
+            throw new IllegalArgumentException("La celda asignada no puede estar vacio");
         }
 
     }
@@ -22,8 +22,8 @@ public class Placa
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Placa placa = (Placa) o;
-        return Objects.equals(value, placa.value);
+        CeldaAsignada that = (CeldaAsignada) o;
+        return Objects.equals(value, that.value);
     }
 
     @Override

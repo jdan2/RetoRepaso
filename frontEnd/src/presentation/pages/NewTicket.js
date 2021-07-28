@@ -10,7 +10,7 @@ const NewTicket = () =>{
     const [id, setId] = useState('');
     const [horaIngreso, setHoraIngreso] = useState('');
     const [placa, setPlaca] = useState('');
-    const [celda, setCelda] = useState('');
+    const [celdaId, setCeldaId] = useState('');
     const [tipoVehiculo, setTipoVehiculo] = useState('');
 
     //Temporalmente con useDispatch y useSelector
@@ -28,10 +28,13 @@ const NewTicket = () =>{
         //Ejecutar accion del nuevo elemento
         addTicket({
             id,
-            horaIngreso, 
+            celdaId,
+            tipoVehiculo,
             placa,
-            celda,
-            tipoVehiculo
+            horaIngreso
+            
+            
+            
         })        
     }
 
@@ -63,9 +66,9 @@ const NewTicket = () =>{
             Celda
              <input 
                 type="text"
-                name="celda"
-                value={celda}
-                onChange={e => setCelda(e.target.value)}    
+                name="celdaId"
+                value={celdaId}
+                onChange={e => setCeldaId(e.target.value)}    
             />
             Tipo de Vehiculo
              <input 

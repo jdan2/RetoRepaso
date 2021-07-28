@@ -6,22 +6,23 @@ import lombok.Data;
 
 @Data
 @Builder(toBuilder = true)
-public class Tiquetes {
+public class Tiquete {
 
+    private TiqueteId tiqueteId;
     private TipoVehiculo tipoVehiculo;
-    private CeldaAsignada celdaAsignada;
+    private CeldaId celdaId;
     private Placa placa;
     private HoraIngreso horaIngreso;
-    private TiqueteId tiqueteId;
 
-    public Tiquetes(TipoVehiculo tipoVehiculo, CeldaAsignada celdaAsignada, Placa placa, HoraIngreso horaIngreso, TiqueteId tiqueteId) {
+
+    public Tiquete(TiqueteId tiqueteId,TipoVehiculo tipoVehiculo, CeldaId celdaId, Placa placa, HoraIngreso horaIngreso) {
         this.tipoVehiculo = tipoVehiculo;
-        this.celdaAsignada = celdaAsignada;
+        this.celdaId = celdaId;
         this.placa = placa;
         this.horaIngreso = horaIngreso;
         this.tiqueteId = tiqueteId;
     }
 
-    public Tiquetes() {
+    public Tiquete() {
     }
 }

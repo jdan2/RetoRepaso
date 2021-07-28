@@ -6,46 +6,30 @@ import { auth } from "../../infrastructure/services/firebase/firebase";
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
-      <h2>
-        <Link to={"/"} className="text-light">
-          Estacionamiento JDS
-        </Link>
-      </h2>
-      {auth().currentUser ? (
+    <div className="container">
+        <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div className="container">
+                <Link className="navbar-brand" to={"/newticket"}>Estacionamiento JDS</Link>
 
-        
-        <div>
-        <Link
-        to={"/newticket"}
-        className="btn btn-secondary nuevo-post d-block d-md-inline-block"
-      >
-        Agregar Tiquete
-      </Link>
-         
-          <button
-            className="btn btn-danger d-block d-md-inline-block" onClick={() => auth().signOut()}>
-            Cerrar sesión
-          </button>
+                
+                {auth().currentUser ?
+                    <div className="navbar-nav">
+                    <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/listtickets"}>Listado Tickets</Link>
+                    &nbsp;
+                    <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/newticket"}>Generar Tickets</Link>
+
+                    
+                        <span className="navbar-text mr-3 btn text-primary">Iniciaste Sesion - {auth().currentUser.email}</span>
+                        
+                        <button className="nav-item nav-link mr-3 btn btn-outline-secondary" onClick={() => auth().signOut()}>Cerrar Sesion</button>
+                    </div> :
+                    <div className="navbar-nav">
+                        <Link className="nav-item nav-link mr-3 btn btn-outline-secondary" to={"/"}>Iniciar Sesion</Link>
+                        <Link className="nav-item nav-link mr-3 btn btn-outline-secondary" to={"/signup"}>Registrarse</Link>
+                    </div>}
+            </div>
+        </nav>
         </div>
-      ) : (
-        <div>
-          <Link
-            to={"/"}
-            className="btn btn-secondary nuevo-post d-block d-md-inline-block"
-          >
-            Ingresar
-          </Link>
-          {}
-          <Link
-            to={"/signup"}
-            className="btn btn-danger nuevo-post d-block d-md-inline-block"
-          >
-            Registrate
-          </Link>
-        </div>
-      )}
-    </nav>
   );
 };
 

@@ -19,7 +19,7 @@ public class ApiRest {
         return "Hello World";
     }
 
-    @PostMapping(path = "/crear")
+    @PostMapping(path = "/creartiquete")
     public TiqueteDTO crearTiquete(@RequestBody TiqueteDTO tiqueteDTO) {
         Tiquete tiquete = tiqueteMapper.dtoToTiquete(tiqueteDTO);
         return tiqueteMapper.tiqueteToDto(tiqueteUseCase.crearTiquete(tiquete));

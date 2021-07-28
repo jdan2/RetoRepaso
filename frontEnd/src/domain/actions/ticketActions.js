@@ -81,3 +81,32 @@ const listTicketsFailure = () =>({
     payload:true
 })
 
+//Eliminar empleados
+export function deleteTicketAction(id){
+    return async (dispatch) =>{
+        dispatch(deleteTicket());
+        try{
+            await clientAxios.delete('/eliminartiquete/'+id);
+            dispatch(deleteTicketSuccess())
+            alert("Se ha eliminado correctamente");
+        }catch(error){
+            dispatch(deleteTicketFailure);
+        }
+    }
+}
+
+const deleteTicket = () =>({
+    type:DELETE_TICKET,
+    payload:true
+})
+
+const deleteTicketSuccess = () => ({
+    type:DELETE_TICKET_SUCCESS,
+    payload:'Se ha eliminado'
+})
+
+const deleteTicketFailure = () => ({
+    type:DELETE_TICKET_FAILURE,
+    payload:true
+})
+

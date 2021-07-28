@@ -69,4 +69,9 @@ public class MongoFacturaRespositoryAdapter extends AdapterOperations<FacturaEnt
         return factura1;
     }
 
+    @Override
+    public void deletefactura(String idFactura) {
+
+    }
+
 }

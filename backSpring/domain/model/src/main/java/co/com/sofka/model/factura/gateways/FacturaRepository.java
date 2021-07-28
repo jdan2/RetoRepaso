@@ -10,4 +10,5 @@ public interface FacturaRepository {
     List<Factura> listarFactura();
     Factura consultarFactura (String idFactura);
     Factura updateFactura(Factura factura);
+    void deletefactura(String idFactura);
 }

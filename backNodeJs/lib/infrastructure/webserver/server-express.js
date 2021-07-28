@@ -27,5 +27,6 @@ app.use(`${apiRoot}/creartiquete`, tiqueteRoute);
 app.use(`${apiRoot}/listartiquetes`, tiqueteRoute);
 app.use(`${apiRoot}/editartiquete`, tiqueteRoute);
 app.use(`${apiRoot}/consultartiquete`, tiqueteRoute);
+app.use(`${apiRoot}/eliminartiquete`, tiqueteRoute);
 
 module.exports = app;

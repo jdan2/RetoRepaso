@@ -2,6 +2,7 @@ const CrearTiquete = require('../../../application/tiquete/use_cases/CrearTiquet
 const ListarTiquetes = require('../../../application/tiquete/use_cases/ListarTiquetes');
 const EditarTiquete = require('../../../application/tiquete/use_cases/EditarTiquete');
 const ConsultarTiquete = require('../../../application/tiquete/use_cases/ConsultarTiquete');
+const EliminarTiquete = require('../../../application/tiquete/use_cases/EliminarTiquete');
 
 module.exports = {
     async createTiquete(httpRequest){
@@ -26,6 +27,12 @@ module.exports = {
         const serviceLocator = httpRequest.app.serviceLocator; 
         const { id } = httpRequest.query;
         const tiquete = await ConsultarTiquete(id, serviceLocator);
+        return tiquete;
+    },
+    async eliminarTiquete(httpRequest){
+        const serviceLocator = httpRequest.app.serviceLocator; 
+        const { id } = httpRequest.query;
+        const tiquete = await EliminarTiquete(id, serviceLocator);
         return tiquete;
     }
 

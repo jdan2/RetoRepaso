@@ -27,4 +27,10 @@ router.put('/', async(req, res)=>{
     res.send(tiquete);
 });
 
+router.delete('/', async(req, res)=>{
+    req.app.serviceLocator = require('../../../infrastructure/config/service-locator');
+    const tiquete = await TiqueteController.eliminarTiquete(req);
+    res.send(tiquete);
+})
+
 module.exports = router;

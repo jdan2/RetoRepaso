@@ -40,4 +40,9 @@ module.exports = class extends TiqueteRepository {
     return new TiqueteDto(mongooseTiquete.tipoVehiculo, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, mongooseTiquete.horaIngreso); 
   }
 
+  async remove(tiqueteId){
+    const mongooseTiquete = await MongooseTiquete.deleteOne({tiqueteId: tiqueteId});
+    return new TiqueteDto(mongooseTiquete.tipoVehiculo, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, mongooseTiquete.horaIngreso); 
+  }
+
 };

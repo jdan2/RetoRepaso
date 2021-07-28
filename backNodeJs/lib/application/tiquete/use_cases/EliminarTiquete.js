@@ -1,7 +1,4 @@
-const EstacionamientoId = require('../../../domain/tiquete/values/EstacionamientoId');
-
-module.exports = (id, {estacionamientoRepository})=>{
+module.exports = (tiqueteId, {tiqueteRepository})=>{
     
-    const estacionamientoId = new EstacionamientoId(id);
-    return estacionamientoRepository.remove(estacionamientoId);
+    return tiqueteRepository.remove(tiqueteId);
 }

@@ -1,5 +1,6 @@
-package co.com.sofka.api;
+package co.com.sofka.api.mapper;
 
+import co.com.sofka.api.dto.TiqueteDTO;
 import co.com.sofka.model.tiquete.Tiquete;
 import org.springframework.stereotype.Component;
 

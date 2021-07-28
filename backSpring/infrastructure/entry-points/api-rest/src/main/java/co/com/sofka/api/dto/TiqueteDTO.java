@@ -1,4 +1,4 @@
-package co.com.sofka.api;
+package co.com.sofka.api.dto;
 
 import co.com.sofka.model.tiquete.values.*;
 

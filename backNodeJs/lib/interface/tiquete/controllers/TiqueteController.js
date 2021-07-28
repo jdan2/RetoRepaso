@@ -19,8 +19,9 @@ module.exports = {
     },
     async editarTiquete(httpRequest){
         const serviceLocator = httpRequest.app.serviceLocator; 
-        const { tiqueteId, celdaId, tipoVehiculo, placa, horaIngreso } = httpRequest.body;
-        const tiquete = await EditarTiquete(tiqueteId, celdaId, tipoVehiculo, placa, horaIngreso, serviceLocator);
+        const { celdaId, tipoVehiculo, placa, horaIngreso } = httpRequest.body;
+        const { id } = httpRequest.query;
+        const tiquete = await EditarTiquete(id, celdaId, tipoVehiculo, placa, horaIngreso, serviceLocator);
         return tiquete;
     },
     async consultarTiquete(httpRequest){

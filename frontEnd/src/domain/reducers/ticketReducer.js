@@ -56,6 +56,32 @@ const ticketsReducer =(state=initialState, action) =>{
              loading:false,
              error: action.payload
             }
+        case DELETE_TICKET:
+            return{
+            ...state,
+            loading: true
+            }
+        case DELETE_TICKET_SUCCESS:
+            return{
+            ...state,
+            loading: action.payload
+            }
+        case DELETE_TICKET_FAILURE:
+            return{
+            ...state,
+            loading: false,
+            error: action.payload
+            }
+        case ONLY_TICKET:
+            return{
+            ...state,
+            employeone:action.payload
+            }
+        case EDIT_TICKET:
+            return{
+            ...state,
+            loading:action.payload
+            }
             default:
             return state;
     }

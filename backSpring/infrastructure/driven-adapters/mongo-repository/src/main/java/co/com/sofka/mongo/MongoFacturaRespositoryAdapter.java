@@ -5,10 +5,10 @@ import co.com.sofka.model.factura.gateways.FacturaRepository;
 import co.com.sofka.model.factura.values.FacturaId;
 import co.com.sofka.mongo.entities.FacturaEntity;
 import co.com.sofka.mongo.helper.AdapterOperations;
-import lombok.var;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,7 +38,15 @@ public class MongoFacturaRespositoryAdapter extends AdapterOperations<FacturaEnt
 
     @Override
     public List<Factura> listarFactura() {
-        return  null;
+        List<Factura> facturas = new ArrayList<>();
+        List<FacturaEntity> facturaEntity  = this.repository.findAll();
+        for(int i = 0; i <facturaEntity.size() ; i++){
+            Factura factura = new Factura(facturaEntity.get(i).getFacturaId(), facturaEntity.get(i).getTiqueteId()
+                    , facturaEntity.get(i).getEmpleadoId(), facturaEntity.get(i).getHoraSalida()
+                    ,facturaEntity.get(i).getCanitdadMinutos(),facturaEntity.get(i).getValorTotal());
+            facturas.add(factura);
+        }
+        return facturas;
     }
 
     @Override
@@ -47,8 +55,7 @@ public class MongoFacturaRespositoryAdapter extends AdapterOperations<FacturaEnt
         Factura factura = new Factura(facturaEntity.get().getFacturaId(), facturaEntity.get().getTiqueteId()
                 , facturaEntity.get().getEmpleadoId(), facturaEntity.get().getHoraSalida()
                 ,facturaEntity.get().getCanitdadMinutos(),facturaEntity.get().getValorTotal());
-        FacturaId facturaId = new FacturaId(idFactura);
-        factura.setFacturaId(facturaId);
+        factura.setFacturaId(idFactura);
         return factura;
 
     }

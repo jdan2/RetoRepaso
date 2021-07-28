@@ -6,14 +6,14 @@ import co.com.sofka.model.tiquete.values.*;
 
 public class FacturaDTO {
 
-    private FacturaId facturaId;
+    private String facturaId;
     private TiqueteId tiqueteId;
     private EmpleadoId empleadoId;
     private HoraSalida horaSalida;
     private CanitdadMinutos canitdadMinutos;
     private ValorTotal valorTotal;
 
-    public FacturaDTO(FacturaId facturaId, TiqueteId tiqueteId, EmpleadoId empleadoId, HoraSalida horaSalida, CanitdadMinutos canitdadMinutos, ValorTotal valorTotal) {
+    public FacturaDTO(String facturaId, TiqueteId tiqueteId, EmpleadoId empleadoId, HoraSalida horaSalida, CanitdadMinutos canitdadMinutos, ValorTotal valorTotal) {
         this.facturaId = facturaId;
         this.tiqueteId = tiqueteId;
         this.empleadoId = empleadoId;
@@ -25,11 +25,11 @@ public class FacturaDTO {
     public FacturaDTO() {
     }
 
-    public FacturaId getFacturaId() {
+    public String getFacturaId() {
         return facturaId;
     }
 
-    public void setFacturaId(FacturaId facturaId) {
+    public void setFacturaId(String facturaId) {
         this.facturaId = facturaId;
     }
 

@@ -7,14 +7,14 @@ import lombok.Data;
 @Builder(toBuilder = true)
 public class Factura {
 
-    private FacturaId facturaId;
+    private String facturaId;
     private TiqueteId tiqueteId;
     private EmpleadoId empleadoId;
     private HoraSalida horaSalida;
     private CanitdadMinutos canitdadMinutos;
     private ValorTotal valorTotal;
 
-    public Factura(FacturaId facturaId, TiqueteId tiqueteId, EmpleadoId empleadoId, HoraSalida horaSalida, CanitdadMinutos canitdadMinutos, ValorTotal valorTotal) {
+    public Factura(String facturaId, TiqueteId tiqueteId, EmpleadoId empleadoId, HoraSalida horaSalida, CanitdadMinutos canitdadMinutos, ValorTotal valorTotal) {
         this.facturaId = facturaId;
         this.tiqueteId = tiqueteId;
         this.empleadoId = empleadoId;
@@ -22,6 +22,7 @@ public class Factura {
         this.canitdadMinutos = canitdadMinutos;
         this.valorTotal = valorTotal;
     }
+
 
     public Factura() {
     }

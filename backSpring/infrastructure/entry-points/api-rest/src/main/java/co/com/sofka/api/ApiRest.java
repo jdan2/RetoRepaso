@@ -7,6 +7,7 @@ import co.com.sofka.model.factura.Factura;
 import co.com.sofka.model.tiquete.Tiquete;
 import co.com.sofka.usecase.factura.ActualizarFacturaUseCase;
 import co.com.sofka.usecase.factura.FacturaUseCase;
+import co.com.sofka.usecase.factura.ListarFacturaUsecase;
 import co.com.sofka.usecase.tiquete.TiqueteUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
@@ -24,13 +25,8 @@ public class ApiRest {
    private final FacturaMapper facturaMapper;
 
    private final ActualizarFacturaUseCase actualizarFacturaUseCase;
+  // private final ListarFacturaUsecase listarFacturaUsecase;
 
-
-    @GetMapping(path = "/path")
-    public String commandName() {
-//      return useCase.doAction();
-        return "Hello World";
-    }
 
     @PostMapping(path = "/creartiquete")
     public TiqueteDTO crearTiquete(@RequestBody TiqueteDTO tiqueteDTO) {
@@ -45,19 +41,19 @@ public class ApiRest {
     }
 
     @GetMapping(path = "/obtenerfacturas")
-    public List<FacturaDTO> obtenerFacturas(@RequestBody FacturaDTO facturaDTO) {
+    public List<FacturaDTO> obtenerFacturas() {
         List<Factura> facturas = facturaUseCase.listarFacturas();
         return facturaMapper.fromFacturaList(facturas);
     }
 
-    @GetMapping(path = "/obtenerfacturas/{id}")
+    @GetMapping(path = "/obtenerfactura/{id}")
     public FacturaDTO consultarFactura(@PathVariable("id") String id) {
         Factura factura = facturaUseCase.consultarFactura(id);
         return facturaMapper.facturaToDto(factura);
     }
 
     @PutMapping(path = "/actualizarfactura")
-    public FacturaDTO consultarFactura(@RequestBody FacturaDTO facturaDTO) {
+    public FacturaDTO actualizarFactura(@RequestBody FacturaDTO facturaDTO) {
         Factura factura = facturaMapper.dtoToFactura(facturaDTO);
         return facturaMapper.facturaToDto(actualizarFacturaUseCase.updateCount(factura));
     }

@@ -1,17 +1,21 @@
 package co.com.sofka.mongo.entities;
 
 import co.com.sofka.model.factura.values.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class FacturaEntity {
 
-    private FacturaId facturaId;
+    @Id
+    private String facturaId;
     private TiqueteId tiqueteId;
     private EmpleadoId empleadoId;
     private HoraSalida horaSalida;
     private CanitdadMinutos canitdadMinutos;
     private ValorTotal valorTotal;
 
-    public FacturaEntity(FacturaId facturaId, TiqueteId tiqueteId, EmpleadoId empleadoId, HoraSalida horaSalida, CanitdadMinutos canitdadMinutos, ValorTotal valorTotal) {
+    public FacturaEntity(String facturaId, TiqueteId tiqueteId, EmpleadoId empleadoId, HoraSalida horaSalida, CanitdadMinutos canitdadMinutos, ValorTotal valorTotal) {
         this.facturaId = facturaId;
         this.tiqueteId = tiqueteId;
         this.empleadoId = empleadoId;
@@ -31,11 +35,11 @@ public class FacturaEntity {
     public FacturaEntity() {
     }
 
-    public FacturaId getFacturaId() {
+    public String getFacturaId() {
         return facturaId;
     }
 
-    public void setFacturaId(FacturaId facturaId) {
+    public void setFacturaId(String facturaId) {
         this.facturaId = facturaId;
     }
 

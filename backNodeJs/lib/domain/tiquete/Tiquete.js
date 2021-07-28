@@ -7,18 +7,18 @@ const HoraIngreso = require('./values/HoraIngreso');
 module.exports = class{
 
     constructor(tiqueteId, celdaId, tipoVehiculo, placa, horaIngreso){
-        this.tiqueteId = checkTiqueteId(tiqueteId);
-        this.CeldaId = checkCeldaId(celdaId);
-        this.tipoVehiculo = checkTipoVehiculo(tipoVehiculo); 
-        this.placa = checkPlaca(placa);
-        this.horaIngreso = checkHoraIngreso(horaIngreso);
+        this.tiqueteId = tiqueteId;
+        this.celdaId = celdaId;
+        this.tipoVehiculo = tipoVehiculo; 
+        this.placa = placa;
+        this.horaIngreso = horaIngreso;
     }
 
 }
 
 
 function checkTiqueteId(tiqueteId){
-    if(typeof tiqueteId != TiqueteId) throw new Error('ERR_TYPEOF_VARIABLE_NO_CONCIDENCE_FACTURAID');
+    if(typeof tiqueteId != TiqueteId) throw new Error('ERR_TYPEOF_VARIABLE_NO_CONCIDENCE_TIQUETEID');
     return tiqueteId;
 }
 

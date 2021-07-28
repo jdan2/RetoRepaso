@@ -7,11 +7,11 @@ const HoraIngreso = require('./values/HoraIngreso');
 module.exports = class{
 
     constructor(tiqueteId, celdaId, tipoVehiculo, placa, horaIngreso){
-        this.tiqueteId = checkTiqueteId(tiqueteId);
-        this.CeldaId = checkCeldaId(celdaId);
-        this.tipoVehiculo = checkTipoVehiculo(tipoVehiculo); 
-        this.placa = checkPlaca(placa);
-        this.horaIngreso = checkHoraIngreso(horaIngreso);
+        this.tiqueteId = tiqueteId;
+        this.celdaId = celdaId;
+        this.tipoVehiculo = tipoVehiculo; 
+        this.placa = placa;
+        this.horaIngreso = horaIngreso;
     }
 }
 

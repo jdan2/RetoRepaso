@@ -26,7 +26,7 @@ export function addNewTicketAction(ticket){
         dispatch(addTicket())
         try {
             //Peticion a la base de datos
-            await clientAxios.post('tickets',ticket);
+            await clientAxios.post('/creartiquete',ticket);
             //ok
             dispatch(addTicketSuccess(ticket));
             alert("Se ha creado correctamente");

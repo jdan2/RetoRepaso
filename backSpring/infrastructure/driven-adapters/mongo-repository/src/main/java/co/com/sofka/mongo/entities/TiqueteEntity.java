@@ -8,13 +8,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class TiqueteEntity {
 
     @Id
-    private TiqueteId tiqueteId;
+    private String tiqueteId;
     private TipoVehiculo tipoVehiculo;
     private CeldaId celdaId;
     private Placa placa;
     private HoraIngreso horaIngreso;
 
-    public TiqueteEntity(TiqueteId tiqueteId, TipoVehiculo tipoVehiculo, CeldaId celdaId, Placa placa, HoraIngreso horaIngreso) {
+    public TiqueteEntity(String tiqueteId, TipoVehiculo tipoVehiculo, CeldaId celdaId, Placa placa, HoraIngreso horaIngreso) {
         this.tiqueteId = tiqueteId;
         this.tipoVehiculo = tipoVehiculo;
         this.celdaId = celdaId;
@@ -29,11 +29,11 @@ public class TiqueteEntity {
         this.horaIngreso = horaIngreso;
     }
 
-    public TiqueteId getTiqueteId() {
+    public String getTiqueteId() {
         return tiqueteId;
     }
 
-    public void setTiqueteId(TiqueteId tiqueteId) {
+    public void setTiqueteId(String tiqueteId) {
         this.tiqueteId = tiqueteId;
     }
 

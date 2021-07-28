@@ -4,13 +4,13 @@ import co.com.sofka.model.tiquete.values.*;
 
 public class TiqueteDTO {
 
-    private TiqueteId tiqueteId;
+    private String tiqueteId;
     private TipoVehiculo tipoVehiculo;
     private CeldaId celdaId;
     private Placa placa;
     private HoraIngreso horaIngreso;
 
-    public TiqueteDTO(TiqueteId tiqueteId, TipoVehiculo tipoVehiculo, CeldaId celdaId, Placa placa, HoraIngreso horaIngreso) {
+    public TiqueteDTO(String tiqueteId, TipoVehiculo tipoVehiculo, CeldaId celdaId, Placa placa, HoraIngreso horaIngreso) {
         this.tiqueteId = tiqueteId;
         this.tipoVehiculo = tipoVehiculo;
         this.celdaId = celdaId;
@@ -22,11 +22,11 @@ public class TiqueteDTO {
 
     }
 
-    public TiqueteId getTiqueteId() {
+    public String getTiqueteId() {
         return tiqueteId;
     }
 
-    public void setTiqueteId(TiqueteId tiqueteId) {
+    public void setTiqueteId(String tiqueteId) {
         this.tiqueteId = tiqueteId;
     }
 

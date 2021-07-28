@@ -8,7 +8,7 @@ import lombok.Data;
 @Builder(toBuilder = true)
 public class Tiquete {
 
-    private TiqueteId tiqueteId;
+    private String tiqueteId;
     private TipoVehiculo tipoVehiculo;
     private CeldaId celdaId;
     private Placa placa;
@@ -17,7 +17,7 @@ public class Tiquete {
     public Tiquete() {
     }
 
-    public Tiquete(TiqueteId tiqueteId,TipoVehiculo tipoVehiculo, CeldaId celdaId, Placa placa, HoraIngreso horaIngreso) {
+    public Tiquete(String tiqueteId,TipoVehiculo tipoVehiculo, CeldaId celdaId, Placa placa, HoraIngreso horaIngreso) {
         this.tipoVehiculo = tipoVehiculo;
         this.celdaId = celdaId;
         this.placa = placa;

@@ -1,10 +1,10 @@
 package co.com.sofka.api.mapper;
 
 import co.com.sofka.api.dto.FacturaDTO;
-import co.com.sofka.api.dto.TiqueteDTO;
 import co.com.sofka.model.factura.Factura;
-import co.com.sofka.model.tiquete.Tiquete;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FacturaMapper {
 
     public FacturaDTO facturaToDto(Factura factura){

@@ -18,17 +18,4 @@ public class TiqueteId {
         return tiqueteId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TiqueteId tiqueteId1 = (TiqueteId) o;
-        return Objects.equals(tiqueteId, tiqueteId1.tiqueteId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(tiqueteId);
-    }
 }

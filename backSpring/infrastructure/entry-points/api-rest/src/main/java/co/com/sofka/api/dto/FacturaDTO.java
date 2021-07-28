@@ -7,7 +7,7 @@ import co.com.sofka.model.tiquete.values.*;
 public class FacturaDTO {
 
     private FacturaId facturaId;
-    private co.com.sofka.model.factura.values.TiqueteId tiqueteId;
+    private TiqueteId tiqueteId;
     private EmpleadoId empleadoId;
     private HoraSalida horaSalida;
     private CanitdadMinutos canitdadMinutos;

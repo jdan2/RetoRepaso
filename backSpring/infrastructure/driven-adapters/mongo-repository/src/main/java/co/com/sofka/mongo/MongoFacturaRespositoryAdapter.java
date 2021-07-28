@@ -2,15 +2,14 @@ package co.com.sofka.mongo;
 
 import co.com.sofka.model.factura.Factura;
 import co.com.sofka.model.factura.gateways.FacturaRepository;
-import co.com.sofka.model.tiquete.Tiquete;
-import co.com.sofka.model.tiquete.gateways.TiqueteRepository;
 import co.com.sofka.mongo.entities.FacturaEntity;
-import co.com.sofka.mongo.entities.TiqueteEntity;
 import co.com.sofka.mongo.helper.AdapterOperations;
 import org.reactivecommons.utils.ObjectMapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class MongoFacturaRespositoryAdapter extends AdapterOperations<FacturaEntity, FacturaEntity,String, MongoFacturaDBRepository>
         implements FacturaRepository
 {

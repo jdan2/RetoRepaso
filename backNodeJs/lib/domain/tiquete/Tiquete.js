@@ -14,6 +14,26 @@ module.exports = class{
         this.horaIngreso = horaIngreso;
     }
 
+    getTiqueteId(){
+        return this.tiqueteId;
+    }
+
+    getCeldaId(){
+        return this.celdaId;
+    }
+
+    getTipoVehiculo(){
+        return this.tipoVehiculo;
+    }
+
+    getPlaca(){
+        return this.placa;
+    }
+
+    getHoraIngreso(){
+        return this.horaIngreso;
+    }
+
 }
 
 

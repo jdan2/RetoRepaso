@@ -15,5 +15,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(`${apiRoot}/creartiquete`, tiqueteRoute);
+app.use(`${apiRoot}/listartiquetes`, tiqueteRoute);
 
 module.exports = app;

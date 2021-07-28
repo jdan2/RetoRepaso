@@ -19,4 +19,12 @@ module.exports = class extends TiqueteRepository {
       mongooseTiquete.horaIngreso); 
   }
 
+  async getAll(){
+    const mongooseTiquetes = await MongooseTiquete.find();
+    return mongooseTiquetes.map((mongooseTiquete)=>{
+      return new TiqueteDto(mongooseTiquete.id, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, 
+        mongooseTiquete.placa, mongooseTiquete.horaIngreso)
+    })
+  }
+
 };

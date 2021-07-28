@@ -9,16 +9,13 @@ function buildBeans() {
 
   const beans = {
     estacionamientoSerializer: new EstacionamientoSerializer(),
-    facturacionSerializer: new FacturacionSerializer()
   };
 
   if (environment.database.dialect === constants.SUPPORTED_DATABASE.IN_MEMORY) {
     throw new Error('Add In Memory support');
   } else if (environment.database.dialect === constants.SUPPORTED_DATABASE.MONGO) {
-    const FacturacionRepositoryMongo = require('../repositories/FacturaRepositoryMongo');
-    const EstacionamientoRepositoryMongo = require('../repositories/TiqueteRepositoryMongo');
-    beans.estacionamientoRepository = new EstacionamientoRepositoryMongo();
-    beans.eacturacionRepositoryMongo = new FacturacionRepositoryMongo();
+    const TiqueteRepositoryMongo = require('../repositories/TiqueteRepositoryMongo');
+    beans.tiqueteRepositoryMongo = new TiqueteRepositoryMongo();
   } else if (environment.database.dialect === constants.SUPPORTED_DATABASE.POSTGRES) {
     throw new Error('Add PostgreSQL support');
   } else {

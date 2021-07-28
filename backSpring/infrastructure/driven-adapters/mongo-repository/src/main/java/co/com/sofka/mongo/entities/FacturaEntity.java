@@ -28,6 +28,9 @@ public class FacturaEntity {
         this.valorTotal = valorTotal;
     }
 
+    public FacturaEntity() {
+    }
+
     public FacturaId getFacturaId() {
         return facturaId;
     }

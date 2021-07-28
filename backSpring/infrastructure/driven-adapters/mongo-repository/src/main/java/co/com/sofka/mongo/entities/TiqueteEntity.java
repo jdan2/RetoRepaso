@@ -29,6 +29,8 @@ public class TiqueteEntity {
         this.horaIngreso = horaIngreso;
     }
 
+
+
     public String getTiqueteId() {
         return tiqueteId;
     }

@@ -8,4 +8,6 @@ public interface FacturaRepository {
 
     Factura crearFactura(Factura factura);
     List<Factura> listarFactura();
+    Factura consultarFactura (String idFactura);
+    Factura updateFactura(Factura factura);
 }

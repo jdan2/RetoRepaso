@@ -15,7 +15,11 @@ public class FacturaUseCase {
         return facturaRepository.crearFactura(factura);
     }
 
-    public List<Factura> listarFactura(){
+    public Factura consultarFactura(String idFactura){
+        return  facturaRepository.consultarFactura(idFactura);
+    }
+
+    public List<Factura> listarFacturas(){
         return facturaRepository.listarFactura();
     }
 }

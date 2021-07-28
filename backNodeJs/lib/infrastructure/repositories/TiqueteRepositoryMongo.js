@@ -11,10 +11,10 @@ module.exports = class extends TiqueteRepository {
   }
 
   async persist(tiqueteEntity) {
-    const { celdaId, tipoVehiculo, placa, horaIngreso} = tiqueteEntity;
-    const mongooseTiquete = new MongooseTiquete({ celdaId, tipoVehiculo, placa, horaIngreso});
+    const { tiqueteId, celdaId, tipoVehiculo, placa, horaIngreso} = tiqueteEntity;
+    const mongooseTiquete = new MongooseTiquete({ tiqueteId, celdaId, tipoVehiculo, placa, horaIngreso});
     await mongooseTiquete.save();   
-    return new TiqueteDto(mongooseTiquete.id, mongooseTiquete.celdaId, 
+    return new TiqueteDto(mongooseTiquete.tiqueteId, mongooseTiquete.celdaId, 
       mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, 
       mongooseTiquete.horaIngreso); 
   }

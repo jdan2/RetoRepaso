@@ -12,6 +12,8 @@ import store from "../../domain/store";
 //Rutas
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import Tickets from '../pages/Tickets';
+import NewFactura from '../pages/NewFactura';
+import Facturas from '../pages/Facturas';
 
 
 
@@ -23,7 +25,9 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/newticket" component={NewTicket}/>  
-          <Route exact path="/listtickets" component={Tickets} />        
+          <Route exact path="/listtickets" component={Tickets} /> 
+          <Route exact path="/newfactura" component={NewFactura}/>  
+          <Route exact path="/listfacturas" component={Facturas} />       
         </Switch>
       </Provider>
     </Router>

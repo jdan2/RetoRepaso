@@ -15,13 +15,13 @@ import {
     //READ
     ONLY_FACTURA,
     EDIT_FACTURA,
-} from '../types/ticket.js';
+} from '../types/factura.js';
 
 
 import clientAxios from './../../infrastructure/services/api/axios';
 
 //Crear Acciones de factura
-export function addNewfacturaAction(factura){
+export function addNewFacturaAction(factura){
     return async (dispatch) =>{
         dispatch(addFactura())
         try {

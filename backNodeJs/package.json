@@ -1,0 +1,29 @@
+{
+  "name": "parqueadero-nodejs-api",
+  "version": "1.0.0",
+  "description": "A simple API built with Node.js that follows DDD + Clean Architecture principles",
+  "main": "./lib/infrastructure/bin/www",
+  "scripts": {
+    "dev": "nodemon ./lib/infrastructure/bin/www",
+    "start": "node ./lib/infrastructure/bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "ddd",
+    "clean",
+    "architeture",
+    "api",
+    "express",
+    "mongodb"
+  ],
+  "author": "Daniel Ortiz, Jesus Lara, Santiago Alarcón",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.12"
+  }
+}

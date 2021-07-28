@@ -27,7 +27,7 @@ function Tickets() {
   const ticketone = (ticket) => {
     dispatch(onlyTicketAction(ticket));
     console.log("Todo el objeto seleccionado", ticket);
-    setpruebam([ticket.celda, ticket.horaIngreso]);
+    setpruebam([ticket.celdaId, ticket.horaIngreso, ticket.placa]);
     //document.getElementById('verTicket').innerHTML = `<li style="color:red">${ticket.celda}</li><li style="color:red">${ticket.horaIngreso}</li>`;
   };
    
@@ -40,12 +40,19 @@ function Tickets() {
   const tickets = useSelector((state) => state.ticketReducer.tickets);
     
   return (
+    <div className="container">
+    <div className="row">
+        <div className="col-md-3"/>
+        <div className="col-md-6">
     <div>
+    <div className={"border border-radius rounded border-dark mb-3"}>
+                            <div className="text-center p-3"></div>
       <h1>Lista de Tiquetes</h1>
       <ul>
         {tickets.map((ticket) => (
           <li key={ticket.id}>
-            {ticket.celda}{" "}
+            Celda: {ticket.celdaId}{" "}
+            
             <button onClick={() => deleteTicket(ticket.id)}>Eliminar</button>
             <button onClick={() => ticketone(ticket)}>Ver</button>
             <button onClick={() =>ticketEdit(ticket)}>Edit</button>
@@ -55,7 +62,13 @@ function Tickets() {
         <div id="verTicket">
           <h1>{pruebam}</h1>
         </div>
+        </div>
+        
     </div>
+    </div>
+    </div>
+    </div>
+    
   );
 }
 

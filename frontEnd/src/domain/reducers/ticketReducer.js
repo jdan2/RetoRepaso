@@ -75,7 +75,7 @@ const ticketsReducer =(state=initialState, action) =>{
         case ONLY_TICKET:
             return{
             ...state,
-            employeone:action.payload
+            ticketone:action.payload
             }
         case EDIT_TICKET:
             return{

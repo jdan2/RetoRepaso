@@ -27,9 +27,9 @@ public class MongoRepositoryAdapter extends AdapterOperations<TiqueteEntity, Tiq
     @Override
     public Tiquete crearTiquete(Tiquete tiquete) {
         TiqueteEntity tiqueteEntity = new TiqueteEntity(tiquete.getTipoVehiculo(),tiquete.getCeldaId(),tiquete.getPlaca(),tiquete.getHoraIngreso());
-        TiqueteEntity newMovieEntity = this.repository.save(tiqueteEntity);
+        TiqueteEntity newTiqueteEntity = this.repository.save(tiqueteEntity);
         Tiquete tiquete1 = tiquete;
-        tiquete1.setTiqueteId(newMovieEntity.getTiqueteId());
+        tiquete1.setTiqueteId(newTiqueteEntity.getTiqueteId());
         return tiquete1;
     }
 

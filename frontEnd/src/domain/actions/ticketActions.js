@@ -26,7 +26,7 @@ export function addNewTicketAction(ticket){
         dispatch(addTicket())
         try {
             //Peticion a la base de datos
-            await clientAxios.post('/',ticket);
+            await clientAxios.post('/creartiquete',ticket);
             //ok
             dispatch(addTicketSuccess(ticket));
             alert("Se ha creado correctamente");
@@ -125,7 +125,7 @@ export const ticketEditAction =async (id,horaIngreso, placa, celdaId,tipoVehicul
     return async (dispatch) =>{
     dispatch(editTicket())
     const ticket = {horaIngreso:horaIngreso, placa:placa, celdaId:celdaId, tipoVehiculo: tipoVehiculo}
-    await clientAxios.put('/tiquetes/'+id,ticket);
+    await clientAxios.put('/listartiquetes/'+id,ticket);
     }
 }
 

@@ -1,7 +1,7 @@
 package co.com.sofka.mongo;
 
-import co.com.sofka.model.estacionamiento.Tiquete;
-import co.com.sofka.model.estacionamiento.gateways.TiqueteRepository;
+import co.com.sofka.model.tiquete.Tiquete;
+import co.com.sofka.model.tiquete.gateways.TiqueteRepository;
 import co.com.sofka.mongo.helper.AdapterOperations;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;

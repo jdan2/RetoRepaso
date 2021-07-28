@@ -1,20 +1,20 @@
-package co.com.sofka.model.estacionamiento.values;
+package co.com.sofka.model.factura.values;
 
 import java.util.Objects;
 
-public class CeldaAsignada {
+public class ValorTotal {
 
-    private final String value;
+    private final Integer value;
 
-    public  CeldaAsignada(String value) {
+    public ValorTotal(Integer value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value == ""){
-            throw new IllegalArgumentException("La celda asignada no puede estar vacio");
+        if(this.value.equals(null)){
+            throw new IllegalArgumentException("Valor no puede estar vacio");
         }
 
     }
 
-    public String getValue() {
+    public Integer getValue() {
         return value;
     }
 
@@ -22,7 +22,7 @@ public class CeldaAsignada {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CeldaAsignada that = (CeldaAsignada) o;
+        ValorTotal that = (ValorTotal) o;
         return Objects.equals(value, that.value);
     }
 

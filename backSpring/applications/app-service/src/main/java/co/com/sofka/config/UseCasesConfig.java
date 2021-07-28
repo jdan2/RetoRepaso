@@ -1,6 +1,6 @@
 package co.com.sofka.config;
 
-import co.com.sofka.model.estacionamiento.gateways.TiqueteRepository;
+import co.com.sofka.model.tiquete.gateways.TiqueteRepository;
 import co.com.sofka.usecase.tiquete.TiqueteUseCase;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

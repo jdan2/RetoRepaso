@@ -1,5 +1,5 @@
 package co.com.sofka.api;
-import co.com.sofka.model.estacionamiento.Tiquete;
+import co.com.sofka.model.tiquete.Tiquete;
 import co.com.sofka.usecase.tiquete.TiqueteUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;

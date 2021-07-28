@@ -1,6 +1,6 @@
-package co.com.sofka.model.estacionamiento;
+package co.com.sofka.model.tiquete;
 
-import co.com.sofka.model.estacionamiento.values.*;
+import co.com.sofka.model.tiquete.values.*;
 import lombok.Builder;
 import lombok.Data;
 

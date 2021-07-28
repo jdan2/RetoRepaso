@@ -1,6 +1,6 @@
 package co.com.sofka.mongo;
 
-import co.com.sofka.model.estacionamiento.Tiquete;
+import co.com.sofka.model.tiquete.Tiquete;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 

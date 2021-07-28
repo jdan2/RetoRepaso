@@ -1,28 +1,28 @@
-package co.com.sofka.model.estacionamiento.values;
+package co.com.sofka.model.tiquete.values;
 
 import java.util.Objects;
 
-public class Disponibilidad {
+public class HoraIngreso {
 
-    private final Boolean value;
+    private final Integer value;
 
-    public  Disponibilidad(Boolean value) {
+    public  HoraIngreso(Integer value) {
         this.value = Objects.requireNonNull(value);
-        if(this.value == null){
-            throw new IllegalArgumentException("La disponibilidad no puede estar vacio");
+        if(this.value.equals(null)){
+            throw new IllegalArgumentException("La hora asignada no puede estar vacio");
         }
+
     }
 
-    public Boolean getValue() {
+    public Integer getValue() {
         return value;
     }
 
     @Override
     public boolean equals(Object o) {
-
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Disponibilidad that = (Disponibilidad) o;
+        HoraIngreso that = (HoraIngreso) o;
         return Objects.equals(value, that.value);
     }
 

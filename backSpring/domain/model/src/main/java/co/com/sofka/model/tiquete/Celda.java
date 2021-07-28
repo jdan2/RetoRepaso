@@ -1,8 +1,8 @@
-package co.com.sofka.model.estacionamiento;
+package co.com.sofka.model.tiquete;
 
-import co.com.sofka.model.estacionamiento.values.CeldaId;
-import co.com.sofka.model.estacionamiento.values.Disponibilidad;
-import co.com.sofka.model.estacionamiento.values.TipoCelda;
+import co.com.sofka.model.tiquete.values.CeldaId;
+import co.com.sofka.model.tiquete.values.Disponibilidad;
+import co.com.sofka.model.tiquete.values.TipoCelda;
 import lombok.Builder;
 import lombok.Data;
 

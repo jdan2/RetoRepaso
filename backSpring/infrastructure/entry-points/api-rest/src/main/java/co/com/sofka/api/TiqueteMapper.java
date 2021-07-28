@@ -1,6 +1,6 @@
 package co.com.sofka.api;
 
-import co.com.sofka.model.estacionamiento.Tiquete;
+import co.com.sofka.model.tiquete.Tiquete;
 import org.springframework.stereotype.Component;
 
 @Component

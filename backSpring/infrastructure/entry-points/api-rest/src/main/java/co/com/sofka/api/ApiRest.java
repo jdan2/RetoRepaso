@@ -4,11 +4,11 @@ import co.com.sofka.api.dto.TiqueteDTO;
 import co.com.sofka.api.mapper.FacturaMapper;
 import co.com.sofka.api.mapper.TiqueteMapper;
 import co.com.sofka.model.factura.Factura;
+import co.com.sofka.model.factura.values.CanitdadMinutos;
+import co.com.sofka.model.factura.values.HoraSalida;
 import co.com.sofka.model.tiquete.Tiquete;
-import co.com.sofka.usecase.factura.ActualizarFacturaUseCase;
-import co.com.sofka.usecase.factura.BorrarFacturaUseCase;
-import co.com.sofka.usecase.factura.FacturaUseCase;
-import co.com.sofka.usecase.factura.ListarFacturaUsecase;
+import co.com.sofka.model.tiquete.values.HoraIngreso;
+import co.com.sofka.usecase.factura.*;
 import co.com.sofka.usecase.tiquete.TiqueteUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
@@ -27,6 +27,7 @@ public class ApiRest {
 
    private final ActualizarFacturaUseCase actualizarFacturaUseCase;
    private final BorrarFacturaUseCase borrarFacturaUseCase;
+   private final TiempoTotalFacturaUseCase tiempoTotalFacturaUseCase;
   // private final ListarFacturaUsecase listarFacturaUsecase;
 
 

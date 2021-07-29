@@ -2,6 +2,9 @@ package co.com.sofka.usecase.factura;
 
 import co.com.sofka.model.factura.Factura;
 import co.com.sofka.model.factura.gateways.FacturaRepository;
+import co.com.sofka.model.factura.values.CanitdadMinutos;
+import co.com.sofka.model.factura.values.HoraSalida;
+import co.com.sofka.model.tiquete.values.HoraIngreso;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -20,6 +23,10 @@ public class FacturaUseCase {
     }
     public List<Factura> listarFacturas(){
         return facturaRepository.listarFactura();
+    }
+
+    public CanitdadMinutos canitdadMinutos(HoraIngreso horaIngreso, HoraSalida horaSalida){
+        return facturaRepository.canitdadMinutos(horaIngreso,horaSalida);
     }
 
 }

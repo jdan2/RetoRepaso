@@ -2,13 +2,20 @@ package co.com.sofka.mongo;
 
 import co.com.sofka.model.factura.Factura;
 import co.com.sofka.model.factura.gateways.FacturaRepository;
+import co.com.sofka.model.factura.values.CanitdadMinutos;
 import co.com.sofka.model.factura.values.FacturaId;
+import co.com.sofka.model.factura.values.HoraSalida;
+import co.com.sofka.model.tiquete.values.HoraIngreso;
 import co.com.sofka.mongo.entities.FacturaEntity;
 import co.com.sofka.mongo.helper.AdapterOperations;
+import lombok.SneakyThrows;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,6 +79,14 @@ public class MongoFacturaRespositoryAdapter extends AdapterOperations<FacturaEnt
     @Override
     public void deletefactura(String idFactura) {
         this.repository.deleteById(idFactura);
+    }
+
+    @SneakyThrows
+    @Override
+    public CanitdadMinutos canitdadMinutos(HoraIngreso horaIngreso, HoraSalida horaSalida) {
+
+
+        return null;
     }
 
 }

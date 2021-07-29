@@ -55,6 +55,17 @@ router.delete('/', async(req, res)=>{
         console.log(err)
         res.status(500);
     }
+});
+
+router.get('/tipovehiculo', async(req, res)=>{
+    try{
+        req.app.serviceLocator = require('../../../infrastructure/config/service-locator');
+        const tiquetes = await TiqueteController.ListarTiquetesPorTipoVehiculo(req);
+        res.status(200).send(tiquetes);
+    }catch(err){
+        console.log(err)
+        res.status(500);
+    }
 })
 
 module.exports = router;

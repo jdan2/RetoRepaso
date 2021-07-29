@@ -14,6 +14,7 @@ import {
     DELETE_TICKET_FAILURE,
     //READ
     ONLY_TICKET,
+    OBTENER_TICKET,
     EDIT_TICKET,
 } from '../types/ticket.js';
 
@@ -119,6 +120,17 @@ export function onlyTicketAction(ticket){
 const onlyTicket = ticket =>({
     type:ONLY_TICKET,
     payload:ticket
+})
+
+export function obtenerTicketVer(ticket){
+    return (dispatch) =>{
+        dispatch( obtenerTicketVerAction(ticket) )
+    }
+}
+
+const obtenerTicketVerAction = ticket =>({
+    type: OBTENER_TICKET,
+    payload: ticket
 })
 
 export const ticketEditAction =async (id,horaIngreso, placa, celdaId,tipoVehiculo) => {

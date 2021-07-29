@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 
 //Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -8,8 +8,11 @@ import {
   onlyTicketAction,
   ticketEditAction
 } from "../../domain/actions/ticketActions";
+import Ticket from "./Ticket";
+
 
 function Tickets() {
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,7 +30,7 @@ function Tickets() {
   const ticketone = (ticket) => {
     dispatch(onlyTicketAction(ticket));
     console.log("Todo el objeto seleccionado", ticket);
-    setpruebam([ticket.celdaId, ticket.horaIngreso, ticket.placa]);
+    setpruebam(["Celda Asignada: ",ticket.celdaId, "Hora Ingreso: ", ticket.horaIngreso, ticket.placa]);
     //document.getElementById('verTicket').innerHTML = `<li style="color:red">${ticket.celda}</li><li style="color:red">${ticket.horaIngreso}</li>`;
   };
    
@@ -35,15 +38,51 @@ function Tickets() {
     console.log("algo");
     dispatch(await ticketEditAction(ticket.id, "P...", ticket.horaIngreso, ticket.celda,ticket.placa))
    }
-
+   //const error = useSelector((state) => state.tickets.error);
+//const cargando = useSelector((state) => state.tickets.loading);
   
   const tickets = useSelector((state) => state.ticketReducer.tickets);
+  
     
   return (
-    <div className="container">
+
+    <Fragment>
+
+
+
+      <div className="row">
+
+        <h2 className="text-center my-5"> Listado de Ticketes</h2>
+
+        {/*error ? <p className="alert-danger text-center">Hubo un error</p> : null}
+  {cargando ? <p className="text-center">Cargando..</p> : null}*/}
+        <div className="col-6">
+          <div className="border-init">
+            <div className="container text-center">
+
+              {tickets.length === 0
+                ? "No hay registros"
+                
+                : tickets.map((ticket) => (
+                  
+                  <Ticket key={ticket.id} ticket={ticket} />
+                  
+                ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+    </Fragment>
+  );
+};
+
+    {/*
     <div className="row">
-        <div className="col-md-3"/>
-        <div className="col-md-6">
+        <div className="col-6">
+          <div className="home">
     <div>
     <div className={"border border-radius rounded border-dark mb-3"}>
                             <div className="text-center p-3"></div>
@@ -59,10 +98,20 @@ function Tickets() {
           </li>
         ))}
       </ul>
+      {tickets.map((ticket) => (
+      <div className="col-6">
+      <div id="verTicket">
+        <h1>{ticket.placa}</h1>
+         
+      </div>
+      
+      </div>
+      ))}
+        </div>
         <div id="verTicket">
-          <h1>{pruebam}</h1>
-        </div>
-        </div>
+        <h1>{pruebam}</h1>
+         
+      </div>
         
     </div>
     </div>
@@ -70,6 +119,6 @@ function Tickets() {
     </div>
     
   );
-}
+}*/}
 
 export default Tickets;

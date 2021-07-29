@@ -5,16 +5,13 @@ import { BsFillPeopleFill } from "react-icons/bs";
 const VerTicket = () => {
   //publicacion que traere de mi store
   const ticket = useSelector(
-    (state) => state.ticketes.ticketobtener
+    (state) => state.ticketReducer.ticketone
   );
 
   
-
-  
-
   //Hago destructuring
   
-  const { id, celdaId, tipoVehiculo, placa, horaIngreso} =
+  const { celdaId, tipoVehiculo, placa, horaIngreso, id} =
   ticket;
   console.log(ticket);
 

@@ -9,6 +9,7 @@ import {
     DELETE_TICKET_SUCCESS,
     DELETE_TICKET_FAILURE,
     ONLY_TICKET,
+    OBTENER_TICKET,
     EDIT_TICKET
 } from '../types/ticket.js';
 
@@ -77,6 +78,11 @@ const ticketsReducer =(state=initialState, action) =>{
             ...state,
             ticketone:action.payload
             }
+            case OBTENER_TICKET:
+            return{
+                ...state,
+                ticketobtener:action.payload
+            } 
         case EDIT_TICKET:
             return{
             ...state,

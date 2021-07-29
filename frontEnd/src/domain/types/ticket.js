@@ -15,6 +15,7 @@ export const DELETE_TICKET_FAILURE = 'DELETE_TICKET_FAILURE';
 
 //Ver(Read)
 export const ONLY_TICKET = 'ONLY_TICKET';
+export const OBTENER_TICKET = 'OBTENER_TICKET';
 
 //Edit
 export const EDIT_TICKET = 'EDIT_TICKET';

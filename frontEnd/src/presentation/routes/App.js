@@ -21,6 +21,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SignUp from '../pages/autenticacion/signUp';
 import { auth } from '../../infrastructure/services/firebase/firebase';
 import VerTicket from '../pages/VerTicket';
+import Ticketes from '../pages/Ticketes';
 
 
 
@@ -131,7 +132,7 @@ class App extends Component {
                 component={EditarTicket}
              />*/}
               <PrivateRoute
-                path="/ticketes/ver/:id"
+                path="/listtickets/ver/:id"
                 authenticated={this.state.authenticated}
                 component={VerTicket}
               />

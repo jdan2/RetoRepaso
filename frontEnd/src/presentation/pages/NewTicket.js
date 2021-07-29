@@ -39,6 +39,13 @@ const NewTicket = () =>{
     }
 
     return(
+
+        <div className="container text-center">
+        <div className="row">
+            <div className="col-md-3"/>
+            <div className="col-md-6">
+                <div className="card my-5">
+                    <div className="card-body">
     <div>
         <h2>Agregar Ticket</h2>
         <form onSubmit={submitAddTicket}>
@@ -51,7 +58,7 @@ const NewTicket = () =>{
             />
             Hora de Ingreso
              <input 
-                type="text"
+                type="datetime-local"
                 name="horaIngreso"
                 value={horaIngreso}
                 onChange={e => setHoraIngreso(e.target.value)}    
@@ -79,6 +86,12 @@ const NewTicket = () =>{
             />
             <button type="submit"> Agregar</button>
         </form>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
     </div>
     )
 }

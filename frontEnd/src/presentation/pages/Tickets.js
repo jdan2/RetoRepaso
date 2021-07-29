@@ -20,23 +20,25 @@ function Tickets() {
     listTickets();
   }, [dispatch]);
 
-  const deleteTicket = (id) => {
-    dispatch(deleteTicketAction(id));
+  const deleteTicket = (tiqueteId) => {
+    dispatch(deleteTicketAction(tiqueteId));
     dispatch(listTicketsAction());
   };
 
   const [pruebam, setpruebam] = useState([]);
+  const [edit, setEdit] = useState([]);
 
   const ticketone = (ticket) => {
     dispatch(onlyTicketAction(ticket));
     console.log("Todo el objeto seleccionado", ticket);
     setpruebam(["Celda Asignada: ",ticket.celdaId, "Hora Ingreso: ", ticket.horaIngreso, ticket.placa]);
+    setEdit([ticket.horaIngreso]);
     //document.getElementById('verTicket').innerHTML = `<li style="color:red">${ticket.celda}</li><li style="color:red">${ticket.horaIngreso}</li>`;
   };
    
    const ticketEdit= async (ticket) =>{
     console.log("algo");
-    dispatch(await ticketEditAction(ticket.id, "P...", ticket.horaIngreso, ticket.celda,ticket.placa))
+    dispatch(await ticketEditAction(ticket.tiqueteId, ticket.tipoVehiculo, ticket.horaIngreso, ticket.celdaId,ticket.placa))
    }
    //const error = useSelector((state) => state.tickets.error);
 //const cargando = useSelector((state) => state.tickets.loading);
@@ -71,12 +73,25 @@ function Tickets() {
                   
                 ))}
                 
-                
+                <ul>
+        {tickets.map((ticket) => (
+          <li key={ticket.id}>
+            Celda: {ticket.celdaId}{" "}
+            
+            <button onClick={() => deleteTicket(ticket.tiqueteId)}>Eliminar</button>
+            <button onClick={() => ticketone(ticket)}>Ver</button>
+            <button onClick={() =>ticketEdit(ticket)}>Edit</button>
+          </li>
+        ))}
+      </ul>
             </div>
             <ul>
         
       </ul>
           </div>
+          {pruebam}
+          <br />
+          {edit}
         </div>
       </div>
 

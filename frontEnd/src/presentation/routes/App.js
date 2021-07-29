@@ -117,7 +117,7 @@ class App extends Component {
               />
               <PrivateRoute
                 exact
-                path="/lisfacturas"
+                path="/lisfacturas/ver/:id"
                 authenticated={this.state.authenticated}
                 component={Facturas}
               />

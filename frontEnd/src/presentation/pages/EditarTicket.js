@@ -74,6 +74,12 @@ const EditarTicket = () => {
                      value={celdaId}
                      disabled={false}
                      />
+
+                     <label>Hora ingreso</label>
+              <input className={"form-control"}
+                     value={horaIngreso}
+                     disabled={true}
+                     />
               
             </div>
             <button className="btn btn-primary " onClick={()=> imprimirS()}>Imprimir</button>

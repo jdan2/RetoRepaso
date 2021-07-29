@@ -17,8 +17,8 @@ function Facturas() {
     listFacturas();
   }, [dispatch]);
 
-  const deleteFactura = (id) => {
-    dispatch(deleteFacturaAction(id));
+  const deleteFactura = (facturaId) => {
+    dispatch(deleteFacturaAction(facturaId));
     dispatch(listFacturasAction());
   };
 
@@ -33,7 +33,7 @@ function Facturas() {
    
    const facturaEdit= async (factura) =>{
     console.log("algo");
-    dispatch(await facturaEditAction(factura.id, "P...", factura.horaSalida, factura.cantidadMinutos,factura.valorTotal))
+    dispatch(await facturaEditAction(factura.id, factura.tiqueteId, factura.horaSalida, factura.cantidadMinutos,factura.valorTotal))
    }
 
   
@@ -45,8 +45,9 @@ function Facturas() {
       <ul>
         {facturas.map((factura) => (
           <li key={factura.id}>
-            {factura.empleadoId}{" "}
-            <button onClick={() => deleteFactura(factura.id)}>Eliminar</button>
+            {factura.facturaId}{" "}
+            {factura.empleadoId.empleadoId}{" "}
+            <button onClick={() => deleteFactura(factura.facturaId)}>Eliminar</button>
             <button onClick={() => facturaone(factura)}>Ver</button>
             <button onClick={() =>facturaEdit(factura)}>Edit</button>
           </li>

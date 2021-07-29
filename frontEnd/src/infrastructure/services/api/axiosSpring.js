@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const clientAxios = axios.create({
-    baseURL: 'https://app-parqueadero-nodejs.herokuapp.com/'
+    baseURL: 'http://localhost:8080/api/'
 });
 
 export default clientAxios;

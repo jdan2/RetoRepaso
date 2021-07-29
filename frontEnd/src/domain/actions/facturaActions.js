@@ -57,8 +57,9 @@ export function listFacturasAction(){
         dispatch(listFacturas());
         try{
             //Hago mi peticion HTTP
-            const response = await clientAxios.get('/listarfacturas');
+            const response = await clientAxios.get('/obtenerfacturas');
             dispatch(listFacturasSuccess(response.data));
+            console.log(response.data);
 
         }catch(error){
             dispatch(listFacturasFailure());
@@ -82,11 +83,11 @@ const listFacturasFailure = () =>({
 })
 
 //Eliminar factura
-export function deleteFacturaAction(id){
+export function deleteFacturaAction(facturaId){
     return async (dispatch) =>{
         dispatch(deleteFactura());
         try{
-            await clientAxios.delete('/eliminarfactura/'+id);
+            await clientAxios.delete(`/eliminarfactura/${facturaId}`);
             dispatch(deleteFacturaSuccess())
             alert("Se ha eliminado correctamente");
         }catch(error){

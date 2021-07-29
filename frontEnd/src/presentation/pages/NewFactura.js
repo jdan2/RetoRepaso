@@ -16,10 +16,10 @@ const NewFactura = () =>{
   console.log(ticket);
 
     //Datos de mi formulario
-    const [id, setId] = useState('');
+    const [facturaId, setfacturaId] = useState('');
     const [empleadoId, setEmpleadoId] = useState('');
     const [horaSalida, setHoraSalida] = useState('');
-    const [cantidadMinutos, setCantidadMinutos] = useState('');
+    const [canitdadMinutos, setCantidadMinutos] = useState('');
     const [valorTotal, setValorTotal] = useState('');
 
     //Temporalmente con useDispatch y useSelector
@@ -36,10 +36,11 @@ const NewFactura = () =>{
 
         //Ejecutar accion del nuevo elemento
         addFactura({
-            id,
+            facturaId,
+            tiqueteId,
             empleadoId,
             horaSalida,
-            cantidadMinutos,
+            canitdadMinutos,
             valorTotal
             
             
@@ -48,15 +49,22 @@ const NewFactura = () =>{
     }
 
     return(
+
+        <div className="container text-center">
+        <div className="row">
+            <div className="col-md-3"/>
+            <div className="col-md-6">
+                <div className="card my-5">
+                    <div className="card-body">
     <div>
         <h2>Agregar Factura</h2>
         <form onSubmit={submitAddFactura}>
             Id Factura
             <input 
                 type="text"
-                name="id"
-                value={id}
-                onChange={e => setId(e.target.value)}    
+                name="factureaId"
+                value={facturaId}
+                onChange={e => setfacturaId(e.target.value)}    
             />
             Id Tiquete
             <input 
@@ -107,16 +115,18 @@ const NewFactura = () =>{
             />
             Hora de Salida
              <input 
-                type="text"
+                type="datetime-local"
                 name="horaSalida"
                 value={horaSalida}
                 onChange={e => setHoraSalida(e.target.value)}    
             />
+
+           
             Cantidad de Minutos
              <input 
                 type="text"
-                name="cantidadMinutos"
-                value={cantidadMinutos}
+                name="canitdadMinutos"
+                value={canitdadMinutos}
                 onChange={e => setCantidadMinutos(e.target.value)}    
             />
             Valor Total
@@ -128,6 +138,11 @@ const NewFactura = () =>{
             />
             <button type="submit"> Agregar</button>
         </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </div>
     )
 }

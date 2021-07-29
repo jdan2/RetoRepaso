@@ -43,6 +43,15 @@ public class ApiRest {
         return facturaMapper.facturaToDto(facturaUseCase.crearFactura(factura));
     }
 
+    @GetMapping(path = "/cantidadminutos/{hi}/{hf}")
+    public CanitdadMinutos canitdadMinutos(@PathVariable("hi") String hi,@PathVariable("hf") String hf ) {
+        HoraIngreso horaIngreso = new HoraIngreso(hi);
+        HoraSalida horaSalida = new HoraSalida(hf);
+        CanitdadMinutos canitdadMinutos = facturaUseCase.canitdadMinutos(horaIngreso,horaSalida);
+        CanitdadMinutos c = canitdadMinutos;
+        return canitdadMinutos;
+    }
+
     @GetMapping(path = "/obtenerfacturas")
     public List<FacturaDTO> obtenerFacturas() {
         List<Factura> facturas = facturaUseCase.listarFacturas();

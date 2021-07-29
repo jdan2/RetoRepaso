@@ -19,19 +19,20 @@ module.exports = {
     },
     async editarTiquete(httpRequest){
         const serviceLocator = httpRequest.app.serviceLocator; 
-        const { id, celdaId, tipoVehiculo, placa, horaIngreso } = httpRequest.body;
+        const {id} = httpRequest.query;
+        const { celdaId, tipoVehiculo, placa, horaIngreso } = httpRequest.body;
         const tiquete = await EditarTiquete(id, celdaId, tipoVehiculo, placa, horaIngreso, serviceLocator);
         return tiquete;
     },
     async consultarTiquete(httpRequest){
         const serviceLocator = httpRequest.app.serviceLocator; 
-        const { id } = httpRequest.body;
+        const { id } = httpRequest.query;
         const tiquete = await ConsultarTiquete(id, serviceLocator);
         return tiquete;
     },
     async eliminarTiquete(httpRequest){
         const serviceLocator = httpRequest.app.serviceLocator; 
-        const { id } = httpRequest.body;
+        const { id } = httpRequest.query;
         const tiquete = await EliminarTiquete(id, serviceLocator);
         return tiquete;
     }

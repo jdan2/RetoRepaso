@@ -25,6 +25,12 @@ const Ticket = ({ ticket }) => {
     history.push(`/listtickets/editar/${ticket.tiqueteId}`)
 }
 
+const redireccionarFactura = ticket =>{
+  dispatch(onlyTicketAction(ticket))
+  
+  history.push(`/newfactura/factura/${ticket.tiqueteId}`)
+}
+
   return (
     <div className="card border-primary mb-3 card-w container">
       <div className="card-header">
@@ -45,7 +51,11 @@ const Ticket = ({ ticket }) => {
           onClick={()=> redireccionarEditar(ticket)}
           className="btn btn-primary text-center form-control">Editar Ticket</button>
 
-          
+          <button 
+          type="button"
+          onClick={()=> redireccionarFactura(ticket)}
+          className="btn btn-primary text-center form-control">Registrar Salida</button>
+
           
       </div>
       

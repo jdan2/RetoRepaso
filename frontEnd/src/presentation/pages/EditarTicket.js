@@ -8,6 +8,7 @@ const EditarTicket = () => {
     (state) => state.ticketReducer.ticketone
   );
 
+ 
   
 
   
@@ -67,7 +68,12 @@ const EditarTicket = () => {
                 <br />  
               <strong>{CalcularPrecio()}$</strong>
               </p>                       
-               
+              <hr className="my-4"/>
+              <label>Email</label>
+              <input className={"form-control"}
+                     value={celdaId}
+                     disabled={false}
+                     />
               
             </div>
             <button className="btn btn-primary " onClick={()=> imprimirS()}>Imprimir</button>

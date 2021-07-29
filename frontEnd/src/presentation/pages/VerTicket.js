@@ -45,6 +45,8 @@ const VerTicket = () => {
 
   }
 
+  
+
   return (
     <div className="container">
       <div className="row">

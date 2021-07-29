@@ -22,6 +22,7 @@ import SignUp from '../pages/autenticacion/signUp';
 import { auth } from '../../infrastructure/services/firebase/firebase';
 import VerTicket from '../pages/VerTicket';
 import Ticketes from '../pages/Ticketes';
+import EditarTicket from '../pages/EditarTicket';
 
 
 
@@ -126,11 +127,11 @@ class App extends Component {
                 path="/signup"
                 component={SignUp}
               />
-             {/* <PrivateRoute
-                path="/ticketes/editar/:id"
+              <PrivateRoute
+                path="/listtickets/editar/:id"
                 authenticated={this.state.authenticated}
                 component={EditarTicket}
-             />*/}
+             />
               <PrivateRoute
                 path="/listtickets/ver/:id"
                 authenticated={this.state.authenticated}

@@ -1,16 +1,17 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BsFillPeopleFill } from "react-icons/bs";
-import img from './../img/PATIOS.jpg'
 
-
-const VerTicket = () => {
+const EditarTicket = () => {
   //publicacion que traere de mi store
   const ticket = useSelector(
     (state) => state.ticketReducer.ticketone
   );
 
   
+
+  
+
   //Hago destructuring
   
   const { celdaId, tipoVehiculo, placa, horaIngreso, tiqueteId} =
@@ -81,7 +82,7 @@ const VerTicket = () => {
               <h4 className="card-title text-center">Celda Asignada: {celdaId}</h4>
             </div>
             <div className="card-body" id="12">
-             <img src={img} alt="logo" className="img-fluid" />
+             {/* <img src={imagen} className="img-fluid" />*/}
               
             </div>
             
@@ -96,4 +97,4 @@ const VerTicket = () => {
   );
 };
 
-export default VerTicket;
+export default EditarTicket;

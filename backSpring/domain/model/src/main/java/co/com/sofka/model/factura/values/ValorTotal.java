@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class ValorTotal {
 
-    private final Integer value;
+    private final String value;
 
-    public ValorTotal(Integer value) {
+    public ValorTotal(String value) {
         this.value = Objects.requireNonNull(value);
         if(this.value.equals(null)){
             throw new IllegalArgumentException("Valor no puede estar vacio");
@@ -14,7 +14,7 @@ public class ValorTotal {
 
     }
 
-    public Integer getValue() {
+    public String getValue() {
         return value;
     }
 

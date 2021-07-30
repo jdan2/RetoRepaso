@@ -90,7 +90,7 @@ public class MongoFacturaRespositoryAdapter extends AdapterOperations<FacturaEnt
             Date fecha1 = formato.parse(horaIngreso.getValue());
             Date fecha2 = formato.parse(horaSalida.getValue());
             Long fecha =  fecha2.getTime() - fecha1.getTime();
-            CanitdadMinutos canitdadMinutos = new CanitdadMinutos(Math.toIntExact(fecha/60000));
+            CanitdadMinutos canitdadMinutos = new CanitdadMinutos(String.valueOf(fecha/60000));
 
         return canitdadMinutos;
     }

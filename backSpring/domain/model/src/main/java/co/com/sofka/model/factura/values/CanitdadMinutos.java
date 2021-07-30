@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class CanitdadMinutos {
 
-    private final Integer value;
+    private final String value;
 
-    public CanitdadMinutos(Integer value) {
+    public CanitdadMinutos(String value) {
         this.value = Objects.requireNonNull(value);
         if(this.value.equals(null)){
             throw new IllegalArgumentException("Valor no puede estar vacio");
@@ -14,7 +14,7 @@ public class CanitdadMinutos {
 
     }
 
-    public Integer getValue() {
+    public String getValue() {
         return value;
     }
 

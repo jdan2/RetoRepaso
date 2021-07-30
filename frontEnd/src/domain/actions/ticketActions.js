@@ -14,6 +14,7 @@ import {
     DELETE_TICKET_FAILURE,
     //READ
     ONLY_TICKET,
+    OBTENER_TICKET,
     EDIT_TICKET,
 } from '../types/ticket.js';
 
@@ -26,7 +27,7 @@ export function addNewTicketAction(ticket){
         dispatch(addTicket())
         try {
             //Peticion a la base de datos
-            await clientAxios.post('tickets',ticket);
+            await clientAxios.post('/creartiquete',ticket);
             //ok
             dispatch(addTicketSuccess(ticket));
             alert("Se ha creado correctamente");
@@ -81,12 +82,12 @@ const listTicketsFailure = () =>({
     payload:true
 })
 
-//Eliminar empleados
-export function deleteTicketAction(id){
+//Eliminar 
+export function deleteTicketAction(tiqueteId){
     return async (dispatch) =>{
         dispatch(deleteTicket());
         try{
-            await clientAxios.delete('/eliminartiquete/'+id);
+            await clientAxios.delete(`/eliminartiquete?id=${tiqueteId}`);
             dispatch(deleteTicketSuccess())
             alert("Se ha eliminado correctamente");
         }catch(error){
@@ -121,11 +122,22 @@ const onlyTicket = ticket =>({
     payload:ticket
 })
 
-export const ticketEditAction =async (id,horaIngreso, placa, celda,tipoVehiculo) => {
+export function obtenerTicketVer(ticket){
+    return (dispatch) =>{
+        dispatch( obtenerTicketVerAction(ticket) )
+    }
+}
+
+const obtenerTicketVerAction = ticket =>({
+    type: OBTENER_TICKET,
+    payload: ticket
+})
+
+export const ticketEditAction =async (tiqueteId,horaIngreso, placa, celdaId,tipoVehiculo) => {
     return async (dispatch) =>{
     dispatch(editTicket())
-    const ticket = {horaIngreso:horaIngreso, placa:placa, celda:celda, tipoVehiculo: tipoVehiculo}
-    await clientAxios.put('/tiquetes/'+id,ticket);
+    const ticket = {horaIngreso:horaIngreso, placa:placa, celdaId:celdaId, tipoVehiculo: tipoVehiculo}
+    await clientAxios.put(`/editartiquete?id=${tiqueteId}`);
     }
 }
 

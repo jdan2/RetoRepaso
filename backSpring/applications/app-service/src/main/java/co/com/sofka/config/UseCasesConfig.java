@@ -3,6 +3,7 @@ package co.com.sofka.config;
 import co.com.sofka.model.factura.gateways.FacturaRepository;
 import co.com.sofka.model.tiquete.gateways.TiqueteRepository;
 import co.com.sofka.usecase.factura.ActualizarFacturaUseCase;
+import co.com.sofka.usecase.factura.BuscarFacturaPorEmpleadoIdUseCase;
 import co.com.sofka.usecase.factura.FacturaUseCase;
 import co.com.sofka.usecase.factura.ListarFacturaUsecase;
 import co.com.sofka.usecase.tiquete.TiqueteUseCase;
@@ -29,5 +30,9 @@ public class UseCasesConfig {
         }
         public ListarFacturaUsecase listarFacturaUseCase(FacturaRepository facturaRepository){
                 return  new ListarFacturaUsecase(facturaRepository);
+        }
+
+        public BuscarFacturaPorEmpleadoIdUseCase buscarFacturaPorEmpleadoIdUseCase(FacturaRepository facturaRepository){
+                return new BuscarFacturaPorEmpleadoIdUseCase(facturaRepository);
         }
 }

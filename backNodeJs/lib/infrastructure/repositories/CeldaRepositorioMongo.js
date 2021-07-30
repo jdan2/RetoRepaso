@@ -19,10 +19,7 @@ module.exports = class extends CeldaRepository {
   }
 
   async get(celdaId){
-    const mongooseCelda = await MongooseCelda.findOne({celdaId: celdaId}, (err)=>{
-      console.log(err)
-      throw new Error('ERR_CELDA_NOT_FOUND');
-    });
+    const mongooseCelda = await MongooseCelda.findOne({celdaId: celdaId});
     return new Celda(mongooseCelda.celdaId, mongooseCelda.disponibilidad, mongooseCelda.tipoCelda);
   }
 

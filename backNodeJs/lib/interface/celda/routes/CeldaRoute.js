@@ -17,7 +17,7 @@ router.post('/', async(req, res)=>{
    
 });
 
-router.post('/', async(req, res)=>{
+router.get('/', async(req, res)=>{
     req.app.serviceLocator = serviceLocator;
     const celda = await CeldaController.consultarCelda(req);
     res.status(200).send(celda);

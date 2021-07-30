@@ -16,9 +16,9 @@ module.exports = class {
       throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
   
-    /*getByEmail(email) {
+    getByTipoVehiculo(tipoVehiculo) {
       throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
-    }*/
+    }
   
     find() {
       throw new Error('ERR_METHOD_NOT_IMPLEMENTED');

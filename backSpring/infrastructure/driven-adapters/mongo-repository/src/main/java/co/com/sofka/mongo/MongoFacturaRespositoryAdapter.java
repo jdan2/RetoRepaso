@@ -102,7 +102,7 @@ public class MongoFacturaRespositoryAdapter extends AdapterOperations<FacturaEnt
         TipoVehiculo tipoVehiculo1 = tipoVehiculo;
         CanitdadMinutos canitdadMinutos1 = canitdadMinutos;
         int precio = 100;
-        if (tipoVehiculo1.equals("Moto")){
+        if (tipoVehiculo1.getValue().equals("Moto")){
             precio = 50;
         }
         int valortotal = Integer.parseInt(canitdadMinutos1.getValue()) * precio;

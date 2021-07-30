@@ -5,20 +5,12 @@ const EliminarTiquete = require('../lib/application/tiquete/use_cases/EliminarTi
 test('should resolve with the removed tiquete', async()=>{
 
     //given
-<<<<<<< HEAD
-    returnValue = {};
-    mockTiqueteRepository.remove = jest.fn(()=> returnValue);;
-=======
-    mockTiqueteRepository.remove = jest.fn(()=> true);
->>>>>>> CrudCeldaNode
+    mockTiqueteRepository.remove = jest.fn();;
 
     //when
     await EliminarTiquete("T222K", {tiqueteRepository: mockTiqueteRepository});
 
     //then
     expect(mockTiqueteRepository.remove).toHaveBeenCalledWith("T222K");
-<<<<<<< HEAD
-    expect(tiquete).toEqual(returnValue);
-=======
->>>>>>> CrudCeldaNode
+
 });

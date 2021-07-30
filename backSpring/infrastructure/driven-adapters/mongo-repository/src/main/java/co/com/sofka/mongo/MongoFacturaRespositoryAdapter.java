@@ -99,7 +99,15 @@ public class MongoFacturaRespositoryAdapter extends AdapterOperations<FacturaEnt
 
     @Override
     public ValorTotal valorTotal(TipoVehiculo tipoVehiculo, CanitdadMinutos canitdadMinutos) {
-        return null;
+        TipoVehiculo tipoVehiculo1 = tipoVehiculo;
+        CanitdadMinutos canitdadMinutos1 = canitdadMinutos;
+        int precio = 100;
+        if (tipoVehiculo1.equals("Moto")){
+            precio = 50;
+        }
+        int valortotal = Integer.parseInt(canitdadMinutos1.getValue()) * precio;
+        ValorTotal valorTotal = new ValorTotal(String.valueOf(valortotal));
+        return valorTotal;
     }
 
 }

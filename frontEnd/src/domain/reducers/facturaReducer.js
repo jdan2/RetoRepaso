@@ -1,89 +1,83 @@
 import {
-    ADD_TICKET,
-    ADD_TICKET_FAILURE,
-    ADD_TICKET_SUCCESS,
-    LIST_TICKETS,
-    LIST_TICKETS_SUCCESS,
-    LIST_TICKETS_FAILURE,
-    DELETE_TICKET,
-    DELETE_TICKET_SUCCESS,
-    DELETE_TICKET_FAILURE,
-    ONLY_TICKET,
-    OBTENER_TICKET,
-    EDIT_TICKET
-} from '../types/ticket.js';
+    ADD_FACTURA,
+    ADD_FACTURA_FAILURE,
+    ADD_FACTURA_SUCCESS,
+    LIST_FACTURAS,
+    LIST_FACTURAS_SUCCESS,
+    LIST_FACTURAS_FAILURE,
+    DELETE_FACTURA,
+    DELETE_FACTURA_SUCCESS,
+    DELETE_FACTURA_FAILURE,
+    ONLY_FACTURA,
+    EDIT_FACTURA
+} from '../types/factura.js';
 
 //Creamos el estado inicial
 const initialState = {
-    tickets:[],
+    facturas:[],
     error:null,
     loading:false,
-    ticketone:null,
+    facturaone:null,
 }
 
-const ticketsReducer =(state=initialState, action) =>{
+const facturasReducer =(state=initialState, action) =>{
     switch (action.type) {
-        case ADD_TICKET:
+        case ADD_FACTURA:
             return {
                 ...state,
                 loading: action.payload
             }
-        case ADD_TICKET_SUCCESS:
+        case ADD_FACTURA_SUCCESS:
             return{
                 ...state,
                 loading:false,
-                tickets: [...state.tickets, action.payload]
+                facturas: [...state.facturas, action.payload]
             }
-        case ADD_TICKET_FAILURE:
+        case ADD_FACTURA_FAILURE:
             return{
                 ...state,
                 loading:false,
                 error: action.payload
             }
-        case LIST_TICKETS:
+        case LIST_FACTURAS:
             return{
                 ...state,
                 loading:action.payload
             }
-        case LIST_TICKETS_SUCCESS:
+        case LIST_FACTURAS_SUCCESS:
             return{
                 ...state,
                 loading:false,
-                tickets: action.payload
+                facturas: action.payload
             }
-        case LIST_TICKETS_FAILURE:
+        case LIST_FACTURAS_FAILURE:
             return{
              ...state,
              loading:false,
              error: action.payload
             }
-        case DELETE_TICKET:
+        case DELETE_FACTURA:
             return{
             ...state,
             loading: true
             }
-        case DELETE_TICKET_SUCCESS:
+        case DELETE_FACTURA_SUCCESS:
             return{
             ...state,
             loading: action.payload
             }
-        case DELETE_TICKET_FAILURE:
+        case DELETE_FACTURA_FAILURE:
             return{
             ...state,
             loading: false,
             error: action.payload
             }
-        case ONLY_TICKET:
+        case ONLY_FACTURA:
             return{
             ...state,
-            ticketone:action.payload
+            facturaone:action.payload
             }
-            case OBTENER_TICKET:
-            return{
-                ...state,
-                ticketobtener:action.payload
-            } 
-        case EDIT_TICKET:
+        case EDIT_FACTURA:
             return{
             ...state,
             loading:action.payload
@@ -92,4 +86,4 @@ const ticketsReducer =(state=initialState, action) =>{
             return state;
     }
 }
-export default ticketsReducer;
+export default facturasReducer;

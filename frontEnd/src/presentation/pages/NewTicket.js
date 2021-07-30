@@ -10,7 +10,7 @@ const NewTicket = () =>{
     const [id, setId] = useState('');
     const [horaIngreso, setHoraIngreso] = useState('');
     const [placa, setPlaca] = useState('');
-    const [celda, setCelda] = useState('');
+    const [celdaId, setCeldaId] = useState('');
     const [tipoVehiculo, setTipoVehiculo] = useState('');
 
     //Temporalmente con useDispatch y useSelector
@@ -28,55 +28,91 @@ const NewTicket = () =>{
         //Ejecutar accion del nuevo elemento
         addTicket({
             id,
-            horaIngreso, 
+            celdaId,
+            tipoVehiculo,
             placa,
-            celda,
-            tipoVehiculo
+            horaIngreso
+            
+            
+            
         })        
     }
 
     return(
+
+        <div className="row justify-content-center text-center">
+      <div className="col-md-8">
+        <div className="card"></div>
+        <div className="submit-form"></div>
     <div>
         <h2>Agregar Ticket</h2>
         <form onSubmit={submitAddTicket}>
+        <div className="form-group">
             Id
+            <br />
             <input 
                 type="text"
                 name="id"
+                required="required"
+                minLength="4"
+                maxLength="20"
                 value={id}
                 onChange={e => setId(e.target.value)}    
             />
+            </div>
+            <div className="form-group">
             Hora de Ingreso
+            <br />
              <input 
-                type="text"
+                type="datetime-local"
                 name="horaIngreso"
                 value={horaIngreso}
                 onChange={e => setHoraIngreso(e.target.value)}    
             />
+            </div>
+            <div className="form-group">
             Placa
+            <br />
              <input 
                 type="text"
                 name="placa"
                 value={placa}
                 onChange={e => setPlaca(e.target.value)}    
             />
+            </div>
+            <div className="form-group">
             Celda
+            <br />
              <input 
                 type="text"
-                name="celda"
-                value={celda}
-                onChange={e => setCelda(e.target.value)}    
+                name="celdaId"
+                value={celdaId}
+                onChange={e => setCeldaId(e.target.value)}    
             />
+            </div>
+            <div className="form-group">
             Tipo de Vehiculo
+            <br />
              <input 
                 type="text"
                 name="tipoVehiculo"
                 value={tipoVehiculo}
                 onChange={e => setTipoVehiculo(e.target.value)}    
             />
+
+            </div>
             <button type="submit"> Agregar</button>
+            
         </form>
+        
     </div>
+    
+
+    </div>
+    </div>
+    
+    
+    
     )
 }
 

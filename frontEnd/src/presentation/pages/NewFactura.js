@@ -58,7 +58,7 @@ const NewFactura = () =>{
             <div>
               <h4>You submitted successfully!</h4>
               <button className="btn btn-success" onClick={submitAddFactura}>
-                Agregar Otra Pelicula
+                Agregar Otra Factura
               </button>
             </div>) : (
 
@@ -72,8 +72,9 @@ const NewFactura = () =>{
            
             <input 
                 type="text"
-                required="required"
+                
                 name="factureaId"
+                required="required"
                 minLength={4}
                 maxLength={50}
                 value={facturaId}
@@ -112,9 +113,9 @@ const NewFactura = () =>{
              <input 
                 type="text"
                 name="empleadoId"
-                value={auth().currentUser.email}
-                  
-                disabled 
+                value={empleadoId}
+                onChange={e => setEmpleadoId(e.target.value)} 
+                 
             />
             </div>
             <div className="form-group">
@@ -143,6 +144,9 @@ const NewFactura = () =>{
             Hora de Salida
              <input 
                 type="datetime-local"
+                required="required"
+                minLength={4}
+                maxLength={50}
                 name="horaSalida"
                 value={horaSalida}
                 onChange={e => setHoraSalida(e.target.value)}    
@@ -155,6 +159,9 @@ const NewFactura = () =>{
                 type="text"
                 name="canitdadMinutos"
                 value={canitdadMinutos}
+                required="required"
+                minLength={2}
+                maxLength={50}
                 onChange={e => setCantidadMinutos(e.target.value)}    
             />
             </div>
@@ -164,6 +171,9 @@ const NewFactura = () =>{
              <input 
                 type="text"
                 name="valorTotal"
+                required="required"
+                minLength={3}
+                maxLength={10}
                 value={valorTotal}
                 onChange={e => setValorTotal(e.target.value)}    
             />

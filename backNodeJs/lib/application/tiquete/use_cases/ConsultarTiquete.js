@@ -1,8 +1,6 @@
-const Tiquete = require('../../../domain/tiquete/Tiquete');
+const TiqueteId = require('../../../domain/tiquete/values/TiqueteId');
 
-module.exports = (id, {tiqueteRepository})=>{
+module.exports = (tiqueteId, {tiqueteRepository})=>{
 
-    const tiquete = new Tiquete(id, null, null);
-
-    return tiqueteRepository.get(tiquete);
+    return tiqueteRepository.get(tiqueteId);
 }

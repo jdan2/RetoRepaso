@@ -1,6 +1,7 @@
 const mongoose = require('../mongoose');
 
 const tiqueteSchema = new mongoose.Schema({
+  tiqueteId: { type: String },
   celdaId: { type: String },
   tipoVehiculo: { type: String },
   placa: { type: String },

@@ -5,6 +5,7 @@ import co.com.sofka.api.mapper.FacturaMapper;
 import co.com.sofka.api.mapper.TiqueteMapper;
 import co.com.sofka.model.factura.Factura;
 import co.com.sofka.model.factura.values.CanitdadMinutos;
+import co.com.sofka.model.factura.values.EmpleadoId;
 import co.com.sofka.model.factura.values.HoraSalida;
 import co.com.sofka.model.tiquete.Tiquete;
 import co.com.sofka.model.tiquete.values.HoraIngreso;
@@ -29,6 +30,7 @@ public class ApiRest {
    private final ActualizarFacturaUseCase actualizarFacturaUseCase;
    private final BorrarFacturaUseCase borrarFacturaUseCase;
    private final TiempoTotalFacturaUseCase tiempoTotalFacturaUseCase;
+   private final BuscarFacturaPorEmpleadoIdUseCase buscarFacturaPorEmpleadoIdUseCase;
   // private final ListarFacturaUsecase listarFacturaUsecase;
 
 
@@ -63,6 +65,12 @@ public class ApiRest {
     public FacturaDTO consultarFactura(@PathVariable("id") String id) {
         Factura factura = facturaUseCase.consultarFactura(id);
         return facturaMapper.facturaToDto(factura);
+    }
+
+    @GetMapping(path = "/obtenerFacturas/empleadoId/{id}")
+    public List<FacturaDTO> obtenerFacturasEmpleadoId(@PathVariable("id")EmpleadoId empleadoId){
+        List<Factura> facturas = buscarFacturaPorEmpleadoIdUseCase.findFacturaByEmpleadoId(empleadoId);
+        return facturaMapper.fromFacturaList(facturas);
     }
 
     @PutMapping(path = "/actualizarfactura")

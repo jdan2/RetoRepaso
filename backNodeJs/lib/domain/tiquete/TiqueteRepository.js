@@ -7,6 +7,10 @@ module.exports = class {
     merge(domainTiquete) {
       throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
+
+    modify(domainTiquete) {
+      throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
+    }
   
     remove(tiqueteId) {
       throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
@@ -16,9 +20,9 @@ module.exports = class {
       throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
   
-    /*getByEmail(email) {
+    getByTipoVehiculo(tipoVehiculo) {
       throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
-    }*/
+    }
   
     find() {
       throw new Error('ERR_METHOD_NOT_IMPLEMENTED');

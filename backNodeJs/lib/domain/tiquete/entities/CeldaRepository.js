@@ -11,5 +11,9 @@ module.exports = class {
     get(celdaId) {
       throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
+ 
+    modify(domainCelda) {
+      throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
+    }
     
   };

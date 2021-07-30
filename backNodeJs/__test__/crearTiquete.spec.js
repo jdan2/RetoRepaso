@@ -6,14 +6,14 @@ const CrearTiquete = require('../lib/application/tiquete/use_cases/CrearTiquete'
 test('should resolve with the newly persisted tiquete', async()=>{
 
     //given
-    const persistedTiquete = new Tiquete("T222K", "C123", "Carro", "GGK898", "06:24");
+    const persistedTiquete = new Tiquete(null, "C111", "Carro", "NNN000", "12:30");
     mockTiqueteRepository.persist = jest.fn(()=> persistedTiquete);
 
     //when
-    const tiquete = await CrearTiquete("T222K", "C123", "Carro", "GGK898", "06:24", {tiqueteRepository: mockTiqueteRepository});
+    const tiquete = await CrearTiquete("C111", "Carro", "NNN000", "12:30", {tiqueteRepository: mockTiqueteRepository});
 
     //then
-    expect(mockTiqueteRepository.persist).toHaveBeenCalledWith(new Tiquete("T222K", "C123", "Carro", "GGK898", "06:24"));
+    expect(mockTiqueteRepository.persist).toHaveBeenCalledWith(new Tiquete(tiquete.getTiqueteId(), "C111", "Carro", "NNN000", "12:30"));
     expect(tiquete).toEqual(persistedTiquete);
     expect(tiquete.getTiqueteId()).toEqual(persistedTiquete.tiqueteId);
     expect(tiquete.getCeldaId()).toEqual(persistedTiquete.celdaId);

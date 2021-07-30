@@ -8,6 +8,7 @@ import {
   onlyFacturaAction,
   facturaEditAction
 } from "../../domain/actions/facturaActions";
+import Factura from "./Factura";
 
 function Facturas() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function Facturas() {
   const facturaone = (factura) => {
     dispatch(onlyFacturaAction(factura));
     console.log("Todo el objeto seleccionado", factura);
-    setpruebam([factura.horaSalida, factura.valorTotal]);
+    setpruebam([factura.horaSalida.value, factura.valorTotal.value]);
     //document.getElementById('verTicket').innerHTML = `<li style="color:red">${ticket.celda}</li><li style="color:red">${ticket.horaIngreso}</li>`;
   };
    
@@ -43,6 +44,30 @@ function Facturas() {
     <div>
       <h1>Lista de Facturas</h1>
       <ul>
+
+        <div>
+       {facturas.length === 0
+          ? "No hay registros"
+          
+          : facturas.map((factura) => (
+            
+            <Factura key={factura.id} factura={factura}  />
+            
+            
+            
+          ))}
+          
+
+        </div>
+
+        <div className="col-6">
+          <div className="border-init">
+            <div className="container text-center"></div>
+        <div className="card border-primary mb-3 card-w container">
+      <div className="card-header">
+      {/*<img src={img} alt="logo" className="img-fluid" />*/}
+      </div>
+
         {facturas.map((factura) => (
           <li key={factura.id}>
             {factura.facturaId}{" "}
@@ -52,11 +77,19 @@ function Facturas() {
             <button onClick={() =>facturaEdit(factura)}>Edit</button>
           </li>
         ))}
+
+        </div>
+        </div>
+        </div>
       </ul>
+      
         <div id="verFactura">
           <h1>{pruebam}</h1>
         </div>
+        
     </div>
+
+    
   );
 }
 

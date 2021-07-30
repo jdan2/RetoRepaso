@@ -44,21 +44,21 @@ const redireccionarFactura = factura =>{
 
       <div className="card-body">
            
-         <h4 className="card-title">Empleado responsable: {empleadoId}</h4>
-        <p className="card-text">Hora Salida: {horaSalida}</p>
+         <h4 className="card-title">Empleado responsable: {factura.empleadoId.empleadoId}</h4>
+        <p className="card-text">Hora Salida: {factura.horaSalida.value}</p>
         <button 
           type="button"
-          onClick={()=> redireccionarVer(ticket)}
+          onClick={()=> redireccionarVer(factura)}
           className="btn btn-primary text-center form-control">Ver Informacion Ticket</button>
 
           <button 
           type="button"
-          onClick={()=> redireccionarEditar(ticket)}
+          onClick={()=> redireccionarEditar(factura)}
           className="btn btn-primary text-center form-control">Editar Ticket</button>
 
           <button 
           type="button"
-          onClick={()=> redireccionarFactura(ticket)}
+          onClick={()=> redireccionarFactura(factura)}
           className="btn btn-primary text-center form-control">Registrar Salida</button>
 
           

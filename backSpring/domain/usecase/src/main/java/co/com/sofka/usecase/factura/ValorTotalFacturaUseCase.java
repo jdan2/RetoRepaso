@@ -11,7 +11,7 @@ public class ValorTotalFacturaUseCase {
 
     private final FacturaRepository facturaRepository;
 
-    ValorTotal valorTotal (TipoVehiculo tipoVehiculo, CanitdadMinutos canitdadMinutos){
+    public ValorTotal valorTotal (TipoVehiculo tipoVehiculo, CanitdadMinutos canitdadMinutos){
         return facturaRepository.valorTotal(tipoVehiculo,canitdadMinutos);
     }
 

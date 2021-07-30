@@ -14,6 +14,10 @@ test('should resolve with the newly persisted celda', async()=>{
 
     //expect
     expect( mockCeldaRepository.persist).toHaveBeenCalledWith(new Celda("C111k", "true", "doble"));
+    expect(celda).toEqual(persistedCelda);
+    expect(celda.getCeldaId()).toEqual(persistedCelda.celdaId);
+    expect(celda.getDisponibilidad()).toEqual(persistedCelda.disponibilidad);
+    expect(celda.getTipoCelda()).toEqual(persistedCelda.tipoCelda);
 
 
 });

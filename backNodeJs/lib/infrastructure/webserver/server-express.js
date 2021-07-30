@@ -8,6 +8,7 @@ var app = express();
 
 const apiRoot = process.env.DM_API_ROOT || "";
 const tiqueteRoute = require('../../interface/tiquete/routes/TiqueteRoute')
+const celdaRoute = require('../../interface/celda/routes/CeldaRoute');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -27,5 +28,7 @@ app.use(`${apiRoot}/listartiquetes`, tiqueteRoute);
 app.use(`${apiRoot}/editartiquete`, tiqueteRoute);
 app.use(`${apiRoot}/consultartiquete`, tiqueteRoute);
 app.use(`${apiRoot}/eliminartiquete`, tiqueteRoute);
+
+app.use(`${apiRoot}/crearCelda`, celdaRoute);
 
 module.exports = app;

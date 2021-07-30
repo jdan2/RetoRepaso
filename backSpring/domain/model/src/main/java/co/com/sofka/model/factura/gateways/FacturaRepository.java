@@ -15,4 +15,5 @@ public interface FacturaRepository {
     Factura updateFactura(Factura factura);
     void deletefactura(String idFactura);
     CanitdadMinutos canitdadMinutos(HoraIngreso horaIngreso, HoraSalida horaSalida);
+
 }

@@ -111,7 +111,7 @@ class App extends Component {
               />
               <PrivateRoute
                 exact
-                path="/newfactura/factura/:id"
+                path="/newfactura"
                 authenticated={this.state.authenticated}
                 component={NewFactura}
               />

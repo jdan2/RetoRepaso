@@ -40,8 +40,11 @@ function Facturas() {
   
   const facturas = useSelector((state) => state.facturaReducer.facturas);
     
+  
+
   return (
-    <div>
+    <div className="container">
+    <div className="row" text-center>
       <h1>Lista de Facturas</h1>
       <ul>
 
@@ -51,10 +54,8 @@ function Facturas() {
           
           : facturas.map((factura) => (
             
-            <Factura key={factura.id} factura={factura}  />
-            
-            
-            
+            <Factura key={factura.id} factura={factura}  />           
+                                    
           ))}
           
 
@@ -88,7 +89,7 @@ function Facturas() {
         </div>
         
     </div>
-
+    </div>
     
   );
 }

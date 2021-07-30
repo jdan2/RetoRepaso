@@ -24,6 +24,7 @@ const NewFactura = () =>{
 
     //Temporalmente con useDispatch y useSelector
     const dispatch = useDispatch();
+    const [submitted, setSubmitted] = useState(false);
 
     //Crear la accion para disparar la funcion
     const addFactura = (factura) => dispatch(addNewFacturaAction(factura));
@@ -49,23 +50,37 @@ const NewFactura = () =>{
     }
 
     return(
+        <div className="row justify-content-center text-center">
+      <div className="col-md-8">
+        <div className="card"></div>
+        <div className="submit-form"></div>
+        {submitted ? (
+            <div>
+              <h4>You submitted successfully!</h4>
+              <button className="btn btn-success" onClick={submitAddFactura}>
+                Agregar Otra Pelicula
+              </button>
+            </div>) : (
 
-        <div className="container text-center">
-        <div className="row">
-            <div className="col-md-3"/>
-            <div className="col-md-6">
-                <div className="card my-5">
-                    <div className="card-body">
-    <div>
+
+        
+    <div className="container justify-text-center">
         <h2>Agregar Factura</h2>
         <form onSubmit={submitAddFactura}>
-            Id Factura
+        <div className="form-group">
+           <label htmlFor="Id Factura">Id Factura</label> 
+           
             <input 
                 type="text"
+                required="required"
                 name="factureaId"
+                minLength={4}
+                maxLength={50}
                 value={facturaId}
                 onChange={e => setfacturaId(e.target.value)}    
             />
+            </div>
+            <div className="form-group">
             Id Tiquete
             <input 
                 type="text"
@@ -73,6 +88,8 @@ const NewFactura = () =>{
                 value={tiqueteId}
                 disabled   
             />
+            </div>
+            <div className="form-group">
             Celda Asignada
             <input 
                 type="text"
@@ -80,7 +97,8 @@ const NewFactura = () =>{
                 value={celdaId}
                 disabled   
             />
-
+            </div>
+            <div className="form-group">
             Placa Vehiculo
             <input 
                 type="text"
@@ -88,6 +106,8 @@ const NewFactura = () =>{
                 value={placa}
                 disabled   
             />
+            </div>
+            <div className="form-group">
             Id del empleado
              <input 
                 type="text"
@@ -96,7 +116,8 @@ const NewFactura = () =>{
                   
                 disabled 
             />
-
+            </div>
+            <div className="form-group">
             Tipo de Vehiculo
              <input 
                 type="text"
@@ -105,6 +126,9 @@ const NewFactura = () =>{
                  
                 disabled 
             />
+
+            </div>
+            <div className="form-group">
             Hora de Ingreso
              <input 
                 type="text"
@@ -113,6 +137,9 @@ const NewFactura = () =>{
                 disabled
                     
             />
+
+            </div>
+            <div className="form-group">
             Hora de Salida
              <input 
                 type="datetime-local"
@@ -120,8 +147,9 @@ const NewFactura = () =>{
                 value={horaSalida}
                 onChange={e => setHoraSalida(e.target.value)}    
             />
+            </div>
 
-           
+            <div className="form-group">
             Cantidad de Minutos
              <input 
                 type="text"
@@ -129,21 +157,25 @@ const NewFactura = () =>{
                 value={canitdadMinutos}
                 onChange={e => setCantidadMinutos(e.target.value)}    
             />
+            </div>
+            <div className="form-group">
             Valor Total
+            
              <input 
                 type="text"
                 name="valorTotal"
                 value={valorTotal}
                 onChange={e => setValorTotal(e.target.value)}    
             />
+            </div>
             <button type="submit"> Agregar</button>
         </form>
     </div>
+    )}
     </div>
     </div>
-    </div>
-    </div>
-    </div>
+    
+    
     )
 }
 

@@ -9,7 +9,7 @@ const Header = () => {
     <div className="container">
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
             <div className="container">
-                <Link className="navbar-brand" to={"/newticket"}>Estacionamiento JDS</Link>
+                <Link className="navbar-brand" to={"/"}>Estacionamiento JDS</Link>
 
                 
                 {auth().currentUser ?
@@ -19,7 +19,7 @@ const Header = () => {
                     <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/newticket"}>Generar Tickets</Link>
                     <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"lisfacturas/ver"}>Listado facturas</Link>
                     &nbsp;
-                    <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/newfactura/factura/:id"}>Generar Factura</Link>
+                    <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/newfactura"}>Generar Factura</Link>
 
                     
                         <span className="navbar-text mr-3 btn text-primary">Sesion - {auth().currentUser.email}</span>

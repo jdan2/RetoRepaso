@@ -36,30 +36,40 @@ const redireccionarFactura = factura =>{
   history.push(`/newfactura/factura/${factura.facturaId}`)
 }
 
+function imprimirS(){
+
+    var ficha = document.getElementById(2);
+	  var ventimp = window.open(' ', 'popimpr');
+	  ventimp.document.write( ficha.innerHTML );
+	  ventimp.document.close();
+	  ventimp.print( );
+	  ventimp.close();
+
+  }
+
   return (
     <div className="card border-primary mb-3 card-w container">
       <div className="card-header">
       <img src={img} alt="logo" className="img-fluid" />
       </div>
 
-      <div className="card-body">
-           
-         <h4 className="card-title">Empleado responsable: {factura.empleadoId.empleadoId}</h4>
-        <p className="card-text">Hora Salida: {factura.horaSalida.value}</p>
+      <div className="card-body" id="3">
+      <div class="card-body" id="2">
+      <h5 className="card-title">Id de Factura: {factura.facturaId}</h5>
+      <h5 className="card-title">Id de Tiquete: {factura.tiqueteId.tiqueteId}</h5>
+         <h6 className="card-title">Empleado responsable: {factura.empleadoId.empleadoId}</h6>
+         <p className="card-text">Cantidad de Minutos: {factura.canitdadMinutos.value}</p>
+         <p className="card-text">Hora Salida: {factura.horaSalida.value}</p>
+         <p className="card-text">Valor Total: {factura.valorTotal.value}</p>
+         </div>
         <button 
           type="button"
-          onClick={()=> redireccionarVer(factura)}
-          className="btn btn-primary text-center form-control">Ver Informacion Ticket</button>
+          onClick={imprimirS}
+          className="btn btn-primary text-center form-control">Imprimir Factura</button>
 
-          <button 
-          type="button"
-          onClick={()=> redireccionarEditar(factura)}
-          className="btn btn-primary text-center form-control">Editar Ticket</button>
+          
 
-          <button 
-          type="button"
-          onClick={()=> redireccionarFactura(factura)}
-          className="btn btn-primary text-center form-control">Registrar Salida</button>
+        
 
           
       </div>

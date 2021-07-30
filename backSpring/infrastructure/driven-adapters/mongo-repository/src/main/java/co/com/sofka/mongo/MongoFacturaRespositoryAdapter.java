@@ -3,6 +3,7 @@ package co.com.sofka.mongo;
 import co.com.sofka.model.factura.Factura;
 import co.com.sofka.model.factura.gateways.FacturaRepository;
 import co.com.sofka.model.factura.values.CanitdadMinutos;
+import co.com.sofka.model.factura.values.EmpleadoId;
 import co.com.sofka.model.factura.values.FacturaId;
 import co.com.sofka.model.factura.values.HoraSalida;
 import co.com.sofka.model.tiquete.values.HoraIngreso;
@@ -93,6 +94,12 @@ public class MongoFacturaRespositoryAdapter extends AdapterOperations<FacturaEnt
             CanitdadMinutos canitdadMinutos = new CanitdadMinutos(String.valueOf(fecha/60000));
 
         return canitdadMinutos;
+    }
+
+    @Override
+    public List<Factura> findFacturaByEmpleadoId(EmpleadoId empleadoId) {
+
+        return this.repository.findFacturaByEmpleadoId(empleadoId);
     }
 
 }

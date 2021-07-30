@@ -8,6 +8,7 @@ import {
   onlyTicketAction,
   ticketEditAction
 } from "../../domain/actions/ticketActions";
+import Factura from "./Factura";
 import Ticket from "./Ticket";
 
 
@@ -49,6 +50,7 @@ function Tickets() {
   return (
 
     <Fragment>
+    
 
 
 
@@ -68,6 +70,7 @@ function Tickets() {
                 : tickets.map((ticket) => (
                   
                   <Ticket key={ticket.id} ticket={ticket}  />
+                  
                   
                   
                   

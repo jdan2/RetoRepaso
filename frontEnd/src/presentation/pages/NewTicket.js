@@ -40,59 +40,79 @@ const NewTicket = () =>{
 
     return(
 
-        <div className="container text-center">
-        <div className="row">
-            <div className="col-md-3"/>
-            <div className="col-md-6">
-                <div className="card my-5">
-                    <div className="card-body">
+        <div className="row justify-content-center text-center">
+      <div className="col-md-8">
+        <div className="card"></div>
+        <div className="submit-form"></div>
     <div>
         <h2>Agregar Ticket</h2>
         <form onSubmit={submitAddTicket}>
+        <div className="form-group">
             Id
+            <br />
             <input 
                 type="text"
                 name="id"
+                required="required"
+                minLength="4"
+                maxLength="20"
                 value={id}
                 onChange={e => setId(e.target.value)}    
             />
+            </div>
+            <div className="form-group">
             Hora de Ingreso
+            <br />
              <input 
                 type="datetime-local"
                 name="horaIngreso"
                 value={horaIngreso}
                 onChange={e => setHoraIngreso(e.target.value)}    
             />
+            </div>
+            <div className="form-group">
             Placa
+            <br />
              <input 
                 type="text"
                 name="placa"
                 value={placa}
                 onChange={e => setPlaca(e.target.value)}    
             />
+            </div>
+            <div className="form-group">
             Celda
+            <br />
              <input 
                 type="text"
                 name="celdaId"
                 value={celdaId}
                 onChange={e => setCeldaId(e.target.value)}    
             />
+            </div>
+            <div className="form-group">
             Tipo de Vehiculo
+            <br />
              <input 
                 type="text"
                 name="tipoVehiculo"
                 value={tipoVehiculo}
                 onChange={e => setTipoVehiculo(e.target.value)}    
             />
+
+            </div>
             <button type="submit"> Agregar</button>
+            
         </form>
+        
     </div>
+    
 
     </div>
     </div>
-    </div>
-    </div>
-    </div>
+    
+    
+    
     )
 }
 

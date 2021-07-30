@@ -28,7 +28,7 @@ const Ticket = ({ ticket }) => {
 const redireccionarFactura = ticket =>{
   dispatch(onlyTicketAction(ticket))
   
-  history.push(`/newfactura/factura/${ticket.tiqueteId}`)
+  history.push(`/newfactura/`)
 }
 
   return (

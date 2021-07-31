@@ -98,14 +98,14 @@ const dispatch = useDispatch();
        <table className="table table-sm table-bordered">
          <thead>
            <tr>
-             <th>ID</th>
-             <th>Nombre</th>
-             <th>Teléfono</th>
-             <th>Nombre de Usuario</th>
-             <th>Correo</th>
-             <th>Sitio Web</th>
-             <th>Ciudad</th>
-             <th>Empresa</th>
+             <th>ID de Factura</th>
+             <th>Id de Tiquete</th>
+             <th>Id de Empleado</th>
+             <th>Hora de Salida</th>
+             <th>Tiempo</th>
+             <th>Valor Total</th>
+             <th></th>
+             
            </tr>
          </thead>
 
@@ -113,13 +113,16 @@ const dispatch = useDispatch();
            {usuarios && 
            usuarios.map((usuario)=>(
              <tr key={usuario.id}>
-             <td>{usuario.tiqueteId.tiqueteId}</td>
              <td>{usuario.facturaId}</td>
+             <td>{usuario.tiqueteId.tiqueteId}</td>
+             <td>{usuario.empleadoId.empleadoId}</td>             
              <td>{usuario.horaSalida.value}</td>
+             <td>{usuario.canitdadMinutos.value}</td>
+             <td>{usuario.valorTotal.value}</td>
              
-             <button onClick={() => deleteTicket(usuario.tiqueteId)}>Eliminar</button>
+            {/* <button onClick={() => deleteTicket(usuario.tiqueteId)}>Eliminar</button>
             <button onClick={() => ticketone(usuario)}>Ver</button>
-            <button onClick={() =>ticketEdit(usuario)}>Edit</button>
+           <button onClick={() =>ticketEdit(usuario)}>Edit</button>*/}
             <td><button>Imprimir</button></td>
              
                

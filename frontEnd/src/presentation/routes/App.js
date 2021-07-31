@@ -23,6 +23,7 @@ import { auth } from '../../infrastructure/services/firebase/firebase';
 import VerTicket from '../pages/VerTicket';
 import Ticketes from '../pages/Ticketes';
 import EditarTicket from '../pages/EditarTicket';
+import Dashboard from '../pages/Dashboard';
 
 
 
@@ -102,6 +103,12 @@ class App extends Component {
                 path="/newticket"
                 authenticated={this.state.authenticated}
                 component={NewTicket}
+              />
+              <PrivateRoute
+                exact
+                path="/dashboard"
+                authenticated={this.state.authenticated}
+                component={Dashboard}
               />
               <PrivateRoute
                 exact

@@ -20,6 +20,8 @@ const Header = () => {
                     <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"lisfacturas/ver"}>Listado facturas</Link>
                     &nbsp;
                     <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/newfactura"}>Generar Factura</Link>
+                    &nbsp;
+                    <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/dashboard"}>Escritorio</Link>
 
                     
                         <span className="navbar-text mr-3 btn text-primary">Sesion - {auth().currentUser.email}</span>

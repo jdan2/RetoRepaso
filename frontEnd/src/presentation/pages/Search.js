@@ -98,14 +98,13 @@ const dispatch = useDispatch();
        <table className="table table-sm table-bordered">
          <thead>
            <tr>
-             <th>ID</th>
-             <th>Nombre</th>
-             <th>Teléfono</th>
-             <th>Nombre de Usuario</th>
-             <th>Correo</th>
-             <th>Sitio Web</th>
-             <th>Ciudad</th>
-             <th>Empresa</th>
+             <th>ID Tiquete</th>
+             <th>Id de Celda</th>
+             <th>Categoria</th>
+             <th>Placa</th>
+             <th>Hora Ingreso</th>
+             <th></th>
+             
            </tr>
          </thead>
 
@@ -116,10 +115,12 @@ const dispatch = useDispatch();
              <td>{usuario.tiqueteId}</td>
              <td>{usuario.celdaId}</td>
              <td>{usuario.tipoVehiculo}</td>
+             <td>{usuario.placa}</td>
+             <td>{usuario.horaIngreso}</td>
              
-             <button onClick={() => deleteTicket(usuario.tiqueteId)}>Eliminar</button>
+            { /*<button onClick={() => deleteTicket(usuario.tiqueteId)}>Eliminar</button>
             <button onClick={() => ticketone(usuario)}>Ver</button>
-            <button onClick={() =>ticketEdit(usuario)}>Edit</button>
+           <button onClick={() =>ticketEdit(usuario)}>Edit</button>*/}
             <td><button>Imprimir</button></td>
              
                

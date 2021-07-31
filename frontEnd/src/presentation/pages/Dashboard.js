@@ -12,16 +12,8 @@ export default class Dashboard extends Component {
           <div className="home">
             <section>
             <SearchFactura/>
-              <div>
-                <div className="container text-center py-5">
-                  <h1 className="display-4">Bienvenido a Estacionamiento JDS</h1>
-                  <p className="lead">
-                    Debes Iniciar Sesion para Obtener acceso a todos nuestros servicios
-                  </p>
-                  <hr />
-                  
-                </div>
-              </div>
+              
+             
             </section>
           </div>
         </div>

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 
 //Redux
@@ -9,6 +10,8 @@ import {
   facturaEditAction
 } from "../../domain/actions/facturaActions";
 import Factura from "./Factura";
+import Modale from "./Modal";
+import Search from "./Search";
 
 function Facturas() {
   const dispatch = useDispatch();
@@ -47,6 +50,8 @@ function Facturas() {
     <div className="row" text-center>
       <h1>Lista de Facturas</h1>
       <ul>
+      <Search/>
+      <Modale/>
 
         <div>
        {facturas.length === 0

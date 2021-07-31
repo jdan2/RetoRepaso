@@ -60,45 +60,91 @@ function Tickets() {
 
         {/*error ? <p className="alert-danger text-center">Hubo un error</p> : null}
   {cargando ? <p className="text-center">Cargando..</p> : null}*/}
-        <div className="col-6">
+      {/* <div className="col-6">
           <div className="border-init">
             <div className="container text-center">
 
+            <table className="table table-sm table-bordered">
+         <thead>
+           <tr>
+           <th>hola</th>
+           <th>hola</th>
+           <th>hola</th>
+           </tr>
+           </thead>
+           <tbody>
               {tickets.length === 0
                 ? "No hay registros"
                 
                 : tickets.map((ticket) => (
                   
-                  <Ticket key={ticket.id} ticket={ticket}  />
+                 <tr><Ticket  key={ticket.id} ticket={ticket}  /></tr> 
                   
                   
                   
                   
                 ))}
+                </tbody>
+                </table>
                 
-                <ul>
-        {tickets.map((ticket) => (
-          <li key={ticket.id}>
-            Celda: {ticket.celdaId}{" "}
-            
-            <button onClick={() => deleteTicket(ticket.tiqueteId)}>Eliminar</button>
-            <button onClick={() => ticketone(ticket)}>Ver</button>
-            <button onClick={() =>ticketEdit(ticket)}>Edit</button>
-          </li>
-        ))}
-      </ul>
+
+      
             </div>
             <ul>
         
       </ul>
-          </div>
+                </div>
           {pruebam}
+          imprmi
           <br />
           {edit}
         </div>
-      </div>
+      </div> */}
+      <div className="card"> 
+      <div className="col">
+       {pruebam}
+      
+        
 
       
+      
+      
+       
+       
+       </div>
+       
+       </div>
+
+      <table className="table table-sm table-bordered">
+         <thead>
+           <tr>
+           <th>Id del tiquete</th>
+           
+           <th>Celda Asignada</th>
+           <th>Placa Vehiculo</th>
+           <th>Acciones</th>
+           </tr>
+           </thead>
+           <tbody>
+           
+
+        {tickets.map((ticket) => (
+          <tr key={ticket.id}>
+         <td>  Tiquete: {ticket.tiqueteId}{" "}</td> 
+        
+         <td>  Celda: {ticket.celdaId}{" "}</td> 
+         <td>  Placa: {ticket.placa}{" "}</td> 
+            
+            <button onClick={() => deleteTicket(ticket.tiqueteId)}>Eliminar</button>
+            <button onClick={() => ticketone(ticket)}>Ver</button>
+            <button onClick={() =>ticketEdit(ticket)}>Edit</button>
+          </tr>
+          
+        ))}
+        
+        </tbody>
+                </table>
+                </div>
 
     </Fragment>
   );

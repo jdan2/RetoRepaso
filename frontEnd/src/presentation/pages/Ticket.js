@@ -16,7 +16,7 @@ const Ticket = ({ ticket }) => {
   const redireccionarVer = ticket =>{
       dispatch(onlyTicketAction(ticket))
       
-      history.push(`/listtickets/ver/${ticket.tiqueteId}`)
+      history.push(`/listtickets/ver/${tiqueteId}`)
   }
 
   const redireccionarEditar = ticket =>{
@@ -38,26 +38,39 @@ const redireccionarFactura = ticket =>{
       </div>
 
       <div className="card-body">
-           
-         <h4 className="card-title">Celda Asignada: {celdaId}</h4>
-        <p className="card-text">Categoria: {tipoVehiculo}</p>
-        <button 
+
+      <table className="table table-sm table-bordered">
+         <thead>
+           <tr>
+           <th>hola2</th>
+           <th>hola2</th>
+           <th>hola2</th> <th>hola2</th>
+           </tr>
+           </thead>
+           <tbody>
+           <tr>
+        <td><h4 className="card-title">Celda Asignada: {celdaId}</h4></td> 
+        <td><p className="card-text">Categoria: {tipoVehiculo}</p> </td>
+       <td> <button 
           type="button"
           onClick={()=> redireccionarVer(ticket)}
-          className="btn btn-primary text-center form-control">Ver Informacion Ticket</button>
+          className="btn btn-primary text-center form-control">Ver Informacion Ticket</button></td>
 
-          <button 
+         <td> <button 
           type="button"
           onClick={()=> redireccionarEditar(ticket)}
-          className="btn btn-primary text-center form-control">Editar Ticket</button>
+          className="btn btn-primary text-center form-control">Editar Ticket</button> </td>
 
           <button 
           type="button"
           onClick={()=> redireccionarFactura(ticket)}
           className="btn btn-primary text-center form-control">Registrar Salida</button>
 
-          
+          </tr>
+          </tbody>
+          </table>
       </div>
+      
       
     </div>
   );

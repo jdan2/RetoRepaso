@@ -36,15 +36,24 @@ const Ticketes = () => {
         <div className="col-6">
           <div className="border-init">
             <div className="container text-center">
+            <table className="table table-sm table-bordered">
+            <thead>
+            <tr></tr>
+            </thead>
+
+            <tbody>
+
 
               {ticketes.length === 0
                 ? "No hay registros"
                 
                 : ticketes.map((ticket) => (
                   
-                  <Ticket key={ticket.id} ticket={ticket} />
+                 <tr> <Ticket key={ticket.id} ticket={ticket} /></tr>
                   
                 ))}
+                </tbody>
+                </table>
             </div>
           </div>
         </div>

@@ -4,9 +4,13 @@ import axios from 'axios';
 import {makeStyles} from '@material-ui/core/styles';
 import {Table, TableContainer, TableHead, TableCell, TableBody, TableRow, Modal, Button, TextField} from '@material-ui/core';
 import {Edit, Delete} from '@material-ui/icons';
+import NewFactura from './NewFactura';
 
-const baseUrl='https://app-parqueadero-nodejs.herokuapp.com/listartiquetes'
-const baseurl2='https://app-parqueadero-nodejs.herokuapp.com/eliminartiquete/'
+
+
+const baseUrl='https://glacial-everglades-61490.herokuapp.com/api/obtenerfacturas'
+const baseurl2='https://glacial-everglades-61490.herokuapp.com/api/eliminartiquete'
+const baseurl3= 'https://glacial-everglades-61490.herokuapp.com/api/crearfactura'
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -37,10 +41,12 @@ const styles= useStyles();
 
   const [consolaSeleccionada, setConsolaSeleccionada]=useState({
     id: '',
-    celdaId:'',
-    tipoVehiculo: '',
-    placa: '',
-    horaIngreso: ''
+    facturaId:'',
+    tiqueteId:'',
+    empleadoId:'',
+    horaSalida: '',
+    canitdadMinutos: '',
+    valorTotal: ''
   })
 
   const handleChange=e=>{
@@ -60,7 +66,7 @@ const styles= useStyles();
   }
 
   const peticionPost=async()=>{
-    await axios.post(baseUrl, consolaSeleccionada)
+    await axios.post(baseurl3, consolaSeleccionada)
     .then(response=>{
       setData(data.concat(response.data))
       abrirCerrarModalInsertar()
@@ -114,16 +120,21 @@ const styles= useStyles();
   },[])
 
   const bodyInsertar=(
+      
     <div className={styles.modal}>
-      <h3>Agregar Nueva Consola</h3>
-      <TextField name="nombre" className={styles.inputMaterial} label="Nombre" onChange={handleChange}/>
+    <NewFactura/>
+
+      {/*<h3>Agregar Nueva Factura</h3>
+      <TextField name="facturaId" className={styles.inputMaterial} label="Id de factura" onChange={handleChange}/>
       <br />
-      <TextField name="empresa" className={styles.inputMaterial} label="Empresa" onChange={handleChange}/>
+      <TextField name="tiqueteId" className={styles.inputMaterial} label="Id de Tiquete" onChange={handleChange}/>
       <br />
-      <TextField name="lanzamiento" className={styles.inputMaterial} label="Lanzamiento" onChange={handleChange}/>
+      <TextField name="empleadoId" className={styles.inputMaterial} label="Id de empleado" onChange={handleChange}/>
       <br />
-      <TextField name="unidades_vendidas" className={styles.inputMaterial} label="Unidades Vendidas" onChange={handleChange}/>
-      <br /><br />
+      <TextField name="horaSalida" className={styles.inputMaterial} label="Hora de salida" onChange={handleChange}/>
+      <TextField name="canitdadMinutos" className={styles.inputMaterial} label="Tiempo Total" onChange={handleChange}/>
+      <TextField name="valorTotal" className={styles.inputMaterial} label="valorTotal" onChange={handleChange}/>
+      <br /><br />*/}
       <div align="right">
         <Button color="primary" onClick={()=>peticionPost()}>Insertar</Button>
         <Button onClick={()=>abrirCerrarModalInsertar()}>Cancelar</Button>
@@ -133,14 +144,18 @@ const styles= useStyles();
 
   const bodyEditar=(
     <div className={styles.modal}>
-      <h3>Editar Consola</h3>
-      <TextField name="nombre" className={styles.inputMaterial} label="Nombre" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.nombre}/>
+      <h3>Editar Factura</h3>
+      <TextField name="facturaId" className={styles.inputMaterial} label="Id de Factura" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.facturaId}/>
       <br />
-      <TextField name="empresa" className={styles.inputMaterial} label="Empresa" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.empresa}/>
+      <TextField name="tiqueteId" className={styles.inputMaterial} label="Id de Tiquete" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.tiqueteId.tiqueteId}/>
       <br />
-      <TextField name="lanzamiento" className={styles.inputMaterial} label="Lanzamiento" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.lanzamiento}/>
+      <TextField name="empleadoId" className={styles.inputMaterial} label="Id de Empleado" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.empleadoId.empleadoId}/>
       <br />
-      <TextField name="unidades_vendidas" className={styles.inputMaterial} label="Unidades Vendidas" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.unidades_vendidas}/>
+      <TextField name="horaSalida" className={styles.inputMaterial} label="Hora de Salida" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.horaSalida.value}/>
+      <br />
+      <TextField name="canitdadMinutos" className={styles.inputMaterial} label="Hora de Salida" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.canitdadMinutos.value}/>
+      <br />
+      <TextField name="valorTotal" className={styles.inputMaterial} label="Hora de Salida" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.valorTotal.value}/>
       <br /><br />
       <div align="right">
         <Button color="primary" onClick={()=>peticionPut()}>Editar</Button>
@@ -151,7 +166,7 @@ const styles= useStyles();
 
   const bodyEliminar=(
     <div className={styles.modal}>
-      <p>Estás seguro que deseas eliminar la consola <b>{consolaSeleccionada && consolaSeleccionada.nombre}</b> ? </p>
+      <p>Estás seguro que deseas eliminar la Factura <b>{consolaSeleccionada && consolaSeleccionada.facturaId}</b> ? </p>
       <div align="right">
         <Button color="secondary" onClick={()=>peticionDelete()} >Sí</Button>
         <Button onClick={()=>abrirCerrarModalEliminar()}>No</Button>
@@ -171,10 +186,12 @@ const styles= useStyles();
        <Table>
          <TableHead>
            <TableRow>
-             <TableCell>Nombre</TableCell>
-             <TableCell>Empresa</TableCell>
-             <TableCell>Año de Lanzamiento</TableCell>
-             <TableCell>Unidades Vendidas (millones)</TableCell>
+             <TableCell>Id Factura</TableCell>
+             <TableCell>Id Tiquete</TableCell>
+             <TableCell>Id de empleado</TableCell>
+             <TableCell>Hora Salida</TableCell>
+             <TableCell>Tiempo Total</TableCell>
+             <TableCell>Valor Total</TableCell>
              <TableCell>Acciones</TableCell>
            </TableRow>
          </TableHead>
@@ -182,10 +199,13 @@ const styles= useStyles();
          <TableBody>
            {data.map(consola=>(
              <TableRow key={consola.id}>
-               <TableCell>{consola.celdaId}</TableCell>
-               <TableCell>{consola.tiqueteId}</TableCell>
-               <TableCell>{consola.horaIngreso}</TableCell>
-               <TableCell>{consola.placa}</TableCell>
+               <TableCell>{consola.facturaId}</TableCell>
+               <TableCell>{consola.tiqueteId.tiqueteId}</TableCell>
+               <TableCell>{consola.empleadoId.empleadoId}</TableCell>
+               <TableCell>{consola.horaSalida.value}</TableCell>
+               <TableCell>{consola.canitdadMinutos.value}</TableCell>
+               <TableCell>{consola.valorTotal.value}</TableCell>
+               
                <TableCell>
                  <Edit className={styles.iconos} onClick={()=>seleccionarConsola(consola, 'Editar')}/>
                  &nbsp;&nbsp;&nbsp;

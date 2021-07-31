@@ -50,7 +50,7 @@ function Facturas() {
     <div className="row" text-center>
       <h1>Lista de Facturas</h1>
       <ul>
-      <Search/>
+      
       <Modale/>
 
         <div>

@@ -24,6 +24,7 @@ import VerTicket from '../pages/VerTicket';
 import Ticketes from '../pages/Ticketes';
 import EditarTicket from '../pages/EditarTicket';
 import Dashboard from '../pages/Dashboard';
+import CeldaTicket from '../pages/CeldaTicket';
 
 
 
@@ -102,7 +103,7 @@ class App extends Component {
                 exact
                 path="/newticket"
                 authenticated={this.state.authenticated}
-                component={NewTicket}
+                component={CeldaTicket}
               />
               <PrivateRoute
                 exact

@@ -52,7 +52,7 @@ const NewTicket = ({ history }) =>{
         <div className="form-group">
             Id
             <br />
-            <input 
+            <input className="container card"
                 type="text"
                 name="tiqueteId"
                 required="required"
@@ -65,7 +65,7 @@ const NewTicket = ({ history }) =>{
             <div className="form-group">
             Hora de Ingreso
             <br />
-             <input 
+             <input className="container card"
                 type="datetime-local"
                 name="horaIngreso"
                 value={horaIngreso}
@@ -75,7 +75,7 @@ const NewTicket = ({ history }) =>{
             <div className="form-group">
             Placa
             <br />
-             <input 
+             <input className="container card"
                 type="text"
                 name="placa"
                 value={placa}
@@ -85,7 +85,7 @@ const NewTicket = ({ history }) =>{
             <div className="form-group">
             Celda
             <br />
-             <input 
+             <input className="container card"
                 type="text"
                 name="celdaId"
                 value={celdaId}
@@ -95,7 +95,7 @@ const NewTicket = ({ history }) =>{
             <div className="form-group">
             Tipo de Vehiculo
             <br />
-             <input 
+             <input className="container card"
                 type="text"
                 name="tipoVehiculo"
                 value={tipoVehiculo}
@@ -103,7 +103,7 @@ const NewTicket = ({ history }) =>{
             />
 
             </div>
-            <button type="submit"> Agregar</button>
+            <button className="btn btn-success" type="submit"> Agregar</button>
             
         </form>
         

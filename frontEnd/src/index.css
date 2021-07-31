@@ -46,6 +46,8 @@ h1 a.text-light:hover {
     margin: 0;
   }
 }
+
+
 .acciones > *{
   flex: 1;
 }
@@ -56,5 +58,14 @@ max-width: 20rem;
 
 .image-card{
   width: 80px;
-  
+}
+
+.border-init{
+  border-style: inset;
+}
+
+@media(max-width: 600px){
+  .border-init{
+  border-style: none;
+}
 }

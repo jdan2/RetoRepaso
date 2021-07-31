@@ -9,6 +9,7 @@ import {
   onlyTicketAction,
   ticketEditAction
 } from "../../domain/actions/ticketActions";
+import { Link } from 'react-router-dom';
 
 
 
@@ -60,14 +61,20 @@ const dispatch = useDispatch();
     dispatch(listTicketsAction());
   };
 
-  const [pruebam, setpruebam] = useState([]);
-  const [edit, setEdit] = useState([]);
+  const [tiqueteId, setTiqueteId] = useState([]);
+  const [celdaId, setCeldaId] = useState([]);
+  const [placa, setPlaca] = useState([]);
+  const [tipoVehiculo, setTipoVehiculo]= useState([]);
+  const [horaIngreso, setHoraIngreso] = useState([]);
 
   const ticketone = (ticket) => {
     dispatch(onlyTicketAction(ticket));
     console.log("Todo el objeto seleccionado", ticket);
-    setpruebam(["Celda Asignada: ",ticket.celdaId, "Hora Ingreso: ", ticket.horaIngreso, ticket.placa]);
-    setEdit([ticket.horaIngreso]);
+    setCeldaId([ticket.celdaId]);
+    setTiqueteId([ticket.tiqueteId]);
+    setPlaca([ticket.placa]);
+    setTipoVehiculo([ticket.tipoVehiculo]);
+    setHoraIngreso([ticket.horaIngreso]);
     //document.getElementById('verTicket').innerHTML = `<li style="color:red">${ticket.celda}</li><li style="color:red">${ticket.horaIngreso}</li>`;
   };
    
@@ -80,22 +87,83 @@ const dispatch = useDispatch();
   
   const tickets = useSelector((state) => state.ticketReducer.tickets);
 
+  function imprimirS(){
+
+    var ficha = document.getElementById(2);
+	  var ventimp = window.open(' ', 'popimpr');
+	  ventimp.document.write( ficha.innerHTML );
+	  ventimp.document.close();
+	  ventimp.print( );
+	  ventimp.close();
+     
+
+  }
+
   return (
     <div className="App">
       <div className="containerInput">
         <input
           className="form-control inputBuscar"
           value={busqueda}
-          placeholder="Búsqueda por Nombre o Empresa"
+          placeholder="Búsqueda por Coincidencia Tiquetes"
           onChange={handleChange}
         />
         <button className="btn btn-success">
    
         </button>
-      </div>
 
+        
+      </div>
+      <div id="2">
+      <form action="">
+      <div class="container">
+  <h2>EstacionamientoJDS</h2>
+  <h4>Ingreso</h4>
+  <div class="panel-group">
+    <div class="panel panel-default">
+      <div class="panel-heading">Id Tiquete</div>
+      <div class="panel-body">{tiqueteId}</div>
+    </div>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">Id de Celda</div>
+      <div class="panel-body">{celdaId}</div>
+    </div>
+
+    <div class="panel panel-success">
+      <div class="panel-heading">Categoria</div>
+      <div class="panel-body">{tipoVehiculo}</div>
+    </div>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">Placa</div>
+      <div class="panel-body">{placa}</div>
+    </div>
+
+    <div class="panel panel-warning">
+      <div class="panel-heading">HoraIngreso</div>
+      <div class="panel-body">{horaIngreso}</div>
+    </div>
+
+    
+  </div>
+  </div>
+
+
+      </form>
+
+     
+       </div>
+      <button className="btn btn-primary " onClick={()=> imprimirS()}>Imprimir</button>
+      <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/newfactura"}>Generar Factura</Link>
      <div className="table-responsive">
+     
+    
        <table className="table table-sm table-bordered">
+       
+       
+       
+       
          <thead>
            <tr>
              <th>ID Tiquete</th>
@@ -111,7 +179,8 @@ const dispatch = useDispatch();
          <tbody>
            {usuarios && 
            usuarios.map((usuario)=>(
-             <tr key={usuario.id}>
+               
+             <tr key={usuario.id} >
              <td>{usuario.tiqueteId}</td>
              <td>{usuario.celdaId}</td>
              <td>{usuario.tipoVehiculo}</td>
@@ -121,17 +190,21 @@ const dispatch = useDispatch();
             { /*<button onClick={() => deleteTicket(usuario.tiqueteId)}>Eliminar</button>
             <button onClick={() => ticketone(usuario)}>Ver</button>
            <button onClick={() =>ticketEdit(usuario)}>Edit</button>*/}
-            <td><button>Imprimir</button></td>
+           <button onClick={() => ticketone(usuario)}>Ver</button>
              
                
              </tr>
             
 
            ))}
-           {pruebam}
+           
          </tbody>
+         
 
        </table>
+       
+
+       
 
      </div>
     </div>

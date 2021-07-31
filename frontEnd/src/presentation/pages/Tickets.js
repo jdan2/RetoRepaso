@@ -46,6 +46,16 @@ function Tickets() {
   
   const tickets = useSelector((state) => state.ticketReducer.tickets);
   
+  function imprimirS(){
+
+    var ficha = document.getElementById(2);
+	  var ventimp = window.open(' ', 'popimpr');
+	  ventimp.document.write( ficha.innerHTML );
+	  ventimp.document.close();
+	  ventimp.print( );
+	  ventimp.close();
+
+  }
     
   return (
 
@@ -101,7 +111,7 @@ function Tickets() {
         </div>
       </div> */}
       <div className="card"> 
-      <div className="col">
+      <div className="col" id="2">
        {pruebam}
       
         
@@ -111,7 +121,8 @@ function Tickets() {
       
        
        
-       </div>
+       </div><button onClick={imprimirS}>Imprimir Ticket Seleccionado</button>
+       
        
        </div>
 

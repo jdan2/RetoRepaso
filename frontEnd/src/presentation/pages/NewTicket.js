@@ -4,10 +4,10 @@ import {useDispatch} from 'react-redux';
 //Acciones de redux
 import {addNewTicketAction} from '../../domain/actions/ticketActions'; 
 
-const NewTicket = () =>{
+const NewTicket = ({ history }) =>{
 
     //Datos de mi formulario
-    const [id, setId] = useState('');
+    const [tiqueteId, setId] = useState('');
     const [horaIngreso, setHoraIngreso] = useState('');
     const [placa, setPlaca] = useState('');
     const [celdaId, setCeldaId] = useState('');
@@ -27,7 +27,7 @@ const NewTicket = () =>{
 
         //Ejecutar accion del nuevo elemento
         addTicket({
-            id,
+            tiqueteId,
             celdaId,
             tipoVehiculo,
             placa,
@@ -35,7 +35,9 @@ const NewTicket = () =>{
             
             
             
-        })        
+        })   
+        
+        history.push("/listtickets");
     }
 
     return(
@@ -52,11 +54,11 @@ const NewTicket = () =>{
             <br />
             <input 
                 type="text"
-                name="id"
+                name="tiqueteId"
                 required="required"
                 minLength="4"
                 maxLength="20"
-                value={id}
+                value={tiqueteId}
                 onChange={e => setId(e.target.value)}    
             />
             </div>

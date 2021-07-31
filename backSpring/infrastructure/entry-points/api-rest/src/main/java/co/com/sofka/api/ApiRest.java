@@ -79,8 +79,8 @@ public class ApiRest {
         return facturaMapper.facturaToDto(actualizarFacturaUseCase.updateCount(factura));
     }
 
-    @DeleteMapping(path = "/eliminarfactura/{id}")
-    public void eliminarFactura(@PathVariable("id") String id) {
-        borrarFacturaUseCase.deleteFactura(id);
+    @DeleteMapping(path = "/eliminarfactura/{id}/{usuario}")
+    public void eliminarFactura(@PathVariable("id") String id ,@PathVariable("usuario") EmpleadoId empleadoId) {
+        borrarFacturaUseCase.deleteFactura(id, empleadoId);
     }
 }

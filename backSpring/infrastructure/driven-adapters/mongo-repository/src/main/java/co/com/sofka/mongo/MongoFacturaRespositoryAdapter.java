@@ -10,6 +10,7 @@ import co.com.sofka.model.tiquete.values.HoraIngreso;
 import co.com.sofka.mongo.entities.FacturaEntity;
 import co.com.sofka.mongo.helper.AdapterOperations;
 import lombok.SneakyThrows;
+import lombok.var;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
@@ -78,8 +79,12 @@ public class MongoFacturaRespositoryAdapter extends AdapterOperations<FacturaEnt
     }
 
     @Override
-    public void deletefactura(String idFactura) {
-        this.repository.deleteById(idFactura);
+    public void deletefactura(String idFactura, EmpleadoId empleadoId) {
+        Optional<FacturaEntity> factura = repository.findById(idFactura);
+        if(factura.get().getEmpleadoId().equals(empleadoId)){
+                 this.repository.deleteById(idFactura);
+        }
+
     }
 
     @SneakyThrows

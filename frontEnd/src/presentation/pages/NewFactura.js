@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {addNewFacturaAction} from '../../domain/actions/facturaActions'; 
 import { auth } from '../../infrastructure/services/firebase/firebase';
 
-const NewFactura = () =>{
+const NewFactura = ({ history }) =>{
 
     const ticket = useSelector(
         (state) => state.ticketReducer.ticketone
@@ -46,7 +46,8 @@ const NewFactura = () =>{
             
             
             
-        })        
+        })   
+        history.push("/lisfacturas");    
     }
 
     return(

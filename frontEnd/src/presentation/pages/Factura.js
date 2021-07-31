@@ -6,6 +6,7 @@ import img from './../img/PATIOS3.jpg'
 import {useDispatch} from 'react-redux';
 import { uuid } from "uuid";
 import { onlyFacturaAction } from "../../domain/actions/facturaActions";
+import { Hidden } from "@material-ui/core";
 
 const Factura = ({ factura }) => {
   
@@ -48,13 +49,13 @@ function imprimirS(){
   }
 
   return (
-    <div className="card border-primary mb-3 card-w container">
-      <div className="card-header">
-      <img src={img} alt="logo" className="img-fluid" />
-      </div>
 
-      <div className="card-body" id="3">
-      <div class="card-body" id="2">
+    <div className="container">
+      <div className="row">
+        <div className="card-columns">
+      
+
+     
       <h5 className="card-title">Id de Factura: {factura.facturaId}</h5>
       <h5 className="card-title">Id de Tiquete: {factura.tiqueteId.tiqueteId}</h5>
          <h6 className="card-title">Empleado responsable: {factura.empleadoId.empleadoId}</h6>
@@ -70,11 +71,10 @@ function imprimirS(){
           
 
         
-
-          
+    
       </div>
-      
-    </div>
+
+</div>
   );
 };
 

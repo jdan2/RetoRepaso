@@ -1,3 +1,6 @@
+import { toast } from 'react-toastify';
+import { Redirect } from 'react-router-dom';
+
 import {
     //ADD
     ADD_TICKET,
@@ -20,6 +23,7 @@ import {
 
 
 import clientAxios from './../../infrastructure/services/api/axios';
+import { Alert } from 'bootstrap';
 
 //Crear Acciones de ticketes
 export function addNewTicketAction(ticket){
@@ -83,14 +87,15 @@ const listTicketsFailure = () =>({
 })
 
 //Eliminar 
-export function deleteTicketAction(tiqueteId){
+export function deleteTicketAction(tiqueteId, history){
     return async (dispatch) =>{
         dispatch(deleteTicket());
         try{
             await clientAxios.delete(`/eliminartiquete?id=${tiqueteId}`);
-            dispatch(deleteTicketSuccess())
-            alert("Se ha eliminado correctamente");
-        }catch(error){
+            dispatch(deleteTicketSuccess())           
+            alert.call("Se ha eliminado correctamente")
+            
+            }catch(error){
             dispatch(deleteTicketFailure);
         }
     }
@@ -103,7 +108,8 @@ const deleteTicket = () =>({
 
 const deleteTicketSuccess = () => ({
     type:DELETE_TICKET_SUCCESS,
-    payload:'Se ha eliminado'
+    payload:'Se ha eliminado',
+    
 })
 
 const deleteTicketFailure = () => ({

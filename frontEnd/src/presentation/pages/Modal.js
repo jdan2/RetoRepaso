@@ -9,7 +9,9 @@ import NewFactura from './NewFactura';
 
 
 const baseUrl='https://glacial-everglades-61490.herokuapp.com/api/obtenerfacturas'
-const baseurl2='https://glacial-everglades-61490.herokuapp.com/api/eliminartiquete'
+const baseUrlM='https://glacial-everglades-61490.herokuapp.com/api/actualizarfactura'
+
+
 const baseurl3= 'https://glacial-everglades-61490.herokuapp.com/api/crearfactura'
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +42,7 @@ const styles= useStyles();
   const [modalEliminar, setModalEliminar]=useState(false);
 
   const [consolaSeleccionada, setConsolaSeleccionada]=useState({
-    id: '',
+    
     facturaId:'',
     tiqueteId:'',
     empleadoId:'',
@@ -48,6 +50,8 @@ const styles= useStyles();
     canitdadMinutos: '',
     valorTotal: ''
   })
+
+  const baseurl2=`https://glacial-everglades-61490.herokuapp.com/api/eliminarfactura/${consolaSeleccionada.facturaId}`
 
   const handleChange=e=>{
     const {name, value}=e.target;
@@ -74,15 +78,17 @@ const styles= useStyles();
   }
 
   const peticionPut=async()=>{
-    await axios.put(baseUrl+consolaSeleccionada.id, consolaSeleccionada)
+    await axios.put(baseUrlM+consolaSeleccionada.facturaId, consolaSeleccionada)
     .then(response=>{
       var dataNueva=data;
       dataNueva.map(consola=>{
-        if(consolaSeleccionada.id===consola.id){
-          consola.nombre=consolaSeleccionada.nombre;
-          consola.lanzamiento=consolaSeleccionada.lanzamiento;
-          consola.empresa=consolaSeleccionada.empresa;
-          consola.unidades_vendidas=consolaSeleccionada.unidades_vendidas;
+        if(consolaSeleccionada.facturaId===consola.facturaId){
+          consola.facturaId=consolaSeleccionada.facturaId;
+          consola.tiqueteId=consolaSeleccionada.tiqueteId.tiqueteId;
+          consola.empleadoId=consolaSeleccionada.empleadoId.empleadoId;
+          consola.horaSalida=consolaSeleccionada.horaSalida.value;
+          consola.canitdadMinutos=consolaSeleccionada.canitdadMinutos.value;
+          consola.valorTotal=consolaSeleccionada.valorTotal.value;
         }
       })
       setData(dataNueva);
@@ -91,9 +97,9 @@ const styles= useStyles();
   }
 
   const peticionDelete=async()=>{
-    await axios.delete(baseurl2+consolaSeleccionada.id)
+    await axios.delete(baseurl2+consolaSeleccionada.facturaId)
     .then(response=>{
-      setData(data.filter(consola=>consola.id!==consolaSeleccionada.id));
+      setData(data.filter(consola=>consola.facturaId!==consolaSeleccionada.facturaId));
       abrirCerrarModalEliminar();
     })
   }
@@ -180,7 +186,7 @@ const styles= useStyles();
   return (
     <div className="App">
       <br />
-    <Button onClick={()=>abrirCerrarModalInsertar()}>Insertar</Button>
+  {/*  <Button onClick={()=>abrirCerrarModalInsertar()}>Insertar</Button>*/}
       <br /><br />
      <TableContainer>
        <Table>

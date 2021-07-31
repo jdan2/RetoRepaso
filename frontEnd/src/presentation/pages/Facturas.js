@@ -48,12 +48,12 @@ function Facturas() {
   return (
     <div className="container">
     <div className="row" text-center>
-      <h1>Lista de Facturas</h1>
-      <ul>
-      <Search/>
+      <h1 className="text-center">Lista de Facturas</h1>
+      
+      
       <Modale/>
 
-        <div>
+       {/* <div>
        {facturas.length === 0
           ? "No hay registros"
           
@@ -64,17 +64,13 @@ function Facturas() {
           ))}
           
 
-        </div>
+          </div>*/}
 
-        <div className="col-6">
-          <div className="border-init">
-            <div className="container text-center"></div>
-        <div className="card border-primary mb-3 card-w container">
-      <div className="card-header">
+       
       {/*<img src={img} alt="logo" className="img-fluid" />*/}
-      </div>
+      
 
-        {facturas.map((factura) => (
+    {/*    {facturas.map((factura) => (
           <li key={factura.id}>
             {factura.facturaId}{" "}
             {factura.empleadoId.empleadoId}{" "}
@@ -83,18 +79,15 @@ function Facturas() {
             <button onClick={() =>facturaEdit(factura)}>Edit</button>
           </li>
         ))}
+    */}
 
-        </div>
-        </div>
-        </div>
-      </ul>
-      
-        <div id="verFactura">
-          <h1>{pruebam}</h1>
-        </div>
         
-    </div>
-    </div>
+      
+        
+        </div>
+        </div>
+    
+  
     
   );
 }

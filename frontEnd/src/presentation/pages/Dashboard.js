@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Search from "./Search";
+import SearchFactura from "./SearchFactura";
 
 //import { Link } from "react-router-dom";
 
@@ -10,7 +11,7 @@ export default class Dashboard extends Component {
         <div className="col-6">
           <div className="home">
             <section>
-            <Search/>
+            <SearchFactura/>
               <div>
                 <div className="container text-center py-5">
                   <h1 className="display-4">Bienvenido a Estacionamiento JDS</h1>

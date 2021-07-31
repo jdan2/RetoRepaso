@@ -14,11 +14,8 @@ public interface FacturaRepository {
     List<Factura> listarFactura();
     Factura consultarFactura (String idFactura);
     Factura updateFactura(Factura factura);
-    void deletefactura(String idFactura);
+    void deletefactura(String idFactura, EmpleadoId empleadoId );
     CanitdadMinutos canitdadMinutos(HoraIngreso horaIngreso, HoraSalida horaSalida);
-<<<<<<< HEAD
-
-=======
     List<Factura> findFacturaByEmpleadoId(EmpleadoId empleadoId);
->>>>>>> c621c970075d4ccc955f84f5ac23678e51e92e10
+
 }

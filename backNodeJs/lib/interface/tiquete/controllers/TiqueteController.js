@@ -4,13 +4,14 @@ const EditarTiquete = require('../../../application/tiquete/use_cases/EditarTiqu
 const ConsultarTiquete = require('../../../application/tiquete/use_cases/ConsultarTiquete');
 const EliminarTiquete = require('../../../application/tiquete/use_cases/EliminarTiquete');
 const ListarTiquetesPorTipoVehiculo = require('../../../application/tiquete/use_cases/ListarTiquetesPorTipoVehiculo');
+const ConsultarCelda = require('../../../application/celda/use_cases/ConsultarCelda');
 
 module.exports = {
     async createTiquete(httpRequest){
-    
         const serviceLocator = httpRequest.app.serviceLocator; 
         const { id, celdaId, tipoVehiculo, placa, horaIngreso } = httpRequest.body;
-        const tiquete = await CrearTiquete(id, celdaId, tipoVehiculo, placa, horaIngreso, serviceLocator);
+        const celda = await ConsultarCelda(celdaId);
+        const tiquete = await CrearTiquete(id, celda.celdaId, tipoVehiculo, placa, horaIngreso, serviceLocator);
         return tiquete;
     },
     async listarTiquetes(httpRequest){

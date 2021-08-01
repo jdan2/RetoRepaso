@@ -7,6 +7,10 @@ module.exports = class {
     merge(domainTiquete) {
       throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
+
+    modify(domainTiquete) {
+      throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
+    }
   
     remove(tiqueteId) {
       throw new Error('ERR_METHOD_NOT_IMPLEMENTED');

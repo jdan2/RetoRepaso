@@ -30,5 +30,9 @@ app.use(`${apiRoot}/consultartiquete`, tiqueteRoute);
 app.use(`${apiRoot}/eliminartiquete`, tiqueteRoute);
 
 app.use(`${apiRoot}/crearCelda`, celdaRoute);
+app.use(`${apiRoot}/consultarCelda`, celdaRoute);
+app.use(`${apiRoot}/modificarCelda`, celdaRoute);
+app.use(`${apiRoot}/listarceldas`, celdaRoute);
+
 
 module.exports = app;

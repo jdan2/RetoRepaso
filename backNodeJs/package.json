@@ -29,7 +29,8 @@
     "dotenv": "^6.2.0",
     "faker": "^4.1.0",
     "jest": "^24.9.0",
-    "mongodb-memory-server": "^4.0.2"
+    "mongodb-memory-server": "^4.0.2",
+    "supertest": "^6.1.4"
   },
   "engines": {
     "node": "14.17.1"

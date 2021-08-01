@@ -71,7 +71,7 @@ const NewFactura = ({ history }) =>{
     <div className="container justify-text-center">
         <h2>Agregar Factura</h2>
         <form onSubmit={submitAddFactura}>
-        <div className="form-group">
+        {/*<div className="form-group">
            <label htmlFor="Id Factura">Id Factura</label> 
            
             <input 
@@ -83,8 +83,8 @@ const NewFactura = ({ history }) =>{
                 maxLength={50}
                 value={facturaId}
                 onChange={e => setfacturaId(e.target.value)}    
-            />
-            </div>
+            /> 
+            </div>*/}
             <div className="form-group">
             Id Tiquete
             <input 
@@ -117,7 +117,7 @@ const NewFactura = ({ history }) =>{
              <input 
                 type="text"
                 name="empleadoId"
-                value={auth().currentUser.displayName}
+                value={empleadoId}
                 onChange={e => setEmpleadoId(e.target.value)} 
                  
             />

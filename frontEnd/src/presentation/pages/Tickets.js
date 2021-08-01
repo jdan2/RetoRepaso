@@ -88,9 +88,9 @@ function Tickets() {
     //document.getElementById('verTicket').innerHTML = `<li style="color:red">${ticket.celda}</li><li style="color:red">${ticket.horaIngreso}</li>`;
   };
    
-   const ticketEdit= async (ticket) =>{
+   const ticketEdit= async (tiqueteId, ticket) =>{
     console.log("algo");
-    dispatch(await ticketEditAction(ticket.tiqueteId, ticket.tipoVehiculo, ticket.horaIngreso, ticket.celdaId,ticket.placa))
+    dispatch(await ticketEditAction(ticket.tiqueteId, ticket.celdaId,  ticket.horaIngreso, ticket.placa, ticket.tipoVehiculo ))
    }
    //const error = useSelector((state) => state.tickets.error);
 //const cargando = useSelector((state) => state.tickets.loading);
@@ -138,10 +138,10 @@ function Tickets() {
       <br />
       <TextField name="celdaId" className={styles.inputMaterial} label="Id de Celda" onChange={handleChange} value={consolaSeleccionada.celdaId && consolaSeleccionada.celdaId}/>
       <br />
-      <TextField name="placa" className={styles.inputMaterial} label="Placa" onChange={handleChange} value={consolaSeleccionada.placa && consolaSeleccionada.placa}/>
-      <br />
       <TextField name="horaIngreso" className={styles.inputMaterial} label="Hora de Ingreso" onChange={handleChange} value={consolaSeleccionada.horaIngreso && consolaSeleccionada.horaIngreso}/>
       <br />
+      <TextField name="placa" className={styles.inputMaterial} label="Placa" onChange={handleChange} value={consolaSeleccionada.placa && consolaSeleccionada.placa}/>
+      <br />      
       <TextField name="tipoVehiculo" className={styles.inputMaterial} label="tipoVehiculo" onChange={handleChange} value={consolaSeleccionada.tipoVehiculo && consolaSeleccionada.tipoVehiculo}/>
       <br />
       

@@ -178,12 +178,12 @@ const obtenerTicketVerAction = ticket =>({
     payload: ticket
 })
 
-export const ticketEditAction =async (tiqueteId,horaIngreso, placa, celdaId,tipoVehiculo) => {
+export const ticketEditAction =async (tiqueteId, celdaId,horaIngreso, placa, tipoVehiculo) => {
     return async (dispatch) =>{
     dispatch(editTicket())
-    const ticket = {tiqueteId:tiqueteId, horaIngreso:horaIngreso, placa:placa, celdaId:celdaId, tipoVehiculo:tipoVehiculo}
-   // await clientAxios.put(`/editartiquete?id=${tiqueteId,ticket}`);
-    await clientAxios.put('/editartiquete/',tiqueteId, ticket);
+    const ticket = {tiqueteId:tiqueteId, celdaId:celdaId,  horaIngreso:horaIngreso, placa:placa, tipoVehiculo:tipoVehiculo}
+   await clientAxios.put(`/editartiquete?id=${tiqueteId}`, ticket);
+   // await clientAxios.put('/editartiquete/',tiqueteId, ticket);
     }
 }
 

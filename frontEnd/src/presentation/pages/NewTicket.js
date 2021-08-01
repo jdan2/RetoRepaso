@@ -1,10 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useSelector} from 'react';
 import {useDispatch} from 'react-redux';
+
+
 
 //Acciones de redux
 import {addNewTicketAction} from '../../domain/actions/ticketActions'; 
+import {
+    listCeldasAction
+    
+  } from "../../domain/actions/ticketActions";
 
 const NewTicket = ({ history }) =>{
+
+    
 
     //Datos de mi formulario
     const [tiqueteId, setId] = useState('');
@@ -16,8 +24,12 @@ const NewTicket = ({ history }) =>{
     //Temporalmente con useDispatch y useSelector
     const dispatch = useDispatch();
 
+    
+
     //Crear la accion para disparar la funcion
     const addTicket = (ticket) => dispatch(addNewTicketAction(ticket));
+
+
 
     const submitAddTicket = e =>{
         //Prevengo que se recargue la pagina
@@ -36,11 +48,14 @@ const NewTicket = ({ history }) =>{
             
             
         })  
-        history.push("/dashboard");  
+       
         
           
     }
 
+    
+    
+    
     return(
 
         <div className="row justify-content-center text-center">
@@ -51,7 +66,7 @@ const NewTicket = ({ history }) =>{
         <h2>Agregar Ticket</h2>
         <form onSubmit={submitAddTicket}>
         <div className="form-group">
-            Id
+            {/*Id
             <br />
             <input className="container card"
                 type="text"
@@ -61,7 +76,7 @@ const NewTicket = ({ history }) =>{
                 maxLength="20"
                 value={tiqueteId}
                 onChange={e => setId(e.target.value)}    
-            />
+            />*/}
             </div>
             <div className="form-group">
             Hora de Ingreso

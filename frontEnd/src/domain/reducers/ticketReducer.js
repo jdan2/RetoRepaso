@@ -5,6 +5,9 @@ import {
     LIST_TICKETS,
     LIST_TICKETS_SUCCESS,
     LIST_TICKETS_FAILURE,
+    LIST_CELDAS,
+    LIST_CELDAS_SUCCESS,
+    LIST_CELDAS_FAILURE,
     DELETE_TICKET,
     DELETE_TICKET_SUCCESS,
     DELETE_TICKET_FAILURE,
@@ -52,6 +55,23 @@ const ticketsReducer =(state=initialState, action) =>{
                 tickets: action.payload
             }
         case LIST_TICKETS_FAILURE:
+            return{
+             ...state,
+             loading:false,
+             error: action.payload
+            }
+        case LIST_CELDAS:
+            return{
+                ...state,
+                loading:action.payload
+            }
+        case LIST_CELDAS_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                tickets: action.payload
+            }
+        case LIST_CELDAS_FAILURE:
             return{
              ...state,
              loading:false,

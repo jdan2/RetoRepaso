@@ -117,7 +117,7 @@ const NewFactura = ({ history }) =>{
              <input 
                 type="text"
                 name="empleadoId"
-                value={empleadoId}
+                value={auth().currentUser.displayName}
                 onChange={e => setEmpleadoId(e.target.value)} 
                  
             />

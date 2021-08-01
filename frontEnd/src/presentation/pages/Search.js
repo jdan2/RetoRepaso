@@ -108,15 +108,14 @@ const dispatch = useDispatch();
           placeholder="Búsqueda por Coincidencia Tiquetes"
           onChange={handleChange}
         />
-        <button className="btn btn-success">
-   
-        </button>
+        
 
         
       </div>
+      <br />
       <div id="2">
       <form action="">
-      <div class="container">
+      <div class="container text-center card">
   <h2>EstacionamientoJDS</h2>
   <h4>Ingreso</h4>
   <div class="panel-group">
@@ -154,8 +153,10 @@ const dispatch = useDispatch();
 
      
        </div>
-      <button className="btn btn-primary " onClick={()=> imprimirS()}>Imprimir</button>
-      <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/newfactura"}>Generar Factura</Link>
+     
+      <Link className="nav-item nav-link mr-3 btn btn-dark text-white btn-outline-secondary "  to={"/newfactura"}>Generar Factura</Link>
+      <Link className="nav-item nav-link mr-3 btn btn-info text-dark btn btn-outline-primary "  onClick={()=> imprimirS()}>Imprimir Tiquete</Link>
+      
      <div className="table-responsive">
      
     

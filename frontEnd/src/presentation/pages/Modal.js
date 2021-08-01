@@ -51,7 +51,7 @@ const styles= useStyles();
     valorTotal: ''
   })
 
-  const baseurl2=`https://glacial-everglades-61490.herokuapp.com/api/eliminarfactura/${consolaSeleccionada.facturaId}`
+  const baseurlE=`https://glacial-everglades-61490.herokuapp.com/api/eliminarfactura/${consolaSeleccionada.facturaId}`
 
   const handleChange=e=>{
     const {name, value}=e.target;
@@ -78,17 +78,17 @@ const styles= useStyles();
   }
 
   const peticionPut=async()=>{
-    await axios.put(baseUrlM+consolaSeleccionada.facturaId, consolaSeleccionada)
+    await axios.put(baseUrlM, consolaSeleccionada)
     .then(response=>{
       var dataNueva=data;
       dataNueva.map(consola=>{
-        if(consolaSeleccionada.facturaId===consola.facturaId){
+        if(consolaSeleccionada.facturaId===consola){
           consola.facturaId=consolaSeleccionada.facturaId;
-          consola.tiqueteId=consolaSeleccionada.tiqueteId.tiqueteId;
-          consola.empleadoId=consolaSeleccionada.empleadoId.empleadoId;
-          consola.horaSalida=consolaSeleccionada.horaSalida.value;
-          consola.canitdadMinutos=consolaSeleccionada.canitdadMinutos.value;
-          consola.valorTotal=consolaSeleccionada.valorTotal.value;
+          consola.tiqueteId.tiqueteId=consolaSeleccionada.tiqueteId.tiqueteId;
+          consola.empleadoId.empleadoId=consolaSeleccionada.empleadoId.empleadoId;
+          consola.horaSalida.value=consolaSeleccionada.horaSalida.value;
+          consola.canitdadMinutos.value=consolaSeleccionada.canitdadMinutos.value;
+          consola.valorTotal.value=consolaSeleccionada.valorTotal.value;
         }
       })
       setData(dataNueva);
@@ -97,7 +97,7 @@ const styles= useStyles();
   }
 
   const peticionDelete=async()=>{
-    await axios.delete(baseurl2+consolaSeleccionada.facturaId)
+    await axios.delete(baseurlE)
     .then(response=>{
       setData(data.filter(consola=>consola.facturaId!==consolaSeleccionada.facturaId));
       abrirCerrarModalEliminar();

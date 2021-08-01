@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import Login from "../pages/autenticacion/Login"
 //import { Link } from "react-router-dom";
 
+
 export default class HomePage extends Component {
   render() {
     return (
       <div className="row">
         <div className="col-6">
-          <div className="home">
+          <div className="home imageHome">
             <section>
               <div>
                 <div className="container text-center py-5">

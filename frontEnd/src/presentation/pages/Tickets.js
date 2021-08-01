@@ -11,6 +11,32 @@ import {
 import Factura from "./Factura";
 import Ticket from "./Ticket";
 
+import {makeStyles} from '@material-ui/core/styles';
+import {Table, TableContainer, TableHead, TableCell, TableBody, TableRow, Modal, Button, TextField} from '@material-ui/core';
+import {Edit, Delete} from '@material-ui/icons';
+
+
+
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    position: 'absolute',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)'
+  },
+  iconos:{
+    cursor: 'pointer'
+  }, 
+  inputMaterial:{
+    width: '100%'
+  }
+}));
+
 
 function Tickets() {
 
@@ -25,6 +51,31 @@ function Tickets() {
     dispatch(deleteTicketAction(tiqueteId));
     dispatch(listTicketsAction());
   };
+
+
+  const styles= useStyles();
+  const [data, setData]=useState([]);
+  const [modalInsertar, setModalInsertar]=useState(false);
+  const [modalEditar, setModalEditar]=useState(false);
+  const [modalEliminar, setModalEliminar]=useState(false);
+
+  const [consolaSeleccionada, setConsolaSeleccionada]=useState({
+    
+    
+    tiqueteId:'',
+    celdaId:'',
+    tipoVehiculo: '',
+    placa: '',
+    horaIngreso: ''
+  })
+  const handleChange=e=>{
+    const {name, value}=e.target;
+    setConsolaSeleccionada(prevState=>({
+      ...prevState,
+      [name]: value
+    }))
+    console.log(consolaSeleccionada);
+  }
 
   const [pruebam, setpruebam] = useState([]);
   const [edit, setEdit] = useState([]);
@@ -56,6 +107,63 @@ function Tickets() {
 	  ventimp.close();
 
   }
+
+
+  const abrirCerrarModalInsertar=()=>{
+    setModalInsertar(!modalInsertar);
+  }
+
+  const abrirCerrarModalEditar=()=>{
+    setModalEditar(!modalEditar);
+  }
+
+  const abrirCerrarModalEliminar=()=>{
+    setModalEliminar(!modalEliminar);
+  }
+
+  const seleccionarConsola=(consola, caso)=>{
+    setConsolaSeleccionada(consola);
+    (caso==='Editar')?abrirCerrarModalEditar():abrirCerrarModalEliminar()
+  }
+
+  useEffect(async()=>{
+    await listTicketsAction();
+  },[])
+
+
+  const bodyEditar=(
+    <div className={styles.modal}>
+      <h3>Editar Ticket</h3>
+      <TextField name="tiqueteId" className={styles.inputMaterial} label="Id de Tiquete" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.tiqueteId}/>
+      <br />
+      <TextField name="celdaId" className={styles.inputMaterial} label="Id de Celda" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.celdaId}/>
+      <br />
+      <TextField name="placa" className={styles.inputMaterial} label="Placa" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.placa}/>
+      <br />
+      <TextField name="horaIngreso" className={styles.inputMaterial} label="Hora de Ingreso" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.horaIngreso}/>
+      <br />
+      <TextField name="tipoVehiculo" className={styles.inputMaterial} label="tipoVehiculo" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.tipoVehiculo}/>
+      <br />
+      
+      <br /><br />
+      <div align="right">
+        <Button color="primary" onClick={()=>ticketEdit(consolaSeleccionada)}>Editar</Button>
+        <Button onClick={()=>abrirCerrarModalEditar()}>Cancelar</Button>
+      </div>
+    </div>
+  )
+
+  const bodyEliminar=(
+    <div className={styles.modal}>
+      <p>Estás seguro que deseas eliminar el tiquete <b>{consolaSeleccionada && consolaSeleccionada.tiqueteId}</b> ? </p>
+      <div align="right">
+        <Button color="secondary" onClick={()=>deleteTicket(consolaSeleccionada.tiqueteId)} >Sí</Button>
+        <Button onClick={()=>abrirCerrarModalEliminar()}>No</Button>
+
+      </div>
+
+    </div>
+  )
     
   return (
 
@@ -157,6 +265,68 @@ function Tickets() {
       </div>
                 </div>
 
+                <div>
+                joder
+
+                <div className="App">
+      <br />
+  {/*  <Button onClick={()=>abrirCerrarModalInsertar()}>Insertar</Button>*/}
+      <br /><br />
+     <TableContainer>
+       <Table>
+         <TableHead>
+           <TableRow>
+             <TableCell>Id Factura</TableCell>
+             <TableCell>Id Tiquete</TableCell>
+             <TableCell>Id de empleado</TableCell>
+             <TableCell>Hora Salida</TableCell>
+             <TableCell>Tiempo Total</TableCell>
+             <TableCell>Valor Total</TableCell>
+             <TableCell>Acciones</TableCell>
+           </TableRow>
+         </TableHead>
+
+         <TableBody>
+
+         
+          
+           {tickets.map((ticket) => (
+             <TableRow key={ticket.id}>
+               <TableCell>{ticket.tiqueteId}</TableCell>
+               <TableCell>{ticket.celdaId}</TableCell>
+               <TableCell>{ticket.placa}</TableCell>
+               
+               
+               <TableCell>
+                 <Edit className={styles.iconos} onClick={()=>seleccionarConsola(ticket, 'Editar')}/>
+                 &nbsp;&nbsp;&nbsp;
+                 <Delete  className={styles.iconos} onClick={()=>seleccionarConsola(ticket, 'Eliminar')}/>
+                 </TableCell>
+             </TableRow>
+           ))}
+         </TableBody>
+       </Table>
+     </TableContainer>
+     
+    
+
+     <Modal
+     open={modalEditar}
+     onClose={abrirCerrarModalEditar}>
+        {bodyEditar}
+     </Modal>
+
+     <Modal
+     open={modalEliminar}
+     onClose={abrirCerrarModalEliminar}>
+        {bodyEliminar}
+     </Modal>
+    </div>
+
+
+                
+                </div>
+
     </Fragment>
   );
 };
@@ -202,5 +372,13 @@ function Tickets() {
     
   );
 }*/}
+
+
+
+
+
+
+
+
 
 export default Tickets;

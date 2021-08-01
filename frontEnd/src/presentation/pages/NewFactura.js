@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {addNewFacturaAction} from '../../domain/actions/facturaActions'; 
 import { auth } from '../../infrastructure/services/firebase/firebase';
 
+
 const NewFactura = ({ history }) =>{
 
     const ticket = useSelector(
@@ -25,6 +26,8 @@ const NewFactura = ({ history }) =>{
     //Temporalmente con useDispatch y useSelector
     const dispatch = useDispatch();
     const [submitted, setSubmitted] = useState(false);
+
+   
 
     //Crear la accion para disparar la funcion
     const addFactura = (factura) => dispatch(addNewFacturaAction(factura));

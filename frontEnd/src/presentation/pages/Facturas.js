@@ -118,17 +118,17 @@ function Facturas() {
   const bodyEditar=(
     <div className={styles.modal}>
     <h3>Editar Factura</h3>
-    <TextField name="facturaId" className={styles.inputMaterial} label="Id de Factura" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.facturaId}/>
+    <TextField name="facturaId" className={styles.inputMaterial} label="Id de Factura" disabled onChange={handleChange} value={consolaSeleccionada.facturaId && consolaSeleccionada.facturaId}/>
     <br />
-    <TextField name="tiqueteId" className={styles.inputMaterial} label="Id de Tiquete" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.tiqueteId.tiqueteId}/>
+    <TextField name="tiqueteId.tiqueteId" className={styles.inputMaterial} label="Id de Tiquete" onChange={handleChange} value={consolaSeleccionada.tiqueteId.tiqueteId && consolaSeleccionada.tiqueteId.tiqueteId}/>
     <br />
-    <TextField name="empleadoId" className={styles.inputMaterial} label="Id de Empleado" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.empleadoId.empleadoId}/>
+    <TextField name="empleadoId.empleadoId" className={styles.inputMaterial} label="Id de Empleado" onChange={handleChange} value={consolaSeleccionada.empleadoId.empleadoId && consolaSeleccionada.empleadoId.empleadoId}/>
     <br />
-    <TextField name="horaSalida" className={styles.inputMaterial} label="Hora de Salida" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.horaSalida.value}/>
+    <TextField name="horaSalida.value" className={styles.inputMaterial} label="Hora de Salida" onChange={handleChange} value={consolaSeleccionada.horaSalida.value && consolaSeleccionada.horaSalida.value}/>
     <br />
-    <TextField name="canitdadMinutos" className={styles.inputMaterial} label="Hora de Salida" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.canitdadMinutos.value}/>
+    <TextField name="canitdadMinutos.value" className={styles.inputMaterial} label="Hora de Salida" onChange={handleChange} value={consolaSeleccionada.canitdadMinutos.value && consolaSeleccionada.canitdadMinutos.value}/>
     <br />
-    <TextField name="valorTotal" className={styles.inputMaterial} label="Hora de Salida" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.valorTotal.value}/>
+    <TextField name="valorTotal.value" className={styles.inputMaterial} label="Hora de Salida" onChange={handleChange} value={consolaSeleccionada.valorTotal.value && consolaSeleccionada.valorTotal.value}/>
     <br /><br />
       <div align="right">
         <Button color="primary" onClick={()=>facturaEdit(consolaSeleccionada)}>Editar</Button>
@@ -154,15 +154,12 @@ function Facturas() {
   return (
     <div className="container">
     <div className="row" text-center>
-      <h1 className="text-center">Lista de Facturas</h1>
+      <h1 className="text-center">Lista de Facturas</h1>    
       
-      
-      <Modale/>
-
-      <div className="joder">
+           
       
       <div className="App">
-      <br />
+      
   {/*  <Button onClick={()=>abrirCerrarModalInsertar()}>Insertar</Button>*/}
       <br /><br />
      <TableContainer>
@@ -255,7 +252,7 @@ function Facturas() {
         
       
         
-        </div>
+        
         </div>
     
   

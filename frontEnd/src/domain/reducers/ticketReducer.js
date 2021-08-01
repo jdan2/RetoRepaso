@@ -69,7 +69,7 @@ const ticketsReducer =(state=initialState, action) =>{
             return{
                 ...state,
                 loading:false,
-                tickets: action.payload
+                celdas: action.payload
             }
         case LIST_CELDAS_FAILURE:
             return{

@@ -19,7 +19,7 @@ function Search() {
   const [tablaUsuarios, setTablaUsuarios]= useState([]);
   const [busqueda, setBusqueda]= useState("");
 
-const peticionGet=async()=>{
+/*const peticionGet=async()=>{
   await axios.get("https://app-parqueadero-nodejs.herokuapp.com/listartiquetes")
   .then(response=>{
     setUsuarios(response.data);
@@ -27,7 +27,7 @@ const peticionGet=async()=>{
   }).catch(error=>{
     console.log(error);
   })
-}
+}*/
 
 const handleChange=e=>{
   setBusqueda(e.target.value);
@@ -35,19 +35,17 @@ const handleChange=e=>{
 }
 
 const filtrar=(terminoBusqueda)=>{
-  var resultadosBusqueda=tablaUsuarios.filter((elemento)=>{
-    if(elemento.tiqueteId.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-    || elemento.tipoVehiculo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+  var resultadosBusqueda=tablaUsuarios.filter((ticket)=>{
+    if(ticket.tiqueteId.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+    || ticket.tipoVehiculo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
     ){
-      return elemento;
+      return ticket;
     }
   });
   setUsuarios(resultadosBusqueda);
 }
 
-useEffect(()=>{
-peticionGet();
-},[])
+
 
 const dispatch = useDispatch();
 
@@ -55,6 +53,9 @@ const dispatch = useDispatch();
     const listTickets = () => dispatch(listTicketsAction());
     listTickets();
   }, [dispatch]);
+
+  
+  
 
   const deleteTicket = (tiqueteId) => {
     dispatch(deleteTicketAction(tiqueteId));
@@ -69,7 +70,7 @@ const dispatch = useDispatch();
 
   const ticketone = (ticket) => {
     dispatch(onlyTicketAction(ticket));
-    console.log("Todo el objeto seleccionado", ticket);
+    console.log("tiquete", ticket);
     setCeldaId([ticket.celdaId]);
     setTiqueteId([ticket.tiqueteId]);
     setPlaca([ticket.placa]);
@@ -98,6 +99,8 @@ const dispatch = useDispatch();
      
 
   }
+
+  
 
   return (
     <div className="App">
@@ -178,8 +181,8 @@ const dispatch = useDispatch();
          </thead>
 
          <tbody>
-           {usuarios && 
-           usuarios.map((usuario)=>(
+           {tickets && 
+           tickets.map((usuario)=>(
                
              <tr key={usuario.id} >
              <td>{usuario.tiqueteId}</td>

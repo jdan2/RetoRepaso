@@ -89,10 +89,9 @@ const dispatch = useDispatch();
           placeholder="Búsqueda por Nombre o Empresa"
           onChange={handleChange}
         />
-        <button className="btn btn-success">
-   
-        </button>
+        
       </div>
+      <br />
 
      <div className="table-responsive">
        <table className="table table-sm table-bordered">

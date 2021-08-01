@@ -47,7 +47,7 @@ const NewFactura = ({ history }) =>{
             
             
         })   
-        history.push("/lisfacturas");    
+        history.push("/dashboard");    
     }
 
     return(

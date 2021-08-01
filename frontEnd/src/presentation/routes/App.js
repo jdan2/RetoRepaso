@@ -53,7 +53,7 @@ function PublicRoute({ component: Component, authenticated, ...rest }) {
         authenticated === false ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/listtickets" />
+          <Redirect to="/dashboard" />
         )
       }
     />

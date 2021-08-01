@@ -1,8 +1,8 @@
 const Tiquete = require('../../../domain/tiquete/Tiquete');
 
-module.exports = (id, horaIngreso, placa, celdaId, tipoCelda, {tiqueteRepository}) =>{
+module.exports = (id, celdaId, tipoVehiculo, placa, horaIngreso, {tiqueteRepository}) =>{
 
-    const tiquete = new Tiquete(id, horaIngreso, placa, celdaId, tipoCelda);
+    const tiquete = new Tiquete(id, celdaId, tipoVehiculo, placa, horaIngreso);
 
     return tiqueteRepository.modify(tiquete);
 

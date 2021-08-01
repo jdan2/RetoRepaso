@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../../infrastructure/services/firebase/firebase";
+import './Header.css'
 
 
 
@@ -19,7 +20,7 @@ const Header = () => {
                     <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/newticket"}>Generar Tickets</Link>
                     <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"lisfacturas/ver"}>Listado facturas</Link>
                     &nbsp;
-                    <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/newfactura"}>Generar Factura</Link>
+                   {/* <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/newfactura"}>Generar Factura</Link>*/}
                     &nbsp;
                     <Link className="nav-item nav-link mr-3 btn btn-outline-secondary " to={"/dashboard"}>Escritorio</Link>
 

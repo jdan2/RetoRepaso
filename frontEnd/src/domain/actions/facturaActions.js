@@ -16,9 +16,12 @@ import {
     ONLY_FACTURA,
     EDIT_FACTURA,
 } from '../types/factura.js';
+import { useState } from 'react';
 
 
 import clientAxios from './../../infrastructure/services/api/axiosSpring';
+
+
 
 //Crear Acciones de factura
 export function addNewFacturaAction(factura){
@@ -35,6 +38,8 @@ export function addNewFacturaAction(factura){
         }
     }
 }
+
+
 
 const addFactura = () =>({
     type: ADD_FACTURA,
@@ -82,6 +87,8 @@ const listFacturasFailure = () =>({
     payload:true
 })
 
+
+
 //Eliminar factura
 export function deleteFacturaAction(facturaId){
     return async (dispatch) =>{
@@ -122,15 +129,47 @@ const onlyFactura = factura =>({
     payload:factura
 })
 
-export const facturaEditAction =async (id,horaIngreso, placa, celda,tipoVehiculo) => {
+
+
+
+
+export const facturaEditAction =async (facturaId, tiqueteId, empleadoId, horasalida, canitdadMinutos, valorTotal) => {
     return async (dispatch) =>{
     dispatch(editFactura())
-    const factura = {horaIngreso:horaIngreso, placa:placa, celda:celda, tipoVehiculo: tipoVehiculo}
-    await clientAxios.put('/facturas/'+id,factura);
+    const factura = {facturaId:facturaId, tiqueteId:tiqueteId, empleadoId:empleadoId, horasalida:horasalida, canitdadMinutos:canitdadMinutos, valorTotal:valorTotal}
+    await clientAxios.put('/actualizarfactura/',factura);
     }
 }
+
+
+
+  
+
+/*export const peticionPut=async()=>{
+
+   
+    await clientAxios.put('/actualizarfactura', consolaSeleccionada)
+    .then(response=>{
+      const dataNueva=data;
+      dataNueva.map(consola=>{
+        if(consolaSeleccionada.facturaId===consola){
+          consola.facturaId=consolaSeleccionada.facturaId;
+          consola.tiqueteId.tiqueteId=consolaSeleccionada.tiqueteId.tiqueteId;
+          consola.empleadoId.empleadoId=consolaSeleccionada.empleadoId.empleadoId;
+          consola.horaSalida.value=consolaSeleccionada.horaSalida.value;
+          consola.canitdadMinutos.value=consolaSeleccionada.canitdadMinutos.value;
+          consola.valorTotal.value=consolaSeleccionada.valorTotal.value;
+        }
+      })
+      setData(dataNueva);
+      abrirCerrarModalEditar();
+    })
+  }*/
 
 const editFactura = ()=>({
     type:EDIT_FACTURA,
     payload:true
 });
+
+
+ 

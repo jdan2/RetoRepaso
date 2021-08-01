@@ -1,15 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import axios from 'axios';
+import { peticionGet } from '../../domain/actions/facturaActions';
+import { listFacturasAction } from '../../domain/actions/facturaActions';
+
 import {makeStyles} from '@material-ui/core/styles';
 import {Table, TableContainer, TableHead, TableCell, TableBody, TableRow, Modal, Button, TextField} from '@material-ui/core';
 import {Edit, Delete} from '@material-ui/icons';
 import NewFactura from './NewFactura';
+import axios from 'axios';
 
 
 
-const baseUrl='https://glacial-everglades-61490.herokuapp.com/api/obtenerfacturas'
-const baseUrlM='https://glacial-everglades-61490.herokuapp.com/api/actualizarfactura'
+
+//const baseUrl='https://glacial-everglades-61490.herokuapp.com/api/obtenerfacturas'
+//const baseUrlM='https://glacial-everglades-61490.herokuapp.com/api/actualizarfactura'
 
 
 const baseurl3= 'https://glacial-everglades-61490.herokuapp.com/api/crearfactura'
@@ -62,12 +66,12 @@ const styles= useStyles();
     console.log(consolaSeleccionada);
   }
 
-  const peticionGet=async()=>{
+  /*const peticionGet=async()=>{
     await axios.get(baseUrl)
     .then(response=>{
       setData(response.data);
     })
-  }
+  }*/
 
   const peticionPost=async()=>{
     await axios.post(baseurl3, consolaSeleccionada)
@@ -77,7 +81,7 @@ const styles= useStyles();
     })
   }
 
-  const peticionPut=async()=>{
+ /* const peticionPut=async()=>{
     await axios.put(baseUrlM, consolaSeleccionada)
     .then(response=>{
       var dataNueva=data;
@@ -94,7 +98,7 @@ const styles= useStyles();
       setData(dataNueva);
       abrirCerrarModalEditar();
     })
-  }
+  }*/
 
   const peticionDelete=async()=>{
     await axios.delete(baseurlE)
@@ -122,7 +126,7 @@ const styles= useStyles();
   }
 
   useEffect(async()=>{
-    await peticionGet();
+    await listFacturasAction();
   },[])
 
   const bodyInsertar=(
@@ -164,7 +168,7 @@ const styles= useStyles();
       <TextField name="valorTotal" className={styles.inputMaterial} label="Hora de Salida" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.valorTotal.value}/>
       <br /><br />
       <div align="right">
-        <Button color="primary" onClick={()=>peticionPut()}>Editar</Button>
+        {/*<Button color="primary" onClick={()=>peticionPut()}>Editar</Button>*/}
         <Button onClick={()=>abrirCerrarModalEditar()}>Cancelar</Button>
       </div>
     </div>

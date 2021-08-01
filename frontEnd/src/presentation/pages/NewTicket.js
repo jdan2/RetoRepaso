@@ -35,9 +35,10 @@ const NewTicket = ({ history }) =>{
             
             
             
-        })   
+        })  
+        history.push("/dashboard");  
         
-        history.push("/listtickets");
+          
     }
 
     return(

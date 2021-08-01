@@ -35,7 +35,9 @@ export function addNewTicketAction(ticket){
             //ok
             dispatch(addTicketSuccess(ticket));
             alert("Se ha creado correctamente");
+            
         } catch (error) {
+            
             dispatch(addTicketFailure(true));
         }
     }
@@ -87,14 +89,14 @@ const listTicketsFailure = () =>({
 })
 
 //Eliminar 
-export function deleteTicketAction(tiqueteId, history){
+export function deleteTicketAction(tiqueteId){
     return async (dispatch) =>{
         dispatch(deleteTicket());
         try{
             await clientAxios.delete(`/eliminartiquete?id=${tiqueteId}`);
             dispatch(deleteTicketSuccess())           
             alert.call("Se ha eliminado correctamente")
-            
+               
             }catch(error){
             dispatch(deleteTicketFailure);
         }

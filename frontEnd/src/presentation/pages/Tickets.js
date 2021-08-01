@@ -110,21 +110,17 @@ function Tickets() {
           {edit}
         </div>
       </div> */}
-      <div className="card"> 
-      <div className="col" id="2">
-       {pruebam}
       
-        
 
       
       
       
        
        
-       </div><button onClick={imprimirS}>Imprimir Ticket Seleccionado</button>
        
        
-       </div>
+       
+      
 
       <table className="table table-sm table-bordered">
          <thead>
@@ -155,6 +151,10 @@ function Tickets() {
         
         </tbody>
                 </table>
+                <div id="verTicket">
+        <h1>{pruebam}</h1>
+         
+      </div>
                 </div>
 
     </Fragment>

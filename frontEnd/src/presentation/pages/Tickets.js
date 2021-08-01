@@ -134,20 +134,20 @@ function Tickets() {
   const bodyEditar=(
     <div className={styles.modal}>
       <h3>Editar Ticket</h3>
-      <TextField name="tiqueteId" className={styles.inputMaterial} label="Id de Tiquete" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.tiqueteId}/>
+      <TextField name="tiqueteId" className={styles.inputMaterial} label="Id de Tiquete" onChange={handleChange} value={consolaSeleccionada.tiqueteId && consolaSeleccionada.tiqueteId}/>
       <br />
-      <TextField name="celdaId" className={styles.inputMaterial} label="Id de Celda" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.celdaId}/>
+      <TextField name="celdaId" className={styles.inputMaterial} label="Id de Celda" onChange={handleChange} value={consolaSeleccionada.celdaId && consolaSeleccionada.celdaId}/>
       <br />
-      <TextField name="placa" className={styles.inputMaterial} label="Placa" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.placa}/>
+      <TextField name="placa" className={styles.inputMaterial} label="Placa" onChange={handleChange} value={consolaSeleccionada.placa && consolaSeleccionada.placa}/>
       <br />
-      <TextField name="horaIngreso" className={styles.inputMaterial} label="Hora de Ingreso" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.horaIngreso}/>
+      <TextField name="horaIngreso" className={styles.inputMaterial} label="Hora de Ingreso" onChange={handleChange} value={consolaSeleccionada.horaIngreso && consolaSeleccionada.horaIngreso}/>
       <br />
-      <TextField name="tipoVehiculo" className={styles.inputMaterial} label="tipoVehiculo" onChange={handleChange} value={consolaSeleccionada && consolaSeleccionada.tipoVehiculo}/>
+      <TextField name="tipoVehiculo" className={styles.inputMaterial} label="tipoVehiculo" onChange={handleChange} value={consolaSeleccionada.tipoVehiculo && consolaSeleccionada.tipoVehiculo}/>
       <br />
       
       <br /><br />
       <div align="right">
-        <Button color="primary" onClick={()=>ticketEdit(consolaSeleccionada)}>Editar</Button>
+        <Button color="primary" onClick={()=>ticketEdit(consolaSeleccionada.tiqueteId, consolaSeleccionada)}>Editar</Button>
         <Button onClick={()=>abrirCerrarModalEditar()}>Cancelar</Button>
       </div>
     </div>
@@ -230,7 +230,7 @@ function Tickets() {
        
       
 
-      <table className="table table-sm table-bordered">
+    {/*  <table className="table table-sm table-bordered">
          <thead>
            <tr>
            <th>Id del tiquete</th>
@@ -270,18 +270,18 @@ function Tickets() {
 
                 <div className="App">
       <br />
-  {/*  <Button onClick={()=>abrirCerrarModalInsertar()}>Insertar</Button>*/}
+        <Button onClick={()=>abrirCerrarModalInsertar()}>Insertar</Button> */}
       <br /><br />
      <TableContainer>
        <Table>
          <TableHead>
            <TableRow>
-             <TableCell>Id Factura</TableCell>
+             
              <TableCell>Id Tiquete</TableCell>
-             <TableCell>Id de empleado</TableCell>
-             <TableCell>Hora Salida</TableCell>
-             <TableCell>Tiempo Total</TableCell>
-             <TableCell>Valor Total</TableCell>
+             <TableCell>Id de Celda</TableCell>
+             <TableCell>Hora Ingreso</TableCell>
+             <TableCell>Placa Vehiculo</TableCell>
+             <TableCell>Categoria</TableCell>
              <TableCell>Acciones</TableCell>
            </TableRow>
          </TableHead>
@@ -294,7 +294,9 @@ function Tickets() {
              <TableRow key={ticket.id}>
                <TableCell>{ticket.tiqueteId}</TableCell>
                <TableCell>{ticket.celdaId}</TableCell>
+               <TableCell>{ticket.horaIngreso}</TableCell>
                <TableCell>{ticket.placa}</TableCell>
+               <TableCell>{ticket.tipoVehiculo}</TableCell>
                
                
                <TableCell>
@@ -325,7 +327,7 @@ function Tickets() {
 
 
                 
-                </div>
+                
 
     </Fragment>
   );

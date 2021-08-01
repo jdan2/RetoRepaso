@@ -95,7 +95,7 @@ export function deleteTicketAction(tiqueteId){
         try{
             await clientAxios.delete(`/eliminartiquete?id=${tiqueteId}`);
             dispatch(deleteTicketSuccess())           
-            alert.call("Se ha eliminado correctamente")
+            alert("Se ha eliminado correctamente")
                
             }catch(error){
             dispatch(deleteTicketFailure);
@@ -144,8 +144,9 @@ const obtenerTicketVerAction = ticket =>({
 export const ticketEditAction =async (tiqueteId,horaIngreso, placa, celdaId,tipoVehiculo) => {
     return async (dispatch) =>{
     dispatch(editTicket())
-    const ticket = {horaIngreso:horaIngreso, placa:placa, celdaId:celdaId, tipoVehiculo: tipoVehiculo}
-    await clientAxios.put(`/editartiquete?id=${tiqueteId}`);
+    const ticket = {tiqueteId:tiqueteId, horaIngreso:horaIngreso, placa:placa, celdaId:celdaId, tipoVehiculo:tipoVehiculo}
+   // await clientAxios.put(`/editartiquete?id=${tiqueteId,ticket}`);
+    await clientAxios.put('/editartiquete/',tiqueteId, ticket);
     }
 }
 

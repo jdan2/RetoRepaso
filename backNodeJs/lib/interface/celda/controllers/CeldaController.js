@@ -1,6 +1,7 @@
 const ModificarCelda = require('../../../application/celda/use_cases/ModificarCelda');
 const ConsultarCelda = require('../../../application/celda/use_cases/ConsultarCelda');
 const CrearCelda = require('../../../application/celda/use_cases/CrearCelda');
+const ListarCeldasDisponibles = require('../../../application/celda/use_cases/ListarCeldasDisponibles');
 
 module.exports = {
     async crearCelda(httpRequest){
@@ -26,6 +27,11 @@ module.exports = {
         const {disponibilidad, tipoCelda } = httpRequest.body;
         return await ModificarCelda(id, disponibilidad,tipoCelda,serviceLocator);
 
+    },
+
+    async listarCeldasDisponibles(httpRequest){
+        const serviceLocator = httpRequest.app.serviceLocator;
+        return await ListarCeldasDisponibles(serviceLocator);
     }
 
     

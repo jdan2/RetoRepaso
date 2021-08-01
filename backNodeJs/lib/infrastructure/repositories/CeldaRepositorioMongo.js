@@ -19,7 +19,9 @@ module.exports = class extends CeldaRepository {
   }
 
   async get(celdaId){
-    const mongooseCelda = await MongooseCelda.findOne({celdaId: celdaId});
+    const mongooseCelda = await MongooseCelda.findOne({celdaId: celdaId}).exec();
+      if(!mongooseCelda) throw new Error('ERR_CELDA_ID_PROVIDED_WAS_NOT_FOUND');
+    
     return new Celda(mongooseCelda.celdaId, mongooseCelda.disponibilidad, mongooseCelda.tipoCelda);
   }
 
@@ -27,6 +29,13 @@ module.exports = class extends CeldaRepository {
     const{celdaId, disponibilidad,tipoCelda} = celdaEntity;
     const mongooseCelda = await MongooseCelda.findOneAndUpdate({celdaId:celdaId},{disponibilidad:disponibilidad, tipoCelda:tipoCelda},{new:true});
     return new Celda(mongooseCelda.celdaId, mongooseCelda.disponibilidad, mongooseCelda.tipoCelda);
+  }
+
+  async getAvailableCeldas(){
+    const mongooseCeldas = await MongooseCelda.find({disponibilidad:  { $regex: "true"}});
+    return mongooseCeldas.map((mongooseCelda)=>{
+      return new Celda(mongooseCelda.celdaId, mongooseCelda.disponibilidad, mongooseCelda.tipoCelda)
+    })
   }
 
 };

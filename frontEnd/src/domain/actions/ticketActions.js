@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
 import { Redirect } from 'react-router-dom';
 
+
 import {
     //ADD
     ADD_TICKET,
@@ -9,8 +10,11 @@ import {
 
     //LIST
     LIST_TICKETS,
+    LIST_CELDAS,
+    LIST_CELDAS_SUCCESS,
     LIST_TICKETS_SUCCESS,
     LIST_TICKETS_FAILURE,
+    LIST_CELDAS_FAILURE,
     //DELETE
     DELETE_TICKET,
     DELETE_TICKET_SUCCESS,
@@ -24,6 +28,7 @@ import {
 
 import clientAxios from './../../infrastructure/services/api/axios';
 import { Alert } from 'bootstrap';
+import { useState } from 'react';
 
 //Crear Acciones de ticketes
 export function addNewTicketAction(ticket){
@@ -63,9 +68,11 @@ export function listTicketsAction(){
     return async(dispatch) =>{
         dispatch(listTickets());
         try{
+            
             //Hago mi peticion HTTP
             const response = await clientAxios.get('/listartiquetes');
             dispatch(listTicketsSuccess(response.data));
+           
 
         }catch(error){
             dispatch(listTicketsFailure());
@@ -73,14 +80,44 @@ export function listTicketsAction(){
     }
 }
 
+export function listCeldasAction(){
+    return async(dispatch) =>{
+        dispatch(listCeldas());
+        try{
+            
+            //Hago mi peticion HTTP
+            const response = await clientAxios.get('/listarceldas/disponibles');
+            dispatch(listCeldasSuccess(response.data));
+           
+
+        }catch(error){
+            dispatch(listCeldasFailure());
+        }
+    }
+}
+
+
 const listTickets = () =>({
     type:LIST_TICKETS,
     payload:true
 })
 
+const listCeldas = () =>({
+    type:LIST_CELDAS,
+    payload:true
+})
+const listCeldasSuccess = (celdas) =>({
+    type:LIST_CELDAS_SUCCESS,
+    payload:celdas
+})
+
 const listTicketsSuccess = (tickets) =>({
     type:LIST_TICKETS_SUCCESS,
     payload:tickets
+})
+const listCeldasFailure = () =>({
+    type:LIST_CELDAS_FAILURE,
+    payload:true
 })
 
 const listTicketsFailure = () =>({

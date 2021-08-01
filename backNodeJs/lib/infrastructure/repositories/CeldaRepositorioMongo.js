@@ -31,6 +31,10 @@ module.exports = class extends CeldaRepository {
     return new Celda(mongooseCelda.celdaId, mongooseCelda.disponibilidad, mongooseCelda.tipoCelda);
   }
 
+  async delete(celdaId){
+    await MongooseCelda.deleteOne({celdaId:celdaId});
+   }
+
   async getAvailableCeldas(){
     const mongooseCeldas = await MongooseCelda.find({disponibilidad:  { $regex: "true"}});
     return mongooseCeldas.map((mongooseCelda)=>{

@@ -33,6 +33,7 @@ app.use(`${apiRoot}/crearCelda`, celdaRoute);
 app.use(`${apiRoot}/consultarCelda`, celdaRoute);
 app.use(`${apiRoot}/modificarCelda`, celdaRoute);
 app.use(`${apiRoot}/listarceldas`, celdaRoute);
+app.use(`${apiRoot}/eliminarcelda`, celdaRoute);
 
 
 module.exports = app;

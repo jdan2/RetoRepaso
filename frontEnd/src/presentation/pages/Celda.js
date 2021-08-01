@@ -8,28 +8,7 @@ import {
 } from "../../domain/actions/ticketActions";
 import { Link } from 'react-router-dom';
 
-
-
 function Celda() {
-
-  
-
-const handleChange=e=>{
-  setBusqueda(e.target.value);
-  filtrar(e.target.value);
-}
-
-const filtrar=(terminoBusqueda)=>{
-  var resultadosBusqueda=tablaUsuarios.filter((ticket)=>{
-    if(ticket.tiqueteId.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-    || ticket.tipoVehiculo.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-    ){
-      return ticket;
-    }
-  });
-  setUsuarios(resultadosBusqueda);
-}
-
 
 
 const dispatch = useDispatch();
@@ -38,43 +17,18 @@ const dispatch = useDispatch();
     const listCeldas = () => dispatch(listCeldasAction());
     listCeldas();
   }, [dispatch]);
-
+    
   
-  
+  const tickets = useSelector((state) => state.ticketReducer.tickets);
 
- 
-
-  
-
-  
-   
-   
-  
-  const celdas = useSelector((state) => state.ticketReducer.celdas);
-
-  function imprimirS(){
-
-    var ficha = document.getElementById(2);
-	  var ventimp = window.open(' ', 'popimpr');
-	  ventimp.document.write( ficha.innerHTML );
-	  ventimp.document.close();
-	  ventimp.print( );
-	  ventimp.close();
-     
-
-  }
+    
 
   
 
   return (
     <div className="App">
       <div className="containerInput">
-        <input
-          className="form-control inputBuscar"
-          value={busqueda}
-          placeholder="Búsqueda por Coincidencia Tiquetes"
-          onChange={handleChange}
-        />
+        
         
 
         
@@ -103,8 +57,8 @@ const dispatch = useDispatch();
          </thead>
 
          <tbody>
-           {celdas && 
-           celdas.map((usuario)=>(
+           {tickets && 
+           tickets.map((usuario)=>(
                
              <tr key={usuario.id} >
              <td>{usuario.celdaId}</td>
@@ -114,8 +68,8 @@ const dispatch = useDispatch();
              
             { /*<button onClick={() => deleteTicket(usuario.tiqueteId)}>Eliminar</button>
             <button onClick={() => ticketone(usuario)}>Ver</button>
-           <button onClick={() =>ticketEdit(usuario)}>Edit</button>*/}
-           <button onClick={() => ticketone(usuario)}>Ver</button>
+           <button onClick={() =>ticketEdit(usuario)}>Edit</button>
+           <button onClick={() => ticketone(usuario)}>Ver</button>*/}
              
                
              </tr>
@@ -124,6 +78,15 @@ const dispatch = useDispatch();
            ))}
            
          </tbody>
+
+         <select name="prueba" id="">
+         {
+            tickets.map((usuario)=>(
+             
+             <option key={usuario.id} value={usuario.disponibilidad}>{usuario.celdaId}</option>
+            ))}
+         
+         </select>
          
 
        </table>

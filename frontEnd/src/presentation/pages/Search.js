@@ -105,12 +105,12 @@ const dispatch = useDispatch();
   return (
     <div className="App">
       <div className="containerInput">
-        <input
+     { /*  <input
           className="form-control inputBuscar"
           value={busqueda}
           placeholder="Búsqueda por Coincidencia Tiquetes"
           onChange={handleChange}
-        />
+  */}
         
 
         

@@ -9,10 +9,21 @@ import {
   onlyFacturaAction,
   facturaEditAction
 } from "../../domain/actions/facturaActions";
+import { Link } from 'react-router-dom';
 
 
 
 function SearchFactura() {
+
+
+  const [facturaId, setFacturaId] = useState('');
+  const [tiqueteId,  setTiqueteId] = useState('');
+  const [empleadoId, setEmpleadoId] = useState('');
+  const [horaSalida, setHoraSalida] = useState('');
+  const [canitdadMinutos, setCantidadMinutos] = useState('');
+  const [valorTotal, setValorTotal] = useState('');
+
+  
 
   const [usuarios, setUsuarios]= useState([]);
   const [tablaUsuarios, setTablaUsuarios]= useState([]);
@@ -66,7 +77,12 @@ const dispatch = useDispatch();
   const ticketone = (ticket) => {
     dispatch(onlyFacturaAction(ticket));
     console.log("Todo el objeto seleccionado", ticket);
-    setpruebam(["Celda Asignada: ",ticket.facturaId, "Hora Ingreso: ", ticket.tiqueteId.tiqueteId]);
+    setFacturaId([ticket.facturaId]);
+    setTiqueteId([ticket.tiqueteId.tiqueteId]);
+    setEmpleadoId([ticket.empleadoId.empleadoId]);
+    setHoraSalida([ticket.horaSalida.value]);
+    setCantidadMinutos([ticket.canitdadMinutos.value]);
+    setValorTotal([ticket.valorTotal.value]);
     
     //document.getElementById('verTicket').innerHTML = `<li style="color:red">${ticket.celda}</li><li style="color:red">${ticket.horaIngreso}</li>`;
   };
@@ -80,7 +96,20 @@ const dispatch = useDispatch();
   
   const tickets = useSelector((state) => state.facturaReducer.tickets);
 
+  function imprimirS(){
+
+    var ficha = document.getElementById(2);
+	  var ventimp = window.open(' ', 'popimpr');
+	  ventimp.document.write( ficha.innerHTML );
+	  ventimp.document.close();
+	  ventimp.print( );
+	  ventimp.close();
+     
+
+  }
+
   return (
+
     <div className="App">
       <div className="containerInput">
         <input
@@ -89,8 +118,58 @@ const dispatch = useDispatch();
           placeholder="Búsqueda por Nombre o Empresa"
           onChange={handleChange}
         />
+
         
       </div>
+      <div id="2">
+      <form action="">
+      <div class="container text-center card">
+  <h2>EstacionamientoJDS</h2>
+  <h4>Salida</h4>
+  <div class="panel-group">
+    <div class="panel panel-default">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">Id de Factura</div>
+      <div class="panel-body">{facturaId}</div>
+    </div>
+      <div class="panel-heading">Id Tiquete</div>
+      <div class="panel-body">{tiqueteId}</div>
+    </div>
+    <div class="panel panel-success">
+      <div class="panel-heading">Id Empleado</div>
+      <div class="panel-body">{empleadoId}</div>
+    </div> 
+    
+    <div class="panel panel-info">
+      <div class="panel-heading">Hora Salida</div>
+      <div class="panel-body">{horaSalida}</div>
+    </div>
+
+    <div class="panel panel-success">
+      <div class="panel-heading">Tiempo</div>
+      <div class="panel-body">{canitdadMinutos}</div>
+    </div>
+
+  
+    <div class="panel panel-warning">
+      <div class="panel-heading">Valor Total</div>
+      <div class="panel-body">{valorTotal}</div>
+    </div>
+
+    
+  </div>
+  </div>
+
+
+      </form>
+
+     
+       </div>
+     
+      
+      <Link className="nav-item nav-link mr-3 btn btn-info text-dark btn btn-outline-primary "  onClick={()=> imprimirS()}>Imprimir Factura</Link>
+      
       <br />
 
      <div className="table-responsive">
@@ -122,14 +201,15 @@ const dispatch = useDispatch();
             {/* <button onClick={() => deleteTicket(usuario.tiqueteId)}>Eliminar</button>
             <button onClick={() => ticketone(usuario)}>Ver</button>
            <button onClick={() =>ticketEdit(usuario)}>Edit</button>*/}
-            <td><button>Imprimir</button></td>
+            
+           <button onClick={() => ticketone(usuario)}>Ver</button>
              
                
              </tr>
             
 
            ))}
-           {pruebam}
+           
          </tbody>
 
        </table>

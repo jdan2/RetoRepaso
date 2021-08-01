@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Celda from "./Celda";
 import NewTicket from "./NewTicket";
 import Search from "./Search";
 import SearchFactura from "./SearchFactura";
@@ -19,7 +20,7 @@ export default class CeldaTicket extends Component {
           </div>
         </div>
         <div className="col-6">
-          <Search/>
+          <Celda/>
         </div>
       </div>
     );

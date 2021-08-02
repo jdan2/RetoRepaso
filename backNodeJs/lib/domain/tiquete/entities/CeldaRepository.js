@@ -15,5 +15,9 @@ module.exports = class {
     modify(domainCelda) {
       throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
+
+    getAvailableCeldas(){
+      throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
+    }
     
   };

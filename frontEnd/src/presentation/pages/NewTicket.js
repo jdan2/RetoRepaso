@@ -38,6 +38,8 @@ const NewTicket = ({ history }) =>{
         //Algunas validaciones del formulario
 
         //Ejecutar accion del nuevo elemento
+
+        
         addTicket({
             tiqueteId,
             celdaId,
@@ -49,8 +51,8 @@ const NewTicket = ({ history }) =>{
             
         })  
        
-        
-          
+        history.push("/dashboard");
+              
     }
 
     

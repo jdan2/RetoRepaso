@@ -17,6 +17,10 @@ public class Disponibilidad {
         return value;
     }
 
+    public static Disponibilidad of(Boolean value){
+        return new Disponibilidad(value);
+    }
+
     @Override
     public boolean equals(Object o) {
 

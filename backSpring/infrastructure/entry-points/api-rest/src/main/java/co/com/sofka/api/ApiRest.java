@@ -7,8 +7,10 @@ import co.com.sofka.model.factura.Factura;
 import co.com.sofka.model.factura.values.CanitdadMinutos;
 import co.com.sofka.model.factura.values.EmpleadoId;
 import co.com.sofka.model.factura.values.HoraSalida;
+import co.com.sofka.model.factura.values.ValorTotal;
 import co.com.sofka.model.tiquete.Tiquete;
 import co.com.sofka.model.tiquete.values.HoraIngreso;
+import co.com.sofka.model.tiquete.values.TipoVehiculo;
 import co.com.sofka.usecase.factura.*;
 import co.com.sofka.usecase.tiquete.TiqueteUseCase;
 import lombok.AllArgsConstructor;
@@ -29,8 +31,12 @@ public class ApiRest {
 
    private final ActualizarFacturaUseCase actualizarFacturaUseCase;
    private final BorrarFacturaUseCase borrarFacturaUseCase;
+
    private final TiempoTotalFacturaUseCase tiempoTotalFacturaUseCase;
    private final BuscarFacturaPorEmpleadoIdUseCase buscarFacturaPorEmpleadoIdUseCase;
+
+   private final ValorTotalFacturaUseCase valorTotalFacturaUseCase;
+  // private final TiempoTotalFacturaUseCase tiempoTotalFacturaUseCase;
   // private final ListarFacturaUsecase listarFacturaUsecase;
 
 
@@ -53,6 +59,14 @@ public class ApiRest {
         CanitdadMinutos canitdadMinutos = facturaUseCase.canitdadMinutos(horaIngreso,horaSalida);
         CanitdadMinutos c = canitdadMinutos;
         return canitdadMinutos;
+    }
+
+    @GetMapping(path = "/valortotal/{tipovehiculo}/{cantidadtiempo}")
+    public ValorTotal valorTotal(@PathVariable("tipovehiculo") String tipovehiculo, @PathVariable("cantidadtiempo") String cantidadtiempo ) {
+        TipoVehiculo tipoVehiculo = new TipoVehiculo(tipovehiculo);
+        CanitdadMinutos canitdadMinutos = new CanitdadMinutos(cantidadtiempo);
+        ValorTotal valorTotal = valorTotalFacturaUseCase.valorTotal(tipoVehiculo,canitdadMinutos);
+        return valorTotal;
     }
 
     @GetMapping(path = "/obtenerfacturas")

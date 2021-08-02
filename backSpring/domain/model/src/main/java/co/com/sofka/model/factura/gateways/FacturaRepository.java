@@ -4,7 +4,9 @@ import co.com.sofka.model.factura.Factura;
 import co.com.sofka.model.factura.values.CanitdadMinutos;
 import co.com.sofka.model.factura.values.EmpleadoId;
 import co.com.sofka.model.factura.values.HoraSalida;
+import co.com.sofka.model.factura.values.ValorTotal;
 import co.com.sofka.model.tiquete.values.HoraIngreso;
+import co.com.sofka.model.tiquete.values.TipoVehiculo;
 
 import java.util.List;
 
@@ -17,5 +19,6 @@ public interface FacturaRepository {
     void deletefactura(String idFactura, EmpleadoId empleadoId );
     CanitdadMinutos canitdadMinutos(HoraIngreso horaIngreso, HoraSalida horaSalida);
     List<Factura> findFacturaByEmpleadoId(EmpleadoId empleadoId);
+    ValorTotal valorTotal (TipoVehiculo tipoVehiculo, CanitdadMinutos canitdadMinutos);
 
 }

@@ -9,9 +9,8 @@ router.post('/', async(req, res)=>{
         req.app.serviceLocator = require('../../../infrastructure/config/service-locator');
         const tiquete = await TiqueteController.createTiquete(req);
         res.status(200).send(tiquete);
-    }catch(err){
-        console.log(err)
-        res.status(500);
+    }catch(error){
+        res.status(500).send({message: error.message});
     }  
    
 });

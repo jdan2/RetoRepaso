@@ -21,6 +21,42 @@ describe('name of component', ()=>{
         expect(tiquete.getPlaca()).toEqual(persistedTiquete.placa);
         expect(tiquete.getHoraIngreso()).toEqual(persistedTiquete.horaIngreso);
     });
+    test('debería resolver un fallo de busqueda de una celda por Id', async()=>{
+        //Arrange
+        const persistedTiquete = new Tiquete("TK111110000", "C111", "Carro", "NNN000", "12:30");
+        mockTiqueteRepository.persist = jest.fn(()=> persistedTiquete);
+    
+        //Act & Assert
+        expect(() => CrearTiquete(null, "Carro", "NNN000", "12:30", {tiqueteRepository: mockTiqueteRepository}))
+        .toThrow('ERR_CELDA_ID_WAS_NOT_PROVIDED');
+    });
+    test('debería resolver un fallo de busqueda de una celda por Id', async()=>{
+        //Arrange
+        const persistedTiquete = new Tiquete("TK111110000", "C111", "Carro", "NNN000", "12:30");
+        mockTiqueteRepository.persist = jest.fn(()=> persistedTiquete);
+    
+        //Act & Assert
+        expect(() => CrearTiquete("C111", null, "NNN000", "12:30", {tiqueteRepository: mockTiqueteRepository}))
+        .toThrow('ERR_TIPOVEHICULO_WAS_NOT_PROVIDED');
+    });
+    test('debería resolver un fallo de busqueda de una celda por Id', async()=>{
+        //Arrange
+        const persistedTiquete = new Tiquete("TK111110000", "C111", "Carro", "NNN000", "12:30");
+        mockTiqueteRepository.persist = jest.fn(()=> persistedTiquete);
+    
+        //Act & Assert
+        expect(() => CrearTiquete("C111", "Carro", null, "12:30", {tiqueteRepository: mockTiqueteRepository}))
+        .toThrow('ERR_PLACA_WAS_NOT_PROVIDED');
+    });
+    test('debería resolver un fallo de busqueda de una celda por Id', async()=>{
+        //Arrange
+        const persistedTiquete = new Tiquete("TK111110000", "C111", "Carro", "NNN000", "12:30");
+        mockTiqueteRepository.persist = jest.fn(()=> persistedTiquete);
+    
+        //Act & Assert
+        expect(() => CrearTiquete("C111", "Carro", "NNN000", null, {tiqueteRepository: mockTiqueteRepository}))
+        .toThrow('ERR_HORA_INGRESO_WAS_NOT_PROVIDED');
+    });
 
 })
 

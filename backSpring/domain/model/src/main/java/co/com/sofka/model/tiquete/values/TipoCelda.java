@@ -18,6 +18,10 @@ public class TipoCelda {
         return value;
     }
 
+    public static TipoCelda of(String value){
+        return new TipoCelda(value);
+    }
+
     @Override
     public boolean equals(Object o) {
 

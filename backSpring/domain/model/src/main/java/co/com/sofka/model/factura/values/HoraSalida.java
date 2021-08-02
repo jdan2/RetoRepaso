@@ -18,6 +18,10 @@ public class HoraSalida {
         return value;
     }
 
+    public static HoraSalida of(String value){
+        return new HoraSalida(value);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

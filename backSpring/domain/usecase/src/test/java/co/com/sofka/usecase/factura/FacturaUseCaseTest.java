@@ -3,6 +3,11 @@ package co.com.sofka.usecase.factura;
 import co.com.sofka.model.factura.Factura;
 import co.com.sofka.model.factura.gateways.FacturaRepository;
 import co.com.sofka.model.factura.values.*;
+import co.com.sofka.model.tiquete.Tiquete;
+import co.com.sofka.model.tiquete.values.CeldaId;
+import co.com.sofka.model.tiquete.values.HoraIngreso;
+import co.com.sofka.model.tiquete.values.Placa;
+import co.com.sofka.model.tiquete.values.TipoVehiculo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -74,6 +79,28 @@ class FacturaUseCaseTest {
         List<Factura> result = facturaUseCase.listarFacturas();
 
         Assertions.assertEquals(2,result.size());
+
+
+    }
+
+    @Test
+    @DisplayName("Cantidad Minutos")
+    public void cantidadMinutos(){
+
+        Tiquete tiquete = new Tiquete("1", TipoVehiculo.of("carro"),
+                CeldaId.of("2"), Placa.of("adv"), HoraIngreso.of("3:20"));
+
+        Factura factura = new Factura("1", TiqueteId.of("2"), EmpleadoId.of("3"), HoraSalida.of("3:30"),
+                CanitdadMinutos.of("30"), ValorTotal.of("3000"));
+
+        CanitdadMinutos canitdadMinutos = new CanitdadMinutos("10");
+
+
+        Mockito.when(facturaRepository.canitdadMinutos(tiquete.getHoraIngreso(),factura.getHoraSalida())).thenReturn(canitdadMinutos);
+
+        CanitdadMinutos result = facturaUseCase.canitdadMinutos(tiquete.getHoraIngreso(),factura.getHoraSalida());
+
+        Assertions.assertEquals(canitdadMinutos.getValue(),result.getValue());
 
 
     }

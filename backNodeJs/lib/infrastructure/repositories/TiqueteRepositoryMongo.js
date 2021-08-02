@@ -41,8 +41,7 @@ module.exports = class extends TiqueteRepository {
   }
 
   async remove(tiqueteId){
-    const mongooseTiquete = await MongooseTiquete.deleteOne({tiqueteId: tiqueteId});
-    return new TiqueteDto(mongooseTiquete.tiqueteId, mongooseTiquete.celdaId, mongooseTiquete.tipoVehiculo, mongooseTiquete.placa, mongooseTiquete.horaIngreso); 
+    return await MongooseTiquete.deleteOne({tiqueteId: tiqueteId});
   }
 
   async getByTipoVehiculo(tipoVehiculo){

@@ -9,7 +9,7 @@ const ConsultarCelda = require('../../../application/celda/use_cases/ConsultarCe
 module.exports = {
     async createTiquete(httpRequest){
         const serviceLocator = httpRequest.app.serviceLocator; 
-        const { id, celdaId, tipoVehiculo, placa, horaIngreso } = httpRequest.body;
+        const { celdaId, tipoVehiculo, placa, horaIngreso } = httpRequest.body;
         const celda = await ConsultarCelda(celdaId, serviceLocator);
         const tiquete = await CrearTiquete(celda.celdaId, tipoVehiculo, placa, horaIngreso, serviceLocator);
 

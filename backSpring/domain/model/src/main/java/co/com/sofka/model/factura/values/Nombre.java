@@ -26,6 +26,10 @@ public class Nombre {
         return value;
     }
 
+    public static Nombre of(String value){
+        return new Nombre(value);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

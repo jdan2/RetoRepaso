@@ -22,6 +22,12 @@ public class Correo {
 
     }
 
+    public static Correo of(String value){
+        return new Correo(value);
+    }
+
+
+
     public String getValue() {
         return value;
     }

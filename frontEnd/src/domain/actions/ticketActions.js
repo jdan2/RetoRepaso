@@ -1,3 +1,7 @@
+import { toast } from 'react-toastify';
+import { Redirect } from 'react-router-dom';
+
+
 import {
     //ADD
     ADD_TICKET,
@@ -6,19 +10,25 @@ import {
 
     //LIST
     LIST_TICKETS,
+    LIST_CELDAS,
+    LIST_CELDAS_SUCCESS,
     LIST_TICKETS_SUCCESS,
     LIST_TICKETS_FAILURE,
+    LIST_CELDAS_FAILURE,
     //DELETE
     DELETE_TICKET,
     DELETE_TICKET_SUCCESS,
     DELETE_TICKET_FAILURE,
     //READ
     ONLY_TICKET,
+    OBTENER_TICKET,
     EDIT_TICKET,
 } from '../types/ticket.js';
 
 
 import clientAxios from './../../infrastructure/services/api/axios';
+import { Alert } from 'bootstrap';
+import { useState } from 'react';
 
 //Crear Acciones de ticketes
 export function addNewTicketAction(ticket){
@@ -26,11 +36,13 @@ export function addNewTicketAction(ticket){
         dispatch(addTicket())
         try {
             //Peticion a la base de datos
-            await clientAxios.post('tickets',ticket);
+            await clientAxios.post('/creartiquete',ticket);
             //ok
             dispatch(addTicketSuccess(ticket));
             alert("Se ha creado correctamente");
+            
         } catch (error) {
+            
             dispatch(addTicketFailure(true));
         }
     }
@@ -56,9 +68,11 @@ export function listTicketsAction(){
     return async(dispatch) =>{
         dispatch(listTickets());
         try{
+            
             //Hago mi peticion HTTP
             const response = await clientAxios.get('/listartiquetes');
             dispatch(listTicketsSuccess(response.data));
+           
 
         }catch(error){
             dispatch(listTicketsFailure());
@@ -66,14 +80,44 @@ export function listTicketsAction(){
     }
 }
 
+export function listCeldasAction(){
+    return async(dispatch) =>{
+        dispatch(listCeldas());
+        try{
+            
+            //Hago mi peticion HTTP
+            const response = await clientAxios.get('/listarceldas/disponibles');
+            dispatch(listCeldasSuccess(response.data));
+           
+
+        }catch(error){
+            dispatch(listCeldasFailure());
+        }
+    }
+}
+
+
 const listTickets = () =>({
     type:LIST_TICKETS,
     payload:true
 })
 
+const listCeldas = () =>({
+    type:LIST_CELDAS,
+    payload:true
+})
+const listCeldasSuccess = (celdas) =>({
+    type:LIST_CELDAS_SUCCESS,
+    payload:celdas
+})
+
 const listTicketsSuccess = (tickets) =>({
     type:LIST_TICKETS_SUCCESS,
     payload:tickets
+})
+const listCeldasFailure = () =>({
+    type:LIST_CELDAS_FAILURE,
+    payload:true
 })
 
 const listTicketsFailure = () =>({
@@ -81,15 +125,16 @@ const listTicketsFailure = () =>({
     payload:true
 })
 
-//Eliminar empleados
-export function deleteTicketAction(id){
+//Eliminar 
+export function deleteTicketAction(tiqueteId){
     return async (dispatch) =>{
         dispatch(deleteTicket());
         try{
-            await clientAxios.delete('/eliminartiquete/'+id);
-            dispatch(deleteTicketSuccess())
-            alert("Se ha eliminado correctamente");
-        }catch(error){
+            await clientAxios.delete(`/eliminartiquete?id=${tiqueteId}`);
+            dispatch(deleteTicketSuccess())           
+            alert("Se ha eliminado correctamente")
+               
+            }catch(error){
             dispatch(deleteTicketFailure);
         }
     }
@@ -102,7 +147,8 @@ const deleteTicket = () =>({
 
 const deleteTicketSuccess = () => ({
     type:DELETE_TICKET_SUCCESS,
-    payload:'Se ha eliminado'
+    payload:'Se ha eliminado',
+    
 })
 
 const deleteTicketFailure = () => ({
@@ -121,11 +167,23 @@ const onlyTicket = ticket =>({
     payload:ticket
 })
 
-export const ticketEditAction =async (id,horaIngreso, placa, celda,tipoVehiculo) => {
+export function obtenerTicketVer(ticket){
+    return (dispatch) =>{
+        dispatch( obtenerTicketVerAction(ticket) )
+    }
+}
+
+const obtenerTicketVerAction = ticket =>({
+    type: OBTENER_TICKET,
+    payload: ticket
+})
+
+export const ticketEditAction =async (tiqueteId, celdaId,horaIngreso, placa, tipoVehiculo) => {
     return async (dispatch) =>{
     dispatch(editTicket())
-    const ticket = {horaIngreso:horaIngreso, placa:placa, celda:celda, tipoVehiculo: tipoVehiculo}
-    await clientAxios.put('/tiquetes/'+id,ticket);
+    const ticket = {tiqueteId:tiqueteId, celdaId:celdaId,  horaIngreso:horaIngreso, placa:placa, tipoVehiculo:tipoVehiculo}
+   await clientAxios.put(`/editartiquete?id=${tiqueteId}`, ticket);
+   // await clientAxios.put('/editartiquete/',tiqueteId, ticket);
     }
 }
 

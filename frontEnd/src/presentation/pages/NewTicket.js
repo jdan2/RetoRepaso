@@ -1,23 +1,35 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useSelector} from 'react';
 import {useDispatch} from 'react-redux';
+
+
 
 //Acciones de redux
 import {addNewTicketAction} from '../../domain/actions/ticketActions'; 
+import {
+    listCeldasAction
+    
+  } from "../../domain/actions/ticketActions";
 
-const NewTicket = () =>{
+const NewTicket = ({ history }) =>{
+
+    
 
     //Datos de mi formulario
-    const [id, setId] = useState('');
+    const [tiqueteId, setId] = useState('');
     const [horaIngreso, setHoraIngreso] = useState('');
     const [placa, setPlaca] = useState('');
-    const [celda, setCelda] = useState('');
+    const [celdaId, setCeldaId] = useState('');
     const [tipoVehiculo, setTipoVehiculo] = useState('');
 
     //Temporalmente con useDispatch y useSelector
     const dispatch = useDispatch();
 
+    
+
     //Crear la accion para disparar la funcion
     const addTicket = (ticket) => dispatch(addNewTicketAction(ticket));
+
+
 
     const submitAddTicket = e =>{
         //Prevengo que se recargue la pagina
@@ -27,56 +39,98 @@ const NewTicket = () =>{
 
         //Ejecutar accion del nuevo elemento
         addTicket({
-            id,
-            horaIngreso, 
+            tiqueteId,
+            celdaId,
+            tipoVehiculo,
             placa,
-            celda,
-            tipoVehiculo
-        })        
+            horaIngreso
+            
+            
+            
+        })  
+       
+        
+          
     }
 
+    
+    
+    
     return(
+
+        <div className="row justify-content-center text-center">
+      <div className="col-md-8">
+        <div className="card"></div>
+        <div className="submit-form"></div>
     <div>
         <h2>Agregar Ticket</h2>
         <form onSubmit={submitAddTicket}>
-            Id
-            <input 
+        <div className="form-group">
+            {/*Id
+            <br />
+            <input className="container card"
                 type="text"
-                name="id"
-                value={id}
+                name="tiqueteId"
+                required="required"
+                minLength="4"
+                maxLength="20"
+                value={tiqueteId}
                 onChange={e => setId(e.target.value)}    
-            />
+            />*/}
+            </div>
+            <div className="form-group">
             Hora de Ingreso
-             <input 
-                type="text"
+            <br />
+             <input className="container card"
+                type="datetime-local"
                 name="horaIngreso"
                 value={horaIngreso}
                 onChange={e => setHoraIngreso(e.target.value)}    
             />
+            </div>
+            <div className="form-group">
             Placa
-             <input 
+            <br />
+             <input className="container card"
                 type="text"
                 name="placa"
                 value={placa}
                 onChange={e => setPlaca(e.target.value)}    
             />
+            </div>
+            <div className="form-group">
             Celda
-             <input 
+            <br />
+             <input className="container card"
                 type="text"
-                name="celda"
-                value={celda}
-                onChange={e => setCelda(e.target.value)}    
+                name="celdaId"
+                value={celdaId}
+                onChange={e => setCeldaId(e.target.value)}    
             />
+            </div>
+            <div className="form-group">
             Tipo de Vehiculo
-             <input 
+            <br />
+             <input className="container card"
                 type="text"
                 name="tipoVehiculo"
                 value={tipoVehiculo}
                 onChange={e => setTipoVehiculo(e.target.value)}    
             />
-            <button type="submit"> Agregar</button>
+
+            </div>
+            <button className="btn btn-success" type="submit"> Agregar</button>
+            
         </form>
+        
     </div>
+    
+
+    </div>
+    </div>
+    
+    
+    
     )
 }
 

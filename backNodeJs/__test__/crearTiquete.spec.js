@@ -7,14 +7,14 @@ describe('name of component', ()=>{
     test('should resolve with the newly persisted tiquete', async()=>{
 
         //Arrange
-        const persistedTiquete = new Tiquete("T222K", "C123", "Carro", "GGK898", "06:24");
+        const persistedTiquete = new Tiquete(null, "C111", "Carro", "NNN000", "12:30");
         mockTiqueteRepository.persist = jest.fn(()=> persistedTiquete);
-    
+
         //Act
-        const tiquete = await CrearTiquete("T222K", "C123", "Carro", "GGK898", "06:24", {tiqueteRepository: mockTiqueteRepository});
-    
-        //Assert
-        expect(mockTiqueteRepository.persist).toHaveBeenCalledWith(new Tiquete("T222K", "C123", "Carro", "GGK898", "06:24"));
+        const tiquete = await CrearTiquete("C111", "Carro", "NNN000", "12:30", {tiqueteRepository: mockTiqueteRepository});
+
+        //Asser
+        expect(mockTiqueteRepository.persist).toHaveBeenCalledWith(new Tiquete(tiquete.getTiqueteId(), "C111", "Carro", "NNN000", "12:30"));
         expect(tiquete).toEqual(persistedTiquete);
         expect(tiquete.getTiqueteId()).toEqual(persistedTiquete.tiqueteId);
         expect(tiquete.getCeldaId()).toEqual(persistedTiquete.celdaId);
@@ -22,6 +22,7 @@ describe('name of component', ()=>{
         expect(tiquete.getPlaca()).toEqual(persistedTiquete.placa);
         expect(tiquete.getHoraIngreso()).toEqual(persistedTiquete.horaIngreso);
     });
+
 })
 
 

@@ -14,6 +14,10 @@ public class TipoVehiculo {
 
     }
 
+    public static TipoVehiculo of(String value){
+        return new TipoVehiculo(value);
+    }
+
     public String getValue() {
         return value;
     }

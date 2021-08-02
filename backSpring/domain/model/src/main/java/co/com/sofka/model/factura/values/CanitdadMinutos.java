@@ -14,6 +14,10 @@ public class CanitdadMinutos {
 
     }
 
+    public static CanitdadMinutos of(String value){
+        return new CanitdadMinutos(value);
+    }
+
     public String getValue() {
         return value;
     }

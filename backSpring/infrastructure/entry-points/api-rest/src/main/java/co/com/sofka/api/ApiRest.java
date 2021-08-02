@@ -1,14 +1,14 @@
 package co.com.sofka.api;
 import co.com.sofka.api.dto.FacturaDTO;
-import co.com.sofka.api.dto.TiqueteDTO;
 import co.com.sofka.api.mapper.FacturaMapper;
 import co.com.sofka.api.mapper.TiqueteMapper;
 import co.com.sofka.model.factura.Factura;
 import co.com.sofka.model.factura.values.CanitdadMinutos;
 import co.com.sofka.model.factura.values.EmpleadoId;
 import co.com.sofka.model.factura.values.HoraSalida;
-import co.com.sofka.model.tiquete.Tiquete;
+import co.com.sofka.model.factura.values.ValorTotal;
 import co.com.sofka.model.tiquete.values.HoraIngreso;
+import co.com.sofka.model.tiquete.values.TipoVehiculo;
 import co.com.sofka.usecase.factura.*;
 import co.com.sofka.usecase.tiquete.TiqueteUseCase;
 import lombok.AllArgsConstructor;
@@ -29,16 +29,15 @@ public class ApiRest {
 
    private final ActualizarFacturaUseCase actualizarFacturaUseCase;
    private final BorrarFacturaUseCase borrarFacturaUseCase;
+
    private final TiempoTotalFacturaUseCase tiempoTotalFacturaUseCase;
    private final BuscarFacturaPorEmpleadoIdUseCase buscarFacturaPorEmpleadoIdUseCase;
+
+   private final ValorTotalFacturaUseCase valorTotalFacturaUseCase;
+  // private final TiempoTotalFacturaUseCase tiempoTotalFacturaUseCase;
   // private final ListarFacturaUsecase listarFacturaUsecase;
 
 
-    @PostMapping(path = "/creartiquete")
-    public TiqueteDTO crearTiquete(@RequestBody TiqueteDTO tiqueteDTO) {
-        Tiquete tiquete = tiqueteMapper.dtoToTiquete(tiqueteDTO);
-        return tiqueteMapper.tiqueteToDto(tiqueteUseCase.crearTiquete(tiquete));
-    }
 
     @PostMapping(path = "/crearfactura")
     public FacturaDTO crearFactura(@RequestBody FacturaDTO facturaDTO) {
@@ -53,6 +52,14 @@ public class ApiRest {
         CanitdadMinutos canitdadMinutos = facturaUseCase.canitdadMinutos(horaIngreso,horaSalida);
         CanitdadMinutos c = canitdadMinutos;
         return canitdadMinutos;
+    }
+
+    @GetMapping(path = "/valortotal/{tipovehiculo}/{cantidadtiempo}")
+    public ValorTotal valorTotal(@PathVariable("tipovehiculo") String tipovehiculo, @PathVariable("cantidadtiempo") String cantidadtiempo ) {
+        TipoVehiculo tipoVehiculo = new TipoVehiculo(tipovehiculo);
+        CanitdadMinutos canitdadMinutos = new CanitdadMinutos(cantidadtiempo);
+        ValorTotal valorTotal = valorTotalFacturaUseCase.valorTotal(tipoVehiculo,canitdadMinutos);
+        return valorTotal;
     }
 
     @GetMapping(path = "/obtenerfacturas")
@@ -76,11 +83,11 @@ public class ApiRest {
     @PutMapping(path = "/actualizarfactura")
     public FacturaDTO actualizarFactura(@RequestBody FacturaDTO facturaDTO) {
         Factura factura = facturaMapper.dtoToFactura(facturaDTO);
-        return facturaMapper.facturaToDto(actualizarFacturaUseCase.updateCount(factura));
+        return facturaMapper.facturaToDto(actualizarFacturaUseCase.updateFactura(factura));
     }
 
-    @DeleteMapping(path = "/eliminarfactura/{id}")
-    public void eliminarFactura(@PathVariable("id") String id) {
-        borrarFacturaUseCase.deleteFactura(id);
+    @DeleteMapping(path = "/eliminarfactura/{id}/{usuario}")
+    public void eliminarFactura(@PathVariable("id") String id ,@PathVariable("usuario") EmpleadoId empleadoId) {
+        borrarFacturaUseCase.deleteFactura(id, empleadoId);
     }
 }

@@ -6,6 +6,7 @@ import co.com.sofka.usecase.factura.ActualizarFacturaUseCase;
 import co.com.sofka.usecase.factura.BuscarFacturaPorEmpleadoIdUseCase;
 import co.com.sofka.usecase.factura.FacturaUseCase;
 import co.com.sofka.usecase.factura.ListarFacturaUsecase;
+import co.com.sofka.usecase.factura.ValorTotalFacturaUseCase;
 import co.com.sofka.usecase.tiquete.TiqueteUseCase;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -32,7 +33,10 @@ public class UseCasesConfig {
                 return  new ListarFacturaUsecase(facturaRepository);
         }
 
-        public BuscarFacturaPorEmpleadoIdUseCase buscarFacturaPorEmpleadoIdUseCase(FacturaRepository facturaRepository){
+        public BuscarFacturaPorEmpleadoIdUseCase buscarFacturaPorEmpleadoIdUseCase(FacturaRepository facturaRepository) {
                 return new BuscarFacturaPorEmpleadoIdUseCase(facturaRepository);
+        }
+        public ValorTotalFacturaUseCase valorTotalFacturaUseCase(FacturaRepository facturaRepository){
+                return  new ValorTotalFacturaUseCase(facturaRepository);
         }
 }

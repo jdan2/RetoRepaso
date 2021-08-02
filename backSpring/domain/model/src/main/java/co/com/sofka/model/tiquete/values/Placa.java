@@ -18,6 +18,10 @@ public class Placa
         return value;
     }
 
+    public static Placa of(String value){
+        return new Placa(value);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

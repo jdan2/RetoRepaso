@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 public class ActualizarFacturaUseCase {
     private final FacturaRepository facturaRepository;
 
-    public Factura updateCount(Factura factura) {
+    public Factura updateFactura(Factura factura) {
         return facturaRepository.updateFactura(factura);
     }
 }

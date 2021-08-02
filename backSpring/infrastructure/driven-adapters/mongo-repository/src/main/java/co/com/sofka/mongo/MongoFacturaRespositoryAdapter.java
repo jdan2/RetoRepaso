@@ -6,10 +6,13 @@ import co.com.sofka.model.factura.values.CanitdadMinutos;
 import co.com.sofka.model.factura.values.EmpleadoId;
 import co.com.sofka.model.factura.values.FacturaId;
 import co.com.sofka.model.factura.values.HoraSalida;
+import co.com.sofka.model.factura.values.ValorTotal;
 import co.com.sofka.model.tiquete.values.HoraIngreso;
+import co.com.sofka.model.tiquete.values.TipoVehiculo;
 import co.com.sofka.mongo.entities.FacturaEntity;
 import co.com.sofka.mongo.helper.AdapterOperations;
 import lombok.SneakyThrows;
+import lombok.var;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
@@ -78,8 +81,12 @@ public class MongoFacturaRespositoryAdapter extends AdapterOperations<FacturaEnt
     }
 
     @Override
-    public void deletefactura(String idFactura) {
-        this.repository.deleteById(idFactura);
+    public void deletefactura(String idFactura, EmpleadoId empleadoId) {
+        Optional<FacturaEntity> factura = repository.findById(idFactura);
+        if(factura.get().getEmpleadoId().equals(empleadoId)){
+                 this.repository.deleteById(idFactura);
+        }
+
     }
 
     @SneakyThrows
@@ -97,9 +104,23 @@ public class MongoFacturaRespositoryAdapter extends AdapterOperations<FacturaEnt
     }
 
     @Override
+
     public List<Factura> findFacturaByEmpleadoId(EmpleadoId empleadoId) {
 
         return this.repository.findFacturaByEmpleadoId(empleadoId);
+    }
+
+    public ValorTotal valorTotal(TipoVehiculo tipoVehiculo, CanitdadMinutos canitdadMinutos) {
+        TipoVehiculo tipoVehiculo1 = tipoVehiculo;
+        CanitdadMinutos canitdadMinutos1 = canitdadMinutos;
+        int precio = 100;
+        if (tipoVehiculo1.getValue().equals("Moto")){
+            precio = 50;
+        }
+        int valortotal = Integer.parseInt(canitdadMinutos1.getValue()) * precio;
+        ValorTotal valorTotal = new ValorTotal(String.valueOf(valortotal));
+        return valorTotal;
+
     }
 
 }

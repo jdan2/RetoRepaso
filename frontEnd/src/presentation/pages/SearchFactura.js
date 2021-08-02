@@ -115,7 +115,7 @@ const dispatch = useDispatch();
         <input
           className="form-control inputBuscar"
           value={busqueda}
-          placeholder="Búsqueda por Nombre o Empresa"
+          placeholder="Búsqueda por Id de factura o Id de Tiquete"
           onChange={handleChange}
         />
 

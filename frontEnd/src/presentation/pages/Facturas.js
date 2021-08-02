@@ -79,9 +79,9 @@ function Facturas() {
 
   const facturaone = (factura) => {
     dispatch(onlyFacturaAction(factura));
-    console.log("Todo el objeto seleccionado", factura);
+    console.log("Todo la fact", factura);
     setpruebam([factura.horaSalida.value, factura.valorTotal.value]);
-    //document.getElementById('verTicket').innerHTML = `<li style="color:red">${ticket.celda}</li><li style="color:red">${ticket.horaIngreso}</li>`;
+    
   };
    
    const facturaEdit= async (factura) =>{
@@ -120,15 +120,15 @@ function Facturas() {
     <h3>Editar Factura</h3>
     <TextField name="facturaId" className={styles.inputMaterial} label="Id de Factura" disabled onChange={handleChange} value={consolaSeleccionada.facturaId && consolaSeleccionada.facturaId}/>
     <br />
-    <TextField name="tiqueteId.tiqueteId" className={styles.inputMaterial} label="Id de Tiquete" onChange={handleChange} value={consolaSeleccionada.tiqueteId.tiqueteId && consolaSeleccionada.tiqueteId.tiqueteId}/>
+    <TextField name="tiqueteId.tiqueteId" disabled className={styles.inputMaterial} label="Id de Tiquete" onChange={handleChange} value={consolaSeleccionada.tiqueteId.tiqueteId && consolaSeleccionada.tiqueteId.tiqueteId}/>
     <br />
-    <TextField name="empleadoId.empleadoId" className={styles.inputMaterial} label="Id de Empleado" onChange={handleChange} value={consolaSeleccionada.empleadoId.empleadoId && consolaSeleccionada.empleadoId.empleadoId}/>
+    <TextField name="empleadoId.empleadoId" disabled className={styles.inputMaterial} label="Id de Empleado" onChange={handleChange} value={consolaSeleccionada.empleadoId.empleadoId && consolaSeleccionada.empleadoId.empleadoId}/>
     <br />
     <TextField name="horaSalida.value" className={styles.inputMaterial} label="Hora de Salida" onChange={handleChange} value={consolaSeleccionada.horaSalida.value && consolaSeleccionada.horaSalida.value}/>
     <br />
-    <TextField name="canitdadMinutos.value" className={styles.inputMaterial} label="Hora de Salida" onChange={handleChange} value={consolaSeleccionada.canitdadMinutos.value && consolaSeleccionada.canitdadMinutos.value}/>
+    <TextField name="canitdadMinutos.value" className={styles.inputMaterial} label="Tiempo" onChange={handleChange} value={consolaSeleccionada.canitdadMinutos.value && consolaSeleccionada.canitdadMinutos.value}/>
     <br />
-    <TextField name="valorTotal.value" className={styles.inputMaterial} label="Hora de Salida" onChange={handleChange} value={consolaSeleccionada.valorTotal.value && consolaSeleccionada.valorTotal.value}/>
+    <TextField name="valorTotal.value" className={styles.inputMaterial} label="ValorTotal" modify onChange={handleChange} value={consolaSeleccionada.valorTotal.value && consolaSeleccionada.valorTotal.value}/>
     <br /><br />
       <div align="right">
         <Button color="primary" onClick={()=>facturaEdit(consolaSeleccionada)}>Editar</Button>

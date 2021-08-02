@@ -89,7 +89,7 @@ function Tickets() {
   };
    
    const ticketEdit= async (tiqueteId, ticket) =>{
-    console.log("algo");
+    console.log("LLego la peticion");
     dispatch(await ticketEditAction(ticket.tiqueteId, ticket.celdaId,  ticket.horaIngreso, ticket.placa, ticket.tipoVehiculo ))
    }
    //const error = useSelector((state) => state.tickets.error);
@@ -134,15 +134,15 @@ function Tickets() {
   const bodyEditar=(
     <div className={styles.modal}>
       <h3>Editar Ticket</h3>
-      <TextField name="tiqueteId" className={styles.inputMaterial} label="Id de Tiquete" onChange={handleChange} value={consolaSeleccionada.tiqueteId && consolaSeleccionada.tiqueteId}/>
+      <TextField name="tiqueteId" disabled className={styles.inputMaterial} label="Id de Tiquete" onChange={handleChange} value={consolaSeleccionada.tiqueteId && consolaSeleccionada.tiqueteId}/>
       <br />
-      <TextField name="celdaId" className={styles.inputMaterial} label="Id de Celda" onChange={handleChange} value={consolaSeleccionada.celdaId && consolaSeleccionada.celdaId}/>
+      <TextField name="celdaId" required className={styles.inputMaterial} label="Id de Celda" onChange={handleChange} value={consolaSeleccionada.celdaId && consolaSeleccionada.celdaId}/>
       <br />
-      <TextField name="horaIngreso" className={styles.inputMaterial} label="Hora de Ingreso" onChange={handleChange} value={consolaSeleccionada.horaIngreso && consolaSeleccionada.horaIngreso}/>
+      <TextField name="horaIngreso" required className={styles.inputMaterial} label="Hora de Ingreso" onChange={handleChange} value={consolaSeleccionada.horaIngreso && consolaSeleccionada.horaIngreso}/>
       <br />
-      <TextField name="placa" className={styles.inputMaterial} label="Placa" onChange={handleChange} value={consolaSeleccionada.placa && consolaSeleccionada.placa}/>
+      <TextField name="placa" required className={styles.inputMaterial} label="Placa" onChange={handleChange} value={consolaSeleccionada.placa && consolaSeleccionada.placa}/>
       <br />      
-      <TextField name="tipoVehiculo" className={styles.inputMaterial} label="tipoVehiculo" onChange={handleChange} value={consolaSeleccionada.tipoVehiculo && consolaSeleccionada.tipoVehiculo}/>
+      <TextField name="tipoVehiculo" required className={styles.inputMaterial} label="tipoVehiculo" onChange={handleChange} value={consolaSeleccionada.tipoVehiculo && consolaSeleccionada.tipoVehiculo}/>
       <br />
       
       <br /><br />

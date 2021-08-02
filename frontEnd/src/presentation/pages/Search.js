@@ -116,6 +116,7 @@ const dispatch = useDispatch();
         
       </div>
       <br />
+      <h3 className="text-center text-danger">Debes Seleccionar un Tiquete y luego generar factura</h3>
       <div id="2">
       <form action="">
       <div class="container text-center card">

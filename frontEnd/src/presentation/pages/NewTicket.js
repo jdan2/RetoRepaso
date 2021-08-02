@@ -51,7 +51,7 @@ const NewTicket = ({ history }) =>{
             
         })  
        
-        history.push("/dashboard");
+        
               
     }
 
@@ -84,6 +84,7 @@ const NewTicket = ({ history }) =>{
             Hora de Ingreso
             <br />
              <input className="container card"
+             required="required"
                 type="datetime-local"
                 name="horaIngreso"
                 value={horaIngreso}
@@ -95,6 +96,9 @@ const NewTicket = ({ history }) =>{
             <br />
              <input className="container card"
                 type="text"
+                required="required"
+                minLength="5"
+                maxLength="6"
                 name="placa"
                 value={placa}
                 onChange={e => setPlaca(e.target.value)}    
@@ -104,6 +108,9 @@ const NewTicket = ({ history }) =>{
             Celda
             <br />
              <input className="container card"
+             required="required"
+             minLength="4"
+                maxLength="4"
                 type="text"
                 name="celdaId"
                 value={celdaId}
@@ -114,6 +121,9 @@ const NewTicket = ({ history }) =>{
             Tipo de Vehiculo
             <br />
              <input className="container card"
+             required="required"
+             minLength="4"
+                maxLength="10"
                 type="text"
                 name="tipoVehiculo"
                 value={tipoVehiculo}

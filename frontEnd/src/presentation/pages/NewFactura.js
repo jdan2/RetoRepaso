@@ -116,6 +116,9 @@ const NewFactura = ({ history }) =>{
             Id del empleado
              <input 
                 type="text"
+                required="required"               
+                minLength="5"
+                maxLength="40"
                 name="empleadoId"
                 value={empleadoId}
                 onChange={e => setEmpleadoId(e.target.value)} 
@@ -126,6 +129,7 @@ const NewFactura = ({ history }) =>{
             Tipo de Vehiculo
              <input 
                 type="text"
+                required="required"
                 name="tipoVehiculo"
                 value={tipoVehiculo}
                  
@@ -149,8 +153,6 @@ const NewFactura = ({ history }) =>{
              <input 
                 type="datetime-local"
                 required="required"
-                minLength={4}
-                maxLength={50}
                 name="horaSalida"
                 value={horaSalida}
                 onChange={e => setHoraSalida(e.target.value)}    
@@ -160,12 +162,12 @@ const NewFactura = ({ history }) =>{
             <div className="form-group">
             Cantidad de Minutos
              <input 
-                type="text"
+                type="number"
                 name="canitdadMinutos"
                 value={canitdadMinutos}
                 required="required"
                 minLength={2}
-                maxLength={50}
+                maxLength={10}
                 onChange={e => setCantidadMinutos(e.target.value)}    
             />
             </div>
@@ -173,7 +175,7 @@ const NewFactura = ({ history }) =>{
             Valor Total
             
              <input 
-                type="text"
+                type="number"
                 name="valorTotal"
                 required="required"
                 minLength={3}

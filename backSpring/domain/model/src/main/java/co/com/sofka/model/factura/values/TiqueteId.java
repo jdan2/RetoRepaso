@@ -18,6 +18,7 @@ public class TiqueteId {
         return tiqueteId;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

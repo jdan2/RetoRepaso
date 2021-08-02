@@ -18,6 +18,10 @@ public class ValorTotal {
         return value;
     }
 
+    public static ValorTotal of(String value){
+        return new ValorTotal(value);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

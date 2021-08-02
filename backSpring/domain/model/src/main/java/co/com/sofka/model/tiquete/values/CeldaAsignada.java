@@ -1,5 +1,7 @@
 package co.com.sofka.model.tiquete.values;
 
+import co.com.sofka.model.factura.values.HoraSalida;
+
 import java.util.Objects;
 
 public class CeldaAsignada {
@@ -12,6 +14,10 @@ public class CeldaAsignada {
             throw new IllegalArgumentException("La celda asignada no puede estar vacio");
         }
 
+    }
+
+    public static CeldaAsignada of(String value){
+        return new CeldaAsignada(value);
     }
 
     public String getValue() {

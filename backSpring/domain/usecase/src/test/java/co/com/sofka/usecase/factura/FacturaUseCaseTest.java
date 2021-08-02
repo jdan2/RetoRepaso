@@ -37,5 +37,19 @@ class FacturaUseCaseTest {
 
     }
 
+    @Test
+    @DisplayName("Consultar Factura por id")
+        public void consultarFactura(){
+            Factura factura = new Factura("1", TiqueteId.of("2"), EmpleadoId.of("3"), HoraSalida.of("3:30"),
+                    CanitdadMinutos.of("30"), ValorTotal.of("3000"));
+
+        Mockito.when(facturaRepository.consultarFactura(factura.getFacturaId())).thenReturn(factura);
+
+        Factura result = facturaUseCase.consultarFactura(factura.getFacturaId());
+
+        Assertions.assertEquals(factura.getFacturaId(),result.getFacturaId());
+
+
+        }
 
     }
